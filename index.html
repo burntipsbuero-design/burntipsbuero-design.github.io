@@ -18,21 +18,21 @@
         /* 2. VISITENKARTE: Begrenzt auf 650px und in der Mitte zentriert */
         .visitenkarte-container {
             max-width: 650px; 
-            margin: 40px auto; /* 40px Abstand nach oben und unten auf großen Bildschirmen */
+            margin: 40px auto; 
             background: #fff;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             text-align: center;
             box-sizing: border-box;
-            transition: margin 0.3s ease; /* Weicher Übergang bei Größenänderung */
+            transition: margin 0.3s ease; 
         }
         
         /* Profilbild */
         .visitenkarte-container img[src*="Profilbild"] {
             width: 150px;
             height: 150px;
-            border-radius: 50%; /* Rundes Profilbild */
+            border-radius: 50%; 
             object-fit: cover;
             border: 4px solid #fff;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -52,17 +52,17 @@
         
         /* 3. WEBSEITEN-CONTAINER: Nutzt 100% der Bildschirmbreite */
         .webseiten-container {
-            background: #ffffff; /* Weißer Hintergrund für den Webseiten-Bereich */
+            background: #ffffff; 
             width: 100%;
             padding: 60px 20px;
             box-sizing: border-box;
-            border-top: 1px solid #eaeaea; /* Zarte Linie zur optischen Trennung */
+            border-top: 1px solid #eaeaea; 
             text-align: center;
         }
 
         /* 4. WEBSEITEN-INHALT: Hält die Texte auf großen Bildschirmen angenehm lesbar */
         .webseiten-inhalt {
-            max-width: 850px; /* Etwas breiter für die Nebeneinander-Darstellung */
+            max-width: 850px; 
             margin: 0 auto;
         }
 
@@ -88,13 +88,13 @@
             display: flex;
             gap: 25px;
             justify-content: center;
-            flex-wrap: wrap; /* Erlaubt Umbruch auf Handys */
+            flex-wrap: wrap; 
             margin-top: 20px;
             text-align: left;
         }
         .flex-col {
             flex: 1;
-            min-width: 300px; /* Mindestbreite, bevor umgebrochen wird */
+            min-width: 300px; 
             background: #fafafa;
             padding: 25px;
             border-radius: 10px;
@@ -176,37 +176,24 @@
             background-color: #5a6268;
         }
 
-        /* --- RESPONSIVE ANPASSUNGEN (NEU) --- */
-        /* Diese Regeln gelten nur für Bildschirme, die schmaler als 650px sind (z.B. Handys) */
+        /* --- RESPONSIVE ANPASSUNGEN --- */
         @media screen and (max-width: 650px) {
-            
-            /* Verringere den oberen Abstand für mobile Geräte */
             .visitenkarte-container {
-                margin: 15px auto; /* Von 40px auf 15px reduziert */
-                padding: 20px; /* Auch etwas weniger Padding innen */
+                margin: 15px auto; 
+                padding: 20px; 
             }
-
-            h1 {
-                font-size: 1.8em; /* Text etwas kleiner, damit er nicht umbricht */
-            }
-            
-            h2 {
-                font-size: 1.2em;
-            }
-            
-            /* QR-Code und Kontakt-Liste etwas kompakter */
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.2em; }
             img.qrcode {
                 width: 120px;
                 height: 120px;
                 margin-bottom: 15px;
             }
-            
             .contact-list li {
                 font-size: 1em;
                 margin: 10px 0;
             }
         }
-
     </style>
 </head>
 
@@ -236,9 +223,17 @@
             <details>
                 <summary>Mein aktuelles Herzens-Projekt</summary>
                 <div class="details-content">
-                    <p><h2>Der Vita Solo</h2>
-                    <b>Wissen, das dich stärkt. Technik, die dich atmen lässt.</b><br>
-                    Wir verwandeln ausgemusterte Smartphones in Werkzeuge des reinen Wissens. Der Vita Solo ist kein Gerät zum endlosen Konsumieren, sondern ein Booster für den eigenen Geist – ohne Ablenkung, ohne Werbung und ohne toxische Reizflut. Es ist keine Prothese, die uns das Denken abnimmt, sondern ein Exoskelett, das unsere Fähigkeiten erweitert.</p>
+                    <h2>Der Vita Solo</h2>
+                    <p><strong>Wissen, das dich stärkt. Technik, die dich atmen lässt.</strong></p>
+                    <p>Wir verwandeln ausgemusterte Smartphones in Werkzeuge des reinen Wissens. Der Vita Solo ist kein Gerät zum endlosen Konsumieren, sondern ein Booster für den eigenen Geist – ohne Ablenkung, ohne Werbung und ohne toxische Reizflut. Es ist keine Prothese, die uns das Denken abnimmt, sondern ein Exoskelett, das unsere Fähigkeiten mit Hilfe erweitert.</p>
+                    <ul>
+                        <li><p><strong>Für Entdecker:</strong> Das komplette Offline-Wikipedia in der Hand. Ein textbasiertes, von einer KI destilliertes Internet, das Fragen beantwortet, aber keine Gefahren birgt.</p></li>
+                        <li><p><strong>Für Familien:</strong> Eine leise, asynchrone Brücke zwischen Kind und Eltern. Stolz teilen, ohne digitalen Druck. Wachsen, ohne überwacht zu werden.</p></li>
+                        <li><p><strong>Für den Abendfrieden:</strong> Die Nachrichten des Tages lesen, ohne die Bilder des Krieges zu sehen. Mentale Hygiene durch radikale Reduktion auf das geschriebene Wort.</p></li>
+                    </ul>
+                    <p><strong>Dein Gerät. Deine Regeln.</strong></p>
+                    <p>Der Vita Solo enthält eine Offline-KI, d.h. die KI kann niemals "nach Hause telefonieren", egal auf welchen Kontinent. Außerdem ist Wikipedia ebenfalls offline an Bord, unter anderem.</p>
+                    <p>Erwecke ein altes Handy zu neuem Leben. Prüfe mit unserer kostenlosen App, ob dein Gerät bereit für die Transformation ist. <i>Bitte habe noch etwas Geduld, bis die Qualitätssicherungen abgeschlossen sind. Vielen Dank!</i></p>
                 </div>
             </details>
 
@@ -249,7 +244,7 @@
                     <div class="flex-row">
                         <div class="flex-col">
                             <h3>Buchungs-Mentor</h3>
-                            <p>Ich helfe dir, rechtssicher zu buchen. Programme gibt es viele – aber wen fragst du bei Unsicherheit? Ich biete 29 Jahre Erfahrung (Steuerfachwirt).</p>
+                            <p>Ich helfe dir, rechtssicher zu buchen. Programme gibt es viele – aber wen fragst du bei Unsicherheit? Ich biete 29 Jahre Erfahrung im Steuerbüro, seit 2001 als Steuerfachwirt.</p>
                             <p>Kontakt am besten via WhatsApp für schnelle Terminabstimmung. Beratung idealerweise per Video-Telefonie (Viertelstunde: 19 €).</p>
                             <p>Scheue dich nicht zu fragen – ich sage vorher Bescheid, ab wann Kosten entstehen.</p>
                         </div>
@@ -280,14 +275,29 @@
                     <div class="details-content" style="text-align: left; font-size: 0.9em;">
                     <h4 style="margin-top:0;">Angaben gemäß § 5 TMG</h4>
                         <p>
-                            Joseph Gaßner<br>
+                            Burn.tips UG (haftungsbeschränkt)<br>
                             Lena-Christ-Str. 10 1/2<br>
                             84416 Taufkirchen (Vils)
                         </p>
-                    <h4>Kontakt</h4>
                         <p>
-                        E-Mail: mail@burn.tips
+                            <b>Vertreten durch:</b><br>
+                            Geschäftsführer Joseph Gaßner
                         </p>
+                        <p>
+                            <b>Kontakt</b><br>
+                            E-Mail: mail@burn.tips
+                        </p>
+                        <p>
+                            <b>Registereintrag</b><br>
+                            Eintragung im Handelsregister.<br>
+                            Registergericht: Amtsgericht München<br>
+                            Registernummer: HRB B 252201
+                        </p>
+                    <!-- <h4>Umsatzsteuer-ID</h4>
+                        <p>
+                            Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+                            DE [Nummer eintragen, falls vorhanden - sonst diesen Block löschen]
+                        </p> !-->
                     </div>
                 </details>
 
@@ -298,20 +308,27 @@
                         <p><strong>1. Datenschutz auf einen Blick</strong><br>
                         Personenbezogene Daten sind alle Daten, mit denen du persönlich identifiziert werden kannst.</p>
 
-                        <h4>2. Verantwortlicher</h4>
-                        <p>Joseph Gaßner, Lena-Christ-Str. 10 1/2, 84416 Taufkirchen (Vils), E-Mail: mail@burn.tips</p>
+                        <p><b>2. Verantwortlicher</b><br>
+                        Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
+                        <p>Burn.tips UG (haftungsbeschränkt)<br>
+                        vertreten durch den Geschäftsführer Joseph Gaßner<br>
+                        Lena-Christ-Str. 10 1/2<br>
+                        84416 Taufkirchen (Vils)<br>
+                        E-Mail: mail@burn.tips</p>
 
-                        <h4>3. Datenerfassung (Hosting)</h4>
-                        <p>Diese Website wird bei GitHub Pages gehostet. GitHub erfasst Standard-Server-Logfiles (inkl. IP-Adresse) zur Sicherheit. Grundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
+                        <p><b>3. Datenerfassung (Hosting)</b><br>
+                        Diese Website wird bei GitHub Pages gehostet. GitHub erfasst Standard-Server-Logfiles (inkl. IP-Adresse) zur Sicherheit. Grundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
 
-                        <h4>4. Externe Links</h4>
-                        <p>Bei Klick auf externe Links (WhatsApp, YouTube, Instagram) verlässt du diese Seite. Es gelten die Bestimmungen der jeweiligen Betreiber.</p>
+                        <p><b>4. Externe Links</b><br>
+                        Bei Klick auf externe Links (WhatsApp, YouTube, Instagram) verlässt du diese Seite. Es gelten die Bestimmungen der jeweiligen Betreiber.</p>
 
-                        <h4>5. Deine Rechte</h4>
-                        <p>Du hast das Recht auf unentgeltliche Auskunft, Berichtigung oder Löschung deiner Daten. Wende dich dazu an die oben angegebene Adresse.</p>
+                        <p><b>5. Deine Rechte</b><br>
+                        Du hast das Recht auf unentgeltliche Auskunft, Berichtigung oder Löschung deiner Daten. Wende dich dazu an die oben angegebene Adresse.</p>
                     </div>
                 </details>
             </div>
 
-        </div> </div> </body>
+        </div> 
+    </div> 
+</body>
 </html>
