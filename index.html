@@ -18,13 +18,14 @@
         /* 2. VISITENKARTE: Begrenzt auf 650px und in der Mitte zentriert */
         .visitenkarte-container {
             max-width: 650px; 
-            margin: 40px auto; /* 40px Abstand nach oben und unten, auto zentriert es */
+            margin: 40px auto; /* 40px Abstand nach oben und unten auf großen Bildschirmen */
             background: #fff;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             text-align: center;
             box-sizing: border-box;
+            transition: margin 0.3s ease; /* Weicher Übergang bei Größenänderung */
         }
         
         /* Profilbild */
@@ -108,91 +109,104 @@
             margin-bottom: 20px;
         }
 
-        /* --- NEUES BUTTON-DESIGN FÜR DETAILS/SUMMARY --- */
-        
+        /* BUTTON-DESIGN FÜR DETAILS/SUMMARY */
         details {
             margin-top: 20px;
             width: 100%;
-            text-align: center; /* Zentriert den Summary-Text */
+            text-align: center;
         }
-
         summary {
             cursor: pointer;
             font-weight: bold;
             font-size: 1.1em;
-            list-style: none; /* Versteckt Standard-Pfeil */
+            list-style: none;
             position: relative;
-            
-            /* Button-Styling */
-            background-color: #007bff; /* Primärfarbe Blau */
+            background-color: #007bff;
             color: #ffffff;
             padding: 15px 25px;
-            border-radius: 30px; /* Sehr runde Ecken für Pillen-Form */
-            display: inline-flex; /* Damit Breite sich dem Inhalt anpasst */
+            border-radius: 30px;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px; /* Abstand Text zu Pfeil */
-            
+            gap: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
-            user-select: none; /* Verhindert Textmarkierung beim Klicken */
+            user-select: none;
         }
-
-        summary::-webkit-details-marker { display: none; } /* Safari Support */
-
-        /* Hover-Effekt */
+        summary::-webkit-details-marker { display: none; }
         summary:hover {
-            background-color: #0056b3; /* Dunkleres Blau */
+            background-color: #0056b3;
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
-
-        /* Klick-Effekt */
         summary:active {
             transform: translateY(1px);
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-
-        /* Benutzerdefinierter Pfeil (Dreieck) */
         summary::after {
-            content: '\25BC'; /* Nach unten zeigendes Dreieck */
+            content: '\25BC';
             font-size: 0.8em;
             transition: transform 0.3s ease;
             display: inline-block;
         }
-
-        /* Pfeil-Drehung wenn geöffnet */
         details[open] summary::after {
             transform: rotate(180deg);
         }
-
-        /* Container für den Inhalt NACH dem Aufklappen */
         .details-content {
             text-align: left;
             background: #ffffff;
             padding: 30px;
             border-radius: 12px;
-            margin-top: 15px; /* Abstand zum Button */
+            margin-top: 15px;
             border: 1px solid #eee;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-
-        /* Text innerhalb der aufgeklappten Bereiche */
         .details-content p {
             margin-bottom: 15px;
             color: #444;
             font-size: 1em;
         }
         .details-content p:last-child { margin-bottom: 0; }
-
-        /* Anpassung für Impressum/Datenschutz-Buttons am Ende */
+        
         .legal-buttons summary {
             font-size: 0.95em;
             padding: 10px 20px;
-            background-color: #6c757d; /* Grau für weniger wichtige Links */
+            background-color: #6c757d;
         }
         .legal-buttons summary:hover {
             background-color: #5a6268;
         }
+
+        /* --- RESPONSIVE ANPASSUNGEN (NEU) --- */
+        /* Diese Regeln gelten nur für Bildschirme, die schmaler als 650px sind (z.B. Handys) */
+        @media screen and (max-width: 650px) {
+            
+            /* Verringere den oberen Abstand für mobile Geräte */
+            .visitenkarte-container {
+                margin: 15px auto; /* Von 40px auf 15px reduziert */
+                padding: 20px; /* Auch etwas weniger Padding innen */
+            }
+
+            h1 {
+                font-size: 1.8em; /* Text etwas kleiner, damit er nicht umbricht */
+            }
+            
+            h2 {
+                font-size: 1.2em;
+            }
+            
+            /* QR-Code und Kontakt-Liste etwas kompakter */
+            img.qrcode {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 15px;
+            }
+            
+            .contact-list li {
+                font-size: 1em;
+                margin: 10px 0;
+            }
+        }
+
     </style>
 </head>
 
