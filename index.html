@@ -5,38 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>burn.tips - Joseph Gaßner</title>
     <style>
+        /* 1. BODY: Nimmt jetzt die volle Breite ein */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 650px; 
-            margin: 0 auto;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
             background-color: #f4f4f4;
         }
-        .card {
+        
+        /* 2. VISITENKARTE: Begrenzt auf 650px und in der Mitte zentriert */
+        .visitenkarte-container {
+            max-width: 650px; 
+            margin: 40px auto; /* 40px Abstand nach oben und unten, auto zentriert es */
             background: #fff;
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             text-align: center;
+            box-sizing: border-box;
         }
+        
+        /* Profilbild */
+        .visitenkarte-container img[src*="Profilbild"] {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Rundes Profilbild */
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+
+        /* QR-Code spezifisch */
         img.qrcode {
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             margin-bottom: 20px;
-            border: 2px solid #ddd;
+            border: 1px solid #eaeaea;
             border-radius: 8px;
-            padding: 10px;
+            padding: 8px;
             background: #fff;
         }
-        h1 { margin-bottom: 5px; color: #222; font-size: 2em;}
-        h2 { font-size: 1.3em; color: #444; margin-top: 0; margin-bottom: 5px; font-weight: normal;}
-        .subtitle { font-size: 1em; color: #888; font-style: italic; margin-top: 0; margin-bottom: 25px; }
         
-        .bar { color: #888; font-family: monospace; letter-spacing: 2px; margin: 25px 0; text-align: center;}
-        a { color: #0056b3; text-decoration: none; font-weight: bold; }
-        a:hover { text-decoration: underline; }
+        /* 3. WEBSEITEN-CONTAINER: Nutzt 100% der Bildschirmbreite */
+        .webseiten-container {
+            background: #ffffff; /* Weißer Hintergrund für den Webseiten-Bereich */
+            width: 100%;
+            padding: 60px 20px;
+            box-sizing: border-box;
+            border-top: 1px solid #eaeaea; /* Zarte Linie zur optischen Trennung */
+            text-align: center;
+        }
+
+        /* 4. WEBSEITEN-INHALT: Hält die Texte auf großen Bildschirmen angenehm lesbar */
+        .webseiten-inhalt {
+            max-width: 850px; /* Etwas breiter für die Nebeneinander-Darstellung */
+            margin: 0 auto;
+        }
+
+        h1 { margin-bottom: 5px; color: #222; font-size: 2.2em; font-weight: 700;}
+        h2 { font-size: 1.4em; color: #444; margin-top: 0; margin-bottom: 5px; font-weight: normal;}
+        .subtitle { font-size: 1.1em; color: #777; font-style: italic; margin-top: 0; margin-bottom: 30px; }
+        
+        a { color: #007bff; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        a:hover { color: #0056b3; text-decoration: underline; }
         
         /* Kontakt-Block */
         .contact-list {
@@ -46,47 +80,133 @@
             text-align: left;
             display: inline-block;
         }
-        .contact-list li { margin: 12px 0; font-size: 1.1em; }
+        .contact-list li { margin: 15px 0; font-size: 1.1em; }
         
-        /* Layout für Inhalts-Schubladen */
-        .section { text-align: left; margin-top: 35px; }
-        .section h3 { font-size: 1.2em; color: #222; border-bottom: 2px solid #eee; padding-bottom: 5px; margin-bottom: 15px;}
-        .section p { margin-bottom: 15px; color: #444; }
-        .links-list { list-style: none; padding: 0; }
-        .links-list li { margin: 12px 0; }
-        
-        /* Impressum */
-        details {
-            margin-top: 50px;
+        /* Hilfsklassen für das Layout (Flexbox) */
+        .flex-row {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap; /* Erlaubt Umbruch auf Handys */
+            margin-top: 20px;
             text-align: left;
-            background: #fafafa;
-            padding: 15px;
-            border-radius: 5px;
-            font-size: 0.85em;
-            border: 1px solid #eee;
         }
+        .flex-col {
+            flex: 1;
+            min-width: 300px; /* Mindestbreite, bevor umgebrochen wird */
+            background: #fafafa;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            box-sizing: border-box;
+        }
+        .flex-col h3 {
+            margin-top: 0;
+            color: #222;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* --- NEUES BUTTON-DESIGN FÜR DETAILS/SUMMARY --- */
+        
+        details {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center; /* Zentriert den Summary-Text */
+        }
+
         summary {
             cursor: pointer;
             font-weight: bold;
-            color: #666;
-            text-align: center;
-            list-style: none;
+            font-size: 1.1em;
+            list-style: none; /* Versteckt Standard-Pfeil */
+            position: relative;
+            
+            /* Button-Styling */
+            background-color: #007bff; /* Primärfarbe Blau */
+            color: #ffffff;
+            padding: 15px 25px;
+            border-radius: 30px; /* Sehr runde Ecken für Pillen-Form */
+            display: inline-flex; /* Damit Breite sich dem Inhalt anpasst */
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Abstand Text zu Pfeil */
+            
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+            user-select: none; /* Verhindert Textmarkierung beim Klicken */
         }
-        summary::-webkit-details-marker { display: none; }
-        .legal-text { margin-top: 15px; }
-        .legal-text h4 { margin: 15px 0 5px 0; color: #444;}
+
+        summary::-webkit-details-marker { display: none; } /* Safari Support */
+
+        /* Hover-Effekt */
+        summary:hover {
+            background-color: #0056b3; /* Dunkleres Blau */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Klick-Effekt */
+        summary:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Benutzerdefinierter Pfeil (Dreieck) */
+        summary::after {
+            content: '\25BC'; /* Nach unten zeigendes Dreieck */
+            font-size: 0.8em;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        /* Pfeil-Drehung wenn geöffnet */
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        /* Container für den Inhalt NACH dem Aufklappen */
+        .details-content {
+            text-align: left;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 15px; /* Abstand zum Button */
+            border: 1px solid #eee;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* Text innerhalb der aufgeklappten Bereiche */
+        .details-content p {
+            margin-bottom: 15px;
+            color: #444;
+            font-size: 1em;
+        }
+        .details-content p:last-child { margin-bottom: 0; }
+
+        /* Anpassung für Impressum/Datenschutz-Buttons am Ende */
+        .legal-buttons summary {
+            font-size: 0.95em;
+            padding: 10px 20px;
+            background-color: #6c757d; /* Grau für weniger wichtige Links */
+        }
+        .legal-buttons summary:hover {
+            background-color: #5a6268;
+        }
     </style>
 </head>
+
 <body>
-    <div class="card">
+    <div class="visitenkarte-container">
         
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://burn.tips" alt="QR-Code zu burn.tips" class="qrcode" style="max-width: 150px; height: auto;">
-        
+        <img src="20260218_Profilbild_BVMID.png" alt="Portrait">
+
         <h1>Joseph Gaßner</h1>
         <h2>Buchungs- und Steuer-Mentor</h2>
         <p class="subtitle">Menschlichkeit vor Paragrafen</p>
         
-        <div class="bar">░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓</div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://burn.tips" alt="QR-Code zu burn.tips" class="qrcode" style="max-width: 150px; height: auto;">
+        <br>
 
         <ul class="contact-list">
             <li>► <strong>WhatsApp:</strong> <a href="https://wa.me/4915129035809" target="_blank">Nachricht schreiben</a></li>
@@ -94,106 +214,88 @@
             <li>► <strong>YouTube:</strong> <a href="https://www.youtube.com/@Burn-tips" target="_blank">Kanal besuchen</a></li>
             <li>► <strong>Instagram:</strong> <a href="https://www.instagram.com/burn.tips" target="_blank">@burn.tips</a></li>
         </ul>
+    </div>
+    
+    <div class="webseiten-container">
+        <div class="webseiten-inhalt">
 
-        <details>
-            <summary>Mein aktuelles Projekt</summary>
-            <div class="section">
-                <p>Am 24.03.2026 bin ich auf der TAXarena unterwegs, um spannende Impulse zu sammeln und mein Netzwerk zu erweitern. Falls du wissen willst, was ich alles entdeckt habe und welche Kooperationen zu erwarten sind, gib mir kurz mit Hilfe dieser Visitenkarte Bescheid, vielleicht ganz einfach über WhatsApp.</p>
-            </div>
-        </details>
-
-        <details>
-            <summary>Was tut ein Buchungs-Mentor?</summary>
-            <div class="section">
-                <p>Als Buchungs-Mentor helfe ich dir, dass du rechtssicher buchen kannst. Buchungs-Apps oder -Programme gibt es fast wie Sand am Meer - aber wen kannst du fragen, wenn du unsicher bist? Ich biete 29 Jahre Berufserfahrung im Steuerbüro, bin gelernter Steuerfachgehilfe (heute sog. Steuerfachangestellter) und seit 25 Jahren Steuerfachwirt.</p>
-                <p>Wie kommst du an diesen Erfahrungsschatz heran? Nimm einfach Kontakt auf, am liebsten ist mir WhatsApp, denn hier bekomme ich es sofort mit. Da wir diese App mit dem Hang zum grenzenlosen Plappern hier nur für Terminabstimmungen nutzen, habe ich überhaupt keine Datenschutz-Bauschschmerzen. Natürlich stehen auch alle anderen oben genannten Kontaktwege offen.</p>
-                <p>Übrigens kannst du mich auch per Telefon erreichen, aber nur, wenn wir schon mal Kontakt hatten und ich dich auf meiner White-List erfasst habe. Somit schütze ich mich vor allen gutmeinenden Anrufern, die nur mein Bestes wollen, also mein Geld.</p>
-                <p>Wenn wir eine Beratung vereinbaren, am liebsten per Video-Telefonie, damit ich für konkrete Hilfe auch einfach deinen Bildschirm sehen kann, dann kostet meine Viertelstunde 19 Euro Zahlbetrag, ohne irgendwelche Zusatzkosten.</p>
-                <p>Hast du einfach so eine Frage? Scheue dich nicht, ich sage vorher Bescheid, ab wann es Geld kostet.</p>
-            </div>
-        </details>
-
-        <details>
-            <summary>Was tut ein Steuer-Mentor?</summary>
-            <div class="section">
-                <p>Als Steuer-Mentor helfe ich dir, dass du das Steuerformular korrekt ausfüllen kannst. Nicht jedes Feld in der Steuererklärung ist dafür geeignet, was die Feldbeschriftung suggeriert. Und das Finanzamt ist eher humorlos, wenn man "was probiert". Ich biete 16 Jahre Berufserfahrung als Steuerberater, mich erschüttert so schnell nichts.</p>
-                <p>Wenn wir eine Beratung vereinbaren, am liebsten per Video-Telefonie, damit ich für konkrete Hilfe auch einfach deinen Bildschirm sehen kann, dann kostet meine Viertelstunde 19 Euro Zahlbetrag, ohne irgendwelche Zusatzkosten.</p>
-                <p>Hast du einfach so eine Frage? Scheue dich nicht, ich sage vorher Bescheid, ab wann es Geld kostet.</p>
-                <p><i>Mein Tipp für dich: Ich habe einen Kontenrahmen entwickelt, der neben der Finanzbuchhaltung alle Sachverhalte der Einkommensteuererklärung abdeckt. </i></p>
-                <p><i>So kannst du bereits während das laufenden Jahres alle Sachverhalte so erfassen, dass sie bei Bedarf als Anlage zur Einkommensteuererklärung oder als Antwort zu Finanzamts-Rückfragen eingereicht werden können, in einem Format, das jedem Finanzbeamten die Arbeit erleichtert und damit bei der raschen Bearbeitung der Steuererklärung hilft.</i></p>
-            </div>
-        </details>
-
-        <details>
-            <summary>Meine Kurz-Geschichte</summary>
-            <div class="section">
-                <p>Hallo, ich bin Joseph – Ex-Steuerberater und heute leidenschaftlicher Buchungs- und Steuer-Mentor. Aus meiner langjährigen Praxis weiß ich: Hinter Bilanzen und Zahlenwerken stehen immer Menschen. Deshalb lautet mein Credo ganz klar: Menschlichkeit steht vor Paragrafen.</p>
-                <p>Heute helfe ich dabei, steuerliche Prozesse nicht nur fachlich sauber, sondern auch verständlich und greifbar zu machen. Schön, dass du hier bist!</p>
-            </div>
-        </details>
-
-
-        <!-- <div class="section">
-            <h3>► Meine aktuellen Videos</h3>
-            <p>Hier findest du eine Auswahl meiner Gespräche. In den Beschreibungen der Videos gibt es jeweils eine genaue Kapitelübersicht mit Zeitstempeln, falls du direkt zu einem bestimmten Thema springen möchtest.</p>
-            <ul class="links-list">
-                <li>► <a href="LINK_EINTRAGEN" target="_blank">Video 1f: Geld sparen & Vorsätze</a></li>
-                <li>► <a href="LINK_EINTRAGEN" target="_blank">Video 2s: Steuern & Rhetorik-Gurus</a></li>
-                <li>► <a href="LINK_EINTRAGEN" target="_blank">Video 3r: Religion & Erlösung</a></li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h3>► [Dein neues Thema]</h3>
-            <p>Hier ist Platz für zukünftige Gedanken, Buchtipps oder Links zu anderen Projekten.</p>
-        </div> -->
-
-        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
-            <details style="flex: 1; min-width: 250px;">
-                <summary>Impressum anzeigen</summary>
-                <div class="legal-text" style="text-align: left;">
-                <h4>Angaben gemäß § 5 TMG</h4>
-                    <p>
-                        Joseph Gaßner<br>
-                        Lena-Christ-Str. 10 1/2<br>
-                        84416 Taufkirchen (Vils)
-                    </p>
-                <h4>Kontakt</h4>
-                    <p>
-                    Telefon: +49 1512 903 5809<br>
-                    E-Mail: mail@burn.tips
-                    </p>
+            <details>
+                <summary>Mein aktuelles Projekt</summary>
+                <div class="details-content">
+                    <p>Am 24.03.2026 bin ich auf der TAXarena unterwegs, um spannende Impulse zu sammeln und mein Netzwerk zu erweitern. Falls du wissen willst, was ich alles entdeckt habe und welche Kooperationen zu erwarten sind, gib mir kurz mit Hilfe dieser Visitenkarte Bescheid, vielleicht ganz einfach über WhatsApp.</p>
                 </div>
             </details>
 
-            <details style="flex: 1; min-width: 250px;">
-                <summary>Datenschutz anzeigen</summary>
-                <div class="legal-text" style="text-align: left;">
-                <h4>Datenschutzerklärung</h4>
-                    <p><strong>1. Datenschutz auf einen Blick</strong><br>
-                    Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit deinen personenbezogenen Daten passiert, wenn du diese Website besuchst. Personenbezogene Daten sind alle Daten, mit denen du persönlich identifiziert werden kannst.</p>
+            <details>
+                <summary>Buchungs- und Steuer-Mentor</summary>
+                <div class="details-content">
+                    
+                    <div class="flex-row">
+                        <div class="flex-col">
+                            <h3>Buchungs-Mentor</h3>
+                            <p>Ich helfe dir, rechtssicher zu buchen. Programme gibt es viele – aber wen fragst du bei Unsicherheit? Ich biete 29 Jahre Erfahrung (Steuerfachwirt).</p>
+                            <p>Kontakt am besten via WhatsApp für schnelle Terminabstimmung. Beratung idealerweise per Video-Telefonie (Viertelstunde: 19 €).</p>
+                            <p>Scheue dich nicht zu fragen – ich sage vorher Bescheid, ab wann Kosten entstehen.</p>
+                        </div>
 
-                    <h4>2. Verantwortlicher</h4>
-                    <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br>
-                    Joseph Gaßner<br>
-                    Lena-Christ-Str. 10 1/2<br>
-                    84416 Taufkirchen (Vils)<br>
-                    E-Mail: mail@burn.tips</p>
+                        <div class="flex-col">
+                            <h3>Steuer-Mentor</h3>
+                            <p>Ich unterstütze dich beim korrekten Ausfüllen von Steuerformularen. 16 Jahre Erfahrung als Steuerberater garantieren fundiertes Wissen.</p>
+                            <p>Mein Tipp: Nutze meinen entwickelten Kontenrahmen, der laufende Buchhaltung und Einkommensteuererklärung perfekt verbindet.</p>
+                            <p>Auch hier gilt: Beratung via Video (Viertelstunde: 19 €) und vorherige Kostentransparenz.</p>
+                        </div>
+                    </div>
 
-                    <h4>3. Datenerfassung (Hosting)</h4>
-                    <p><strong>Hosting durch GitHub Pages</strong><br>
-                    Diese Website wird bei GitHub gehostet (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA). Wenn du unsere Website besuchst, erfasst GitHub standardmäßig sogenannte Server-Logfiles, inklusive deiner IP-Adresse. Die Verwendung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer zuverlässigen und sicheren Darstellung dieser Website. Weitere Informationen findest du in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement" target="_blank" style="color: #666; font-weight: normal; text-decoration: underline;">Datenschutzerklärung von GitHub</a>.</p>
-
-                    <h4>4. Externe Links</h4>
-                    <p>Diese Website enthält Verlinkungen zu externen Plattformen (WhatsApp, YouTube, Instagram). Wenn du auf einen dieser Links klickst, verlässt du diese Seite und stellst eine direkte Verbindung zu den Servern des jeweiligen Anbieters her. Dabei wird deine IP-Adresse dorthin übermittelt. Für die Datenverarbeitung auf diesen Plattformen gelten die Datenschutzbestimmungen der jeweiligen Betreiber.</p>
-
-                    <h4>5. Deine Rechte</h4>
-                    <p>Du hast jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck deiner gespeicherten personenbezogenen Daten zu erhalten. Du hast außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wende dich dazu einfach an die oben angegebene Adresse.</p>
-                    </p>
                 </div>
             </details>
 
-        </div>
+            <details>
+                <summary>Meine Kurz-Geschichte</summary>
+                <div class="details-content">
+                    <p>Hallo, ich bin Joseph – Ex-Steuerberater und heute leidenschaftlicher Buchungs- und Steuer-Mentor. Aus meiner langjährigen Praxis weiß ich: Hinter Bilanzen und Zahlenwerken stehen immer Menschen. Deshalb lautet mein Credo ganz klar: Menschlichkeit steht vor Paragrafen.</p>
+                    <p>Heute helfe ich dabei, steuerliche Prozesse nicht nur fachlich sauber, sondern auch verständlich und greifbar zu machen. Schön, dass du hier bist!</p>
+                </div>
+            </details>
 
-</body>
+            <div class="flex-row legal-buttons" style="margin-top: 50px;">
+                
+                <details class="flex-col" style="min-width: 250px; background: none; border: none; padding: 0;">
+                    <summary>Impressum</summary>
+                    <div class="details-content" style="text-align: left; font-size: 0.9em;">
+                    <h4 style="margin-top:0;">Angaben gemäß § 5 TMG</h4>
+                        <p>
+                            Joseph Gaßner<br>
+                            Lena-Christ-Str. 10 1/2<br>
+                            84416 Taufkirchen (Vils)
+                        </p>
+                    <h4>Kontakt</h4>
+                        <p>
+                        E-Mail: mail@burn.tips
+                        </p>
+                    </div>
+                </details>
+
+                <details class="flex-col" style="min-width: 250px; background: none; border: none; padding: 0;">
+                    <summary>Datenschutz</summary>
+                    <div class="details-content" style="text-align: left; font-size: 0.9em;">
+                    <h4 style="margin-top:0;">Datenschutzerklärung</h4>
+                        <p><strong>1. Datenschutz auf einen Blick</strong><br>
+                        Personenbezogene Daten sind alle Daten, mit denen du persönlich identifiziert werden kannst.</p>
+
+                        <h4>2. Verantwortlicher</h4>
+                        <p>Joseph Gaßner, Lena-Christ-Str. 10 1/2, 84416 Taufkirchen (Vils), E-Mail: mail@burn.tips</p>
+
+                        <h4>3. Datenerfassung (Hosting)</h4>
+                        <p>Diese Website wird bei GitHub Pages gehostet. GitHub erfasst Standard-Server-Logfiles (inkl. IP-Adresse) zur Sicherheit. Grundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
+
+                        <h4>4. Externe Links</h4>
+                        <p>Bei Klick auf externe Links (WhatsApp, YouTube, Instagram) verlässt du diese Seite. Es gelten die Bestimmungen der jeweiligen Betreiber.</p>
+
+                        <h4>5. Deine Rechte</h4>
+                        <p>Du hast das Recht auf unentgeltliche Auskunft, Berichtigung oder Löschung deiner Daten. Wende dich dazu an die oben angegebene Adresse.</p>
+                    </div>
+                </details>
+            </div>
+
+        </div> </div> </body>
 </html>
