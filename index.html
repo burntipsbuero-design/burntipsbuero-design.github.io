@@ -206,6 +206,21 @@
             border-top: 1px solid #eee;
             padding-top: 10px;
         }
+
+        /* NEU: Video-Thumbnail-Stil */
+        .video-thumbnail-link img {
+            width: 100%;
+            max-width: 480px; /* HQ-Breite */
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 2px solid #eaeaea;
+        }
+        .video-thumbnail-link img:hover {
+            transform: scale(1.03); /* Leichtes Vergrößern */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25); /* Tieferer Schatten */
+        }
         
         .legal-buttons summary { font-size: 0.95em; padding: 10px 20px; background-color: #6c757d; }
         .legal-buttons summary:hover { background-color: #5a6268; }
@@ -303,8 +318,12 @@
                     <p>Ich baue keine Luftschlösser, sondern pragmatische Systeme – sei es eine klare FiBu-Struktur oder die Architektur eines persönlichen Offline-KI-Rechenzentrums. Doch bei aller Liebe zur Struktur weiß ich: Hinter jedem System stehen immer Menschen.</p>
                     <p>Ich selbst habe tiefe Täler durchschritten und eine 15-jährige Depression hinter mir gelassen. Diese Erfahrung prägt heute meine Arbeit und meine Videos. Ich bin eher der 'Opa zum Plaudern', für den absolute Menschlichkeit stets vor starren Paragrafen steht.</p>
                     
-                    <div style="text-align: center; margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
-                        <p><em>[Hier ist der ideale Platz, um später eines deiner YouTube-Videos (z.B. mit dem authentischen Natur-Thumbnail) einzubetten.]</em></p>
+                    <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+                        <p style="font-size: 1.1em; margin-bottom: 15px;"><strong>Ein Video-Einblick:</strong> <br>In meinen Videos spreche ich offen über Erfahrungen, Stolpersteine und den Mut, alte Muster zu durchbrechen.</p>
+                        <a href="https://youtu.be/gW-dd3P3fzI" target="_blank" class="video-thumbnail-link" style="display: inline-block;">
+                            <img src="https://img.youtube.com/vi/gW-dd3P3fzI/hqdefault.jpg" 
+                                 alt="YouTube Video-Vorschaubild: Ein Opa zum Plaudern über E-Auto SOH">
+                        </a>
                     </div>
                 </div>
             </details>
