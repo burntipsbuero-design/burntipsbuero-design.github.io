@@ -1,1 +1,405 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>burn.tips - Joseph Gaßner | Lösungs-Designer</title>
+    <meta name="description" content="Digitale Visitenkarte von Joseph Gaßner, Lösungs-Designer. Pragmatische Konzepte, Offline-KI (Vita Solo) und smarte Transfer-Lösungen für den Alltag.">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 
+    <style>
+        /* 1. BODY */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        /* 2. VISITENKARTE */
+        .visitenkarte-container {
+            max-width: 650px; 
+            margin: 40px auto; 
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            box-sizing: border-box;
+            transition: margin 0.3s ease; 
+        }
+        
+        .visitenkarte-container img[src*="Profilbild"] {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; 
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+
+        img.qrcode {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 8px;
+            background: #fff;
+        }
+        
+        /* 3. WEBSEITEN-CONTAINER */
+        .webseiten-container {
+            background: #ffffff; 
+            width: 100%;
+            padding: 60px 20px;
+            box-sizing: border-box;
+            border-top: 1px solid #eaeaea; 
+            text-align: center;
+        }
+
+        /* 4. WEBSEITEN-INHALT */
+        .webseiten-inhalt {
+            max-width: 850px; 
+            margin: 0 auto;
+        }
+
+        h1 { margin-bottom: 5px; color: #222; font-size: 2.2em; font-weight: 700;}
+        
+        /* NEU: Größerer Titel für den Lösungs-Designer */
+        h2.berufstitel { 
+            font-size: 1.7em; 
+            color: #007bff; 
+            margin-top: 15px; 
+            margin-bottom: 5px; 
+            font-weight: bold;
+        }
+        
+        /* NEU: Slogan Styling */
+        .subtitle { 
+            font-size: 1.2em; 
+            color: #555; 
+            font-style: italic; 
+            margin-top: 0; 
+            margin-bottom: 30px; 
+        }
+        
+        a { color: #007bff; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        a:hover { color: #0056b3; text-decoration: underline; }
+        
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            text-align: left;
+            display: inline-block;
+        }
+        .contact-list li { margin: 15px 0; font-size: 1.1em; }
+        
+        .flex-row {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap; 
+            margin-top: 20px;
+            text-align: left;
+        }
+        .flex-col {
+            flex: 1;
+            min-width: 300px; 
+            background: #fafafa;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            box-sizing: border-box;
+        }
+
+        /* HAUPT-BUTTONS (Blau) */
+        details.main-details {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        details.main-details > summary {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            list-style: none;
+            position: relative;
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 15px 25px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+            user-select: none;
+        }
+        details.main-details > summary::-webkit-details-marker { display: none; }
+        details.main-details > summary:hover { background-color: #0056b3; box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+        details.main-details > summary:active { transform: translateY(1px); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        details.main-details > summary::after {
+            content: '\25BC'; font-size: 0.8em; transition: transform 0.3s ease; display: inline-block;
+        }
+        details.main-details[open] > summary::after { transform: rotate(180deg); }
+        
+        .details-content {
+            text-align: left;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 15px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        /* NEU: CSS Grid für die 8 Use-Cases (2 Spalten) */
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        /* Styling für die inneren Buttons der Use-Cases */
+        .use-case-item summary {
+            background-color: #f8f9fa;
+            color: #333;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            padding: 12px 15px;
+            border-radius: 8px;
+            box-shadow: none;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .use-case-item summary:hover { background-color: #e2e6ea; }
+        .use-case-item[open] summary {
+            background-color: #e2e6ea;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .use-case-item .details-content {
+            margin-top: 0;
+            border-top: none;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            padding: 15px;
+            background: #fff;
+            box-shadow: none;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        
+        /* NEU: Archiv-Link Styling */
+        .archive-link {
+            display: block;
+            text-align: right;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #6c757d;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+        /* NEU: Video-Thumbnail-Stil */
+        .video-thumbnail-link img {
+            width: 100%;
+            max-width: 480px; /* HQ-Breite */
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 2px solid #eaeaea;
+        }
+        .video-thumbnail-link img:hover {
+            transform: scale(1.03); /* Leichtes Vergrößern */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25); /* Tieferer Schatten */
+        }
+
+        /* 5. FOOTER-NOTIZ */
+        .footer-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: #555;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+            line-height: 1.5;
+        }
+
+        .legal-buttons summary { font-size: 0.95em; padding: 10px 20px; color: #ffffff; background-color: #6c757d; }
+        .legal-buttons summary:hover { background-color: #5a6268; }
+
+        
+        @media screen and (max-width: 650px) {
+            .visitenkarte-container { margin: 15px auto; padding: 20px; }
+            h1 { font-size: 1.8em; }
+            h2.berufstitel { font-size: 1.7em; }
+            img.qrcode { width: 120px; height: 120px; margin-bottom: 15px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="visitenkarte-container">
+        
+        <img src="20260218_Profilbild_BVMID.png" width="800" height="600" alt="Portrait">
+
+        <h1>Joseph Gaßner</h1>
+        <h2 class="berufstitel">Lösungs-Designer</h2>
+        <p class="subtitle">Wir entwickeln Ihre Ideen zu greifbaren Konzepten</p>
+        
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://burn.tips" width="200" height="200" 
+             alt="QR-Code zu burn.tips" class="qrcode">
+        <br>
+
+        <ul class="contact-list">
+            <li>► <strong>WhatsApp:</strong> <a href="https://wa.me/4915129035809" target="_blank">Nachricht schreiben</a></li>
+            <li>► <strong>E-Mail:</strong> <a href="mailto:mail@burn.tips">mail@burn.tips</a></li>
+            <li>► <strong>YouTube:</strong> <a href="https://www.youtube.com/@Burn-tips" target="_blank">Kanal besuchen</a></li>
+            <li>► <strong>Instagram:</strong> <a href="https://www.instagram.com/burn.tips" target="_blank">@burn.tips</a></li>
+        </ul>
+    </div>
+    
+    <div class="webseiten-container">
+        <main class="webseiten-inhalt">
+
+            <details class="main-details">
+                <summary>Mein aktuelles Herzens-Projekt</summary>
+                <div class="details-content">
+                    <h2>Der Vita Solo</h2>
+                    <p><strong>Wissen, das dich stärkt. Technik, die dich atmen lässt.</strong></p>
+                    <p>Wir verwandeln ausgemusterte Smartphones in Werkzeuge des reinen Wissens. Der Vita Solo ist kein Gerät zum endlosen Konsumieren, sondern ein Booster für den eigenen Geist – ohne Ablenkung, ohne Werbung und ohne toxische Reizflut. Es ist keine Prothese, die uns das Denken abnimmt, sondern ein Exoskelett, das unsere Fähigkeiten erweitert.</p>
+                    <ul>
+                        <li><p><strong>Für Entdecker:</strong> Das komplette Offline-Wikipedia in der Hand. Ein textbasiertes, von einer KI destilliertes Internet, das Fragen beantwortet, aber keine Gefahren birgt.</p></li>
+                        <li><p><strong>Für Familien:</strong> Eine leise, asynchrone Brücke zwischen Kind und Eltern. Stolz teilen, ohne digitalen Druck. Wachsen, ohne überwacht zu werden.</p></li>
+                        <li><p><strong>Für den Abendfrieden:</strong> Die Nachrichten des Tages lesen, ohne die Bilder des Krieges zu sehen. Mentale Hygiene durch radikale Reduktion auf das geschriebene Wort.</p></li>
+                    </ul>
+                    <p><strong>Dein Gerät. Deine Regeln.</strong></p>
+                    <p>Der Vita Solo enthält eine Offline-KI, d.h. die KI kann niemals "nach Hause telefonieren", egal auf welchen Kontinent. Außerdem ist Wikipedia ebenfalls offline an Bord.</p>
+                    <a href="#" class="archive-link">► Zum Projekt-Archiv (im Aufbau)</a>
+                </div>
+            </details>
+
+            <details class="main-details">
+                <summary>Lösungen aus der Praxis</summary>
+                <div class="details-content">
+                    <p style="margin-top:0;">Mein Werkzeugkasten für Alltag und Business. Klicke auf ein Konzept, um mehr zu erfahren:</p>
+                    
+                    <div class="use-case-grid">
+                        
+                        <details class="use-case-item"><summary>Smarte FiBu & Steuer</summary><div class="details-content"><p>Finanzbuchhaltung, die nicht nur Belege sammelt, sondern die vollständige Einkommensteuererklärung gleich mit abbildet. Weniger Handgriffe, mehr Souveränität.</p></div></details>
+                        
+                        <details class="use-case-item"><summary>Offline-KI: Vita Solo</summary><div class="details-content"><p>Der unkomplizierte Einstieg. Die Hardware-Lösung für den sicheren ersten Schritt in die Welt der lokalen KI – komplett ohne Cloud-Zwang.</p></div></details>
+                        
+                        <details class="use-case-item"><summary>To-Do-System ". . / \ ."</summary><div class="details-content"><p>Mein Plädoyer für pragmatische Einfachheit. Ein Aufgaben-Management, das völlig ohne Strom funktioniert und überall sofort Klarheit im Kopf schafft.</p></div></details>
+                        
+                        <details class="use-case-item"><summary>Offline-KI: Vita Pad</summary><div class="details-content"><p>Die Standard-Lösung für den Schreibtisch. Das Konzept für größere KI-Aufgaben, die zuverlässig und autark direkt vor Ort verarbeitet werden müssen.</p></div></details>
+                        
+                        <details class="use-case-item"><summary>Die Visitenkarte Plus</summary><div class="details-content"><p>Eine werbeoptimierte Webseite mit minimalen Mitteln. Die digitale Visitenkarte, die gleichzeitig als starkes Werkzeug zur Kundengewinnung dient.</p></div></details>
+
+                        <details class="use-case-item"><summary>Offline-KI: Vita Butler</summary><div class="details-content"><p>Die Königsklasse. Das persönliche Offline-KI-Rechenzentrum für komplexe Aufgaben, die ein Mensch alleine gerade noch überblicken kann.</p></div></details>
+                        
+                        <details class="use-case-item">
+                            <summary>Strategie: Körpergewicht</summary>
+                            <div class="details-content">
+                                <p>Konzepte funktionieren nicht nur im Büro. Ein persönlicher Use-Case, der zeigt, wie sich Herausforderungen durch greifbare Strategien lösen lassen. (Aktueller Stand: bereits -32 kg!)</p>
+        
+                                <div style="text-align: center; margin-top: 15px;">
+                                    <a href="https://youtu.be/Ibk04YlE9hM" target="_blank" class="video-thumbnail-link" style="display: inline-block; width: 100%;">
+                                        <img src="https://img.youtube.com/vi/Ibk04YlE9hM/hqdefault.jpg" width="480" height="360" 
+                                             alt="YouTube Video-Vorschaubild: 26,5 kg weniger Zusatzgewicht"
+                                             style="width: 100%; max-width: 300px;">
+                                    </a>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="use-case-item"><summary>Das Mitarbeiter-Exoskelett</summary><div class="details-content"><p>Keine Prothese, sondern ein Booster. Smarte Transfer-Lösungen, die es erfahrenen Mitarbeitern erlauben, in gewohnten Programmen zu arbeiten und nahtlos das CRM zu füttern.</p></div></details>
+                        
+                    </div>
+                </div>
+            </details>
+
+            <details class="main-details">
+                <summary>Blog & BVMID-Impulse</summary>
+                <div class="details-content">
+                    <h3 style="margin-top:0; color: #007bff;">Neuigkeiten & Artikel</h3>
+                    <p>Hier teile ich regelmäßig meine Gedanken, Fachartikel (unter anderem für den BVMID) und neue Konzepte, an denen ich arbeite.</p>
+                    <p><em>(Hier entsteht in Kürze der erste Blogbeitrag...)</em></p>
+                    <a href="#" class="archive-link">► Zum Artikel-Archiv</a>
+                </div>
+            </details>
+
+            <details class="main-details">
+                <summary>Meine Kurz-Geschichte</summary>
+                <div class="details-content">
+                    <p>Hallo, ich bin Joseph. Mein Weg führte mich von 29 Jahren Erfahrung im Steuerbüro (davon 16 Jahre als Steuerberater) hin zu meiner heutigen Berufung als Lösungs-Designer.</p>
+                    <p>Ich baue keine Luftschlösser, sondern pragmatische Systeme – sei es eine klare FiBu-Struktur oder die Architektur eines persönlichen Offline-KI-Rechenzentrums. Doch bei aller Liebe zur Struktur weiß ich: Hinter jedem System stehen immer Menschen.</p>
+                    <p>Ich selbst habe tiefe Täler durchschritten und eine 15-jährige Depression hinter mir gelassen. Diese Erfahrung prägt heute meine Arbeit und meine Videos. Ich bin eher der 'Opa zum Plaudern', für den absolute Menschlichkeit stets vor starren Paragrafen steht.</p>
+                    
+                    <div style="text-align: center; margin-top: 35px; margin-bottom: 10px;">
+                        <p style="font-size: 1.1em; margin-bottom: 20px;"><strong>Einblicke aus der Praxis:</strong> In meinen Videos spreche ich offen über Lebenserfahrung, den Mut für neue Wege und ganz pragmatische Alltagsentscheidungen.</p>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                            <a href="https://youtu.be/gW-dd3P3fzI" target="_blank" class="video-thumbnail-link" style="flex: 1; min-width: 260px; max-width: 380px;">
+                                <img src="https://img.youtube.com/vi/gW-dd3P3fzI/hqdefault.jpg" width="480" height="360"
+                                     alt="YouTube Video-Vorschaubild: Ein Opa zum Plaudern über E-Auto SOH">
+                            </a>
+                            
+                            <a href="https://youtu.be/DweBl5maEgg" target="_blank" class="video-thumbnail-link" style="flex: 1; min-width: 260px; max-width: 380px;">
+                                <img src="https://img.youtube.com/vi/DweBl5maEgg/hqdefault.jpg" width="480" height="360"
+                                     alt="YouTube Video-Vorschaubild: Muss ein neues Auto teuer sein?">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <div class="flex-row legal-buttons" style="margin-top: 50px;">
+                <details class="flex-col" style="min-width: 250px; background: none; border: none; padding: 0;">
+                    <summary>Impressum</summary>
+                    <div class="details-content" style="text-align: left; font-size: 0.9em;">
+                    <h4 style="margin-top:0;">Angaben gemäß § 5 TMG</h4>
+                        <p>
+                            Burn.tips UG (haftungsbeschränkt)<br>
+                            Lena-Christ-Str. 10 1/2<br>
+                            84416 Taufkirchen (Vils)
+                        </p>
+                        <p><b>Vertreten durch:</b><br>Geschäftsführer Joseph Gaßner</p>
+                        <p><b>Kontakt</b><br>E-Mail: mail@burn.tips</p>
+                        <p><b>Registereintrag</b><br>Eintragung im Handelsregister.<br>Registergericht: Amtsgericht München<br>Registernummer: HRB B 252201</p>
+                    </div>
+                </details>
+
+                <details class="flex-col" style="min-width: 250px; background: none; border: none; padding: 0;">
+                    <summary>Datenschutz</summary>
+                    <div class="details-content" style="text-align: left; font-size: 0.9em;">
+                    <h4 style="margin-top:0;">Datenschutzerklärung</h4>
+                        <p><strong>1. Datenschutz auf einen Blick</strong><br>Personenbezogene Daten sind alle Daten, mit denen du persönlich identifiziert werden kannst.</p>
+                        <p><b>2. Verantwortlicher</b><br>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
+                        <p>Burn.tips UG (haftungsbeschränkt)<br>vertreten durch den Geschäftsführer Joseph Gaßner<br>Lena-Christ-Str. 10 1/2<br>84416 Taufkirchen (Vils)<br>E-Mail: mail@burn.tips</p>
+                        <p><b>3. Datenerfassung (Hosting)</b><br>Diese Website wird bei GitHub Pages gehostet (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA). GitHub erfasst Standard-Server-Logfiles (inkl. IP-Adresse) zur Sicherheit. Grundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
+                        <p><b>4. Externe Links</b><br>Bei Klick auf externe Links (WhatsApp, YouTube, Instagram) verlässt du diese Seite. Es gelten die Bestimmungen der jeweiligen Betreiber.</p>
+                        <p><b>5. Deine Rechte</b><br>Du hast das Recht auf unentgeltliche Auskunft, Berichtigung oder Löschung deiner Daten. Wende dich dazu an die oben angegebene Adresse von GitHub Inc.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="footer-note">
+                <strong>Pragmatisch und effizient:</strong> Diese Seite besteht aus handgeschriebenem Code, verzichtet auf unnötigen Ballast und verursacht laut Ecograder lediglich 0,12 g CO₂ pro Aufruf (Digital Carbon Rating "A").
+            </div>
+            
+        </main> 
+    </div> 
+</body>
+</html>
