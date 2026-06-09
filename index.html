@@ -91,13 +91,21 @@
         a:hover { color: #0056b3; text-decoration: underline; }
         
         .contact-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 auto;
-            text-align: left;
-            display: inline-block;
+             list-style: none;
+             padding: 0;
+             margin: 0 auto;
+             display: inline-block;
+             text-align: left;
         }
-        .contact-list li { margin: 15px 0; font-size: 1.1em; }
+
+        .contact-list li { 
+            margin: 12px 0; 
+            font-size: 1.1em; 
+            display: grid;
+            /* Spalte 1: Label (110px), Spalte 2: Link (Rest) */
+            grid-template-columns: 110px 1fr; 
+            align-items: baseline;
+        }
         
         .flex-row {
             display: flex;
@@ -263,32 +271,30 @@
         <br>
 
         <ul class="contact-list">
-            <li>► <strong>WhatsApp:</strong> <a href="https://wa.me/4915129035809" target="_blank">+49 1512 903 5809</a></li>
-            <li>► <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/gj-tax/" target="_blank">gj-tax</a></li>
-            <li>► <strong>E-Mail:</strong> <a href="mailto:mail@burn.tips">mail@burn.tips</a></li>
-            <li>► <strong>YouTube:</strong> <a href="https://www.youtube.com/@Burn-tips" target="_blank">Ein Opa zum Plaudern</a></li>
-            <li>► <strong>Instagram:</strong> <a href="https://www.instagram.com/burn.tips" target="_blank">@burn.tips</a></li>
+            <li><strong>Mobil / WA:</strong> <a href="https://wa.me/4915129035809" target="_blank">+49 1512 903 5809</a></li>
+            <li><strong>E-Mail:</strong> <a href="mailto:mail@burn.tips">mail@burn.tips</a></li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/gj-tax/" target="_blank">gj-tax</a></li>
+            <li><strong>YouTube:</strong> <a href="https://www.youtube.com/@Burn-tips" target="_blank">Ein Opa zum Plaudern</a></li>
+            <li><strong>Instagram:</strong> <a href="https://www.instagram.com/burn.tips" target="_blank">@burn.tips</a></li>
         </ul>
+
     </div>
     
     <div class="webseiten-container">
         <main class="webseiten-inhalt">
 
-            <details class="main-details">
+            <details class="main-details" open>
                 <summary>Mein aktuelles Herzens-Projekt</summary>
                 <div class="details-content">
-                    <h2>Der Vita Solo</h2>
-                    <p><strong>Wissen, das dich stärkt. Technik, die dich atmen lässt.</strong></p>
-                    <p>Wir verwandeln ausgemusterte Smartphones in Werkzeuge des reinen Wissens. Der Vita Solo ist kein Gerät zum endlosen Konsumieren, sondern ein Booster für den eigenen Geist – ohne Ablenkung, ohne Werbung und ohne toxische Reizflut. Es ist keine Prothese, die uns das Denken abnimmt, sondern ein Exoskelett, das unsere Fähigkeiten erweitert.</p>
+                    <h2>halloEU</h2>
+                    <p><strong>Die Zukunft gestalten, statt auf die Politik zu warten.</strong></p>
+                    <p>Fristen verstreichen, EU-Vorgaben wachsen – und die deutsche Gesetzgebung hinkt bei der Umsetzung oft hinterher. <strong>halloEU</strong> ist die pragmatische Antwort für den Mittelstand: Ein Ansatz, um Vorgaben wie die aktuelle Transparenzpflicht mit minimalem Aufwand proaktiv im eigenen Unternehmen zu lösen.</p>
                     <ul>
-                        <li><p><strong>Für Entdecker:</strong> Das komplette Offline-Wikipedia in der Hand. Ein textbasiertes, von einer KI destilliertes Internet, das Fragen beantwortet, aber keine Gefahren birgt.</p></li>
-                        <li><p><strong>Für Familien:</strong> Eine leise, asynchrone Brücke zwischen Kind und Eltern. Stolz teilen, ohne digitalen Druck. Wachsen, ohne überwacht zu werden.</p></li>
-                        <li><p><strong>Für den Abendfrieden:</strong> Die Nachrichten des Tages lesen, ohne die Bilder des Krieges zu sehen. Mentale Hygiene durch radikale Reduktion auf das geschriebene Wort.</p></li>
+                        <li><p><strong>Fortschritt durch Pragmatismus:</strong> Das Unvermeidliche effizient umsetzen – mit klaren, greifbaren Prozessen, die den Betriebsablauf nicht stören.</p></li>
+                        <li><p><strong>Souveränität gewinnen:</strong> Wer EU-konform handelt, bevor die inländische Bürokratie zuschlägt, positioniert sich als moderner, verlässlicher Arbeitgeber und Partner.</p></li>
+                        <li><p><strong>Macher statt Verwalter:</strong> Intelligente Transfer-Lösungen, die es Mitarbeitern erlauben, komplexe Vorgaben fast nebenbei im gewohnten Tagesgeschäft zu erfüllen.</p></li>
                     </ul>
-                    <p><strong>Dein Gerät. Deine Regeln.</strong></p>
-                    <p>Der Vita Solo enthält eine Offline-KI, d.h. die KI kann niemals "nach Hause telefonieren", egal auf welchen Kontinent. Außerdem ist Wikipedia ebenfalls offline an Bord.</p>
-                    <a href="#" class="archive-link">► Zum Projekt-Archiv (im Aufbau)</a>
-                </div>
+                <a href="#blog-sektion" class="archive-link" onclick="document.getElementById('blog-sektion').open = true;">► Zu den aktuellen Blog-Impulsen</a>                </div>
             </details>
 
             <details class="main-details">
@@ -331,13 +337,72 @@
                 </div>
             </details>
 
-            <details class="main-details">
+            <details class="main-details" id="blog-sektion">
                 <summary>Blog & BVMID-Impulse</summary>
                 <div class="details-content">
                     <h3 style="margin-top:0; color: #007bff;">Neuigkeiten & Artikel</h3>
-                    <p>Hier teile ich regelmäßig meine Gedanken, Fachartikel (unter anderem für den BVMID) und neue Konzepte, an denen ich arbeite.</p>
-                    <p><em>(Hier entsteht in Kürze der erste Blogbeitrag...)</em></p>
-                    <a href="#" class="archive-link">► Zum Artikel-Archiv</a>
+                    <p>Hier teile ich regelmäßig meine Gedanken, Fachartikel und neue Konzepte für den Mittelstand.</p>
+
+                    <article
+                        style="background: #fff; padding: 25px; border-radius: 8px; border: 1px solid #eaeaea; margin-top: 15px; text-align: left;">
+
+                        <h3 style="margin-top: 0; color: #222; font-size: 1.4em;">Transparenz-Frist verstrichen: Warum wir nicht auf die
+                            Politik warten dürfen</h3>
+                        <p style="font-size: 0.9em; color: #666; margin-bottom: 25px;">Veröffentlicht am 09.06.2026 | Lesezeit: ca. 2
+                            Minuten</p>
+
+                        <p>Gestern, am 8. Juni 2026, sind wir in eine neue Realität aufgewacht. Die Umsetzungsfrist für die
+                            EU-Entgelttransparenzrichtlinie ist am Sonntag abgelaufen. Der deutsche Gesetzgeber? Glänzt durch Untätigkeit.
+                            Ein nationales Umsetzungsgesetz fehlt bisher völlig. Doch wer jetzt glaubt, er könne sich als Unternehmer
+                            entspannt zurücklehnen und abwarten, bis die Politik irgendwann liefert, verkennt die Lage: Arbeitsgerichte
+                            werden ab sofort im Lichte der EU-Richtlinie urteilen.</p>
+
+                        <p>Die reflexartige Reaktion in vielen Unternehmen ist nun oft blinder Aktionismus. Es werden hastig neue, komplexe
+                            HR-Software-Lösungen evaluiert, um Gehälter, Vergleichsgruppen und objektive Kriterien rechtssicher zu
+                            dokumentieren. Und wer leidet darunter im Betriebsalltag? Die erfahrenen Mitarbeiter. Plötzlich sollen
+                            langjährige Führungskräfte, die fachlich brillieren, gezwungen werden, sich durch starre Eingabemasken zu
+                            klicken, um der Bürokratie Genüge zu tun.</p>
+
+                        <h4 style="color: #007bff; margin-top: 25px;">Die Lösung: Transfer statt Transformation</h4>
+
+                        <p>An genau dieser Stelle greift mein Konzept des digitalen Exoskeletts für Mitarbeiter.</p>
+
+                        <blockquote
+                            style="border-left: 4px solid #007bff; padding-left: 15px; margin: 20px 0; font-style: italic; color: #444; background: #f8f9fa; padding: 15px; border-radius: 0 8px 8px 0;">
+                            "Ein Exoskelett ist keine Prothese, die uns das Denken abnimmt. Es ist ein Booster. Es erweitert unsere
+                            Fähigkeiten und baut Brücken zwischen menschlicher Expertise und digitalen Compliance-Vorgaben."
+                        </blockquote>
+
+                        <p>Wie sieht das in der Praxis aus? Nehmen wir die geforderte Dokumentation für eine faire, geschlechtsneutrale
+                            Gehaltseinstufung. Der erfahrene Abteilungsleiter verfasst seine Einschätzung zur Stelle und zum
+                            Anforderungsprofil weiterhin genau dort, wo er sich wohlfühlt und fließend arbeitet – zum Beispiel in einem
+                            einfachen Word-Dokument.</p>
+
+                        <p>Das Exoskelett agiert als smarte Transfer-Lösung lautlos im Hintergrund: Es liest diese unstrukturierten
+                            Informationen, prüft sie auf die geforderten objektiven Parameter der EU-Richtlinie und füttert das zentrale HR-
+                            oder CRM-System vollautomatisch. Die eloquenten Mitarbeiter in der Verwaltung sehen sofort alles sauber
+                            strukturiert vor sich, was sie für die Berichtspflichten benötigen.</p>
+
+                        <h4 style="color: #007bff; margin-top: 25px;">Menschlichkeit vor Paragrafen</h4>
+
+                        <p>Das Ergebnis ist echte Wertschätzung: Der Wert unserer älteren und erfahrenen Mitarbeiter wird weiterhin an ihrer
+                            fachlichen Lebenserfahrung gemessen – und nicht an ihrer Tippgeschwindigkeit oder ihrer Bereitschaft, sich in
+                            immer neue Software-Oberflächen einzuarbeiten. Die strengen Vorgaben der Entgelttransparenz werden so fast
+                            geräuschlos im Hintergrund erfüllt.</p>
+
+                        <p>Wir können als Mittelstand mit relativ geringem Einsatz längst EU-konformer und fortschrittlicher agieren als die
+                            deutsche Politik. Lassen Sie uns diese intelligenten Transfer-Lösungen nutzen, statt in bürokratischer
+                            Schockstarre auf das nächste Gesetz zu warten.</p>
+
+                    </article>
+
+                    <div style="border-left: 4px solid #6c757d; padding-left: 15px; margin-top: 20px; padding-top: 5px; padding-bottom: 5px;">
+                        <span style="font-size: 0.85em; color: #666;">22.05.2026 – Symposium-Rückblick</span>
+                        <h4 style="margin-top: 5px; margin-bottom: 5px; color: #444;">halloEU: DSGVO als Brücke für die Ukraine</h4>
+                        <p style="margin-top: 0; font-size: 0.9em; color: #555;">Einblicke aus dem Symposium mit ukrainischen Vertretern. Wie wir den Datenaustausch bei der EU-Annäherung pragmatisch und menschlich gestalten, ohne an Vorschriften zu ersticken.</p>
+                    </div>
+
+                    <a href="#" class="archive-link">► Zum vollständigen Artikel-Archiv (im Aufbau)</a>
                 </div>
             </details>
 
