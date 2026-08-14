@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maker Faire | Joseph Gaßner - Lösungs-Designer</title>
+    <meta name="description" content="Hybride Visitenkarte und Materialien zur Maker Faire. Zeit für Ruhe und echten Austausch.">
+    
+    <style>
+        /* 1. BODY & GRUNDLAGEN */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 70px 20px 20px 20px; /* Platz für das fixierte Laufband */
+            background-color: #f4f4f4;
+        }
+
+        /* 2. LAUFBAND (TICKER) */
+        .ticker-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+        .ticker-content {
+            display: inline-block;
+            font-weight: 600;
+            font-size: 1.1em;
+            animation: ticker 30s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* 3. CONTAINER (Stil analog zur Hauptseite) */
+        .visitenkarte-container {
+            max-width: 650px; 
+            margin: 0 auto; 
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        h1 { margin-bottom: 5px; color: #222; font-size: 2.2em; font-weight: 700; }
+        .subtitle { font-size: 1.2em; color: #555; font-style: italic; margin-top: 0; margin-bottom: 30px; }
+        
+        h2.sektion-titel {
+            font-size: 1.5em; 
+            color: #007bff; 
+            margin-top: 40px; 
+            margin-bottom: 15px; 
+            font-weight: bold;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 5px;
+            text-align: left;
+        }
+
+        /* 4. COUNTDOWN & DOWNLOAD */
+        #countdown-box {
+            background: #f8f9fa;
+            border: 2px dashed #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .timer-text { font-size: 1.3em; font-weight: bold; color: #d9534f; margin-top: 10px; }
+        
+        /* 5. FORMULAR / HONORARTOOL */
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #444;
+        }
+        select {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.05em;
+            font-family: inherit;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        
+        /* Haupt-Button Blau */
+        .btn-primary {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+        .btn-primary:hover { background-color: #0056b3; box-shadow: 0 6px 12px rgba(0,0,0,0.15); color: #fff;}
+        .btn-primary:active { transform: translateY(1px); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+        #ergebnis-box { 
+            background: #ffffff; 
+            padding: 25px; 
+            border: 1px solid #eee;
+            border-left: 5px solid #007bff; 
+            border-radius: 8px;
+            margin-top: 25px; 
+            display: none; 
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .preis-hinweis { font-weight: bold; color: #28a745; margin-top: 15px; font-size: 1.15em; }
+
+        /* Zurück-Link */
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            font-size: 1em;
+            color: #6c757d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover { text-decoration: underline; color: #333; }
+    </style>
+</head>
+<body>
+
+    <!-- Das fixierte Laufband für den Messemodus (F11) -->
+    <div class="ticker-wrap">
+        <div class="ticker-content">
+            +++ Willkommen am Stand 170 +++ Maker Faire Hannover 2026 +++ Joseph Gaßner – Lösungs-Designer +++ Das digitale Exoskelett: Lokale KI-Hardware im Eigenbau +++ Zeit für Ruhe und echten Austausch +++ Burn.tips UG +++ 
+        </div>
+    </div>
+
+    <div class="visitenkarte-container">
+        
+        <h1>Willkommen am Stand 170</h1>
+        <p class="subtitle">Zeit für Ruhe und echten Austausch.</p>
+
+        <p style="text-align: left;">Schön, dass du den Weg hierher gefunden hast. Wie im Vortrag beschrieben, setze ich auf lokale Lösungen und das Konzept des "Exoskeletts" – Systeme, die wie ein Booster den Menschen stärken, anstatt ihn durch Prothesen zu ersetzen.</p>
+
+        <!-- COUNTDOWN BEREICH -->
+        <h2 class="sektion-titel">Vortragsfolien</h2>
+        <div id="countdown-box">
+            <p style="margin:0; color:#555;">Die Folien aus dem Vortrag "Das digitale Exoskelett" werden pünktlich zum Abschluss der Präsentation am 15.08.2026 um 17:00 Uhr hier freigeschaltet.</p>
+            <div class="timer-text" id="timer-display">Wird geladen...</div>
+            
+            <div id="download-area" style="display: none; margin-top: 15px;">
+                <p style="color: #28a745; font-weight: bold; margin-bottom: 10px;">Der Vortrag ist nun freigegeben!</p>
+                <a href="20260730-Vortrag-Maker-Faire-Joseph-Gassner.pdf" class="btn-primary" target="_blank" download>
+                    📥 Präsentation herunterladen (PDF)
+                </a>
+            </div>
+        </div>
+
+        <!-- HONORARTOOL -->
+        <h2 class="sektion-titel">Gemeinsame Lösungsfindung</h2>
+        <p style="text-align: left; margin-bottom: 25px;">Lass uns den echten Wert eines Projekts ermitteln, bevor wir über Zahlen sprechen. Klick dich einfach durch – ganz unverbindlich und direkt hier im Browser verarbeitet.</p>
+        
+        <div class="form-group">
+            <label for="problem">Wo liegt die größte Herausforderung?</label>
+            <select id="problem">
+                <option value="Word-Eingaben erfahrener Kollegen nahtlos ins CRM zu übertragen" data-preis="1200" data-ersparnis="4500">Word-Texte für das CRM nutzbar machen (Transfer-Lösung)</option>
+                <option value="die Mitarbeiter durch ein digitales Exoskelett zu unterstützen" data-preis="2500" data-ersparnis="8000">Ein digitales Exoskelett für Mitarbeiter bauen</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="umfeld">Wie sensibel ist das Arbeitsumfeld?</label>
+            <select id="umfeld">
+                <option value="Standard-Büroumfeld" data-faktor="1.0">Normales Büro (Standard-Sicherheit)</option>
+                <option value="absoluter Datensicherheit (Air-Gap / komplett lokale Verarbeitung)" data-faktor="1.5">Hochsensibel (Komplett lokale Verarbeitung / Air-Gap gefordert)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="integration">Wie soll das System integriert werden?</label>
+            <select id="integration">
+                <option value="als reine Software-Ergänzung auf unseren bestehenden Geräten" data-aufpreis="0" data-wertplus="0">Reine Software-Lösung auf bestehenden PCs</option>
+                <option value="über einen physischen IT-Butler mit SD-Karten-Schlüssel und Smart-Lock" data-aufpreis="850" data-wertplus="2000">Mit dediziertem IT-Butler (Hardware, SD-Schlüssel & Smart-Lock)</option>
+                <option value="inklusive einer Remote-Begleitung, um erfahrene Kollegen bei der Eingabe zu entlasten" data-aufpreis="1500" data-wertplus="5000">Mit Remote-Assistenz-Setup für ältere Kollegen</option>
+            </select>
+        </div>
+
+        <button class="btn-primary" onclick="generierePromptUndPreis()">Wert & Anfrage generieren</button>
+
+        <div id="ergebnis-box">
+            <h3 style="margin-top: 0;">Deine Projekt-Skizze:</h3>
+            <p id="prompt-text" style="font-style: italic; color: #444; background: #f8f9fa; padding: 10px; border-radius: 5px;"></p>
+            <div class="preis-hinweis" id="preis-text"></div>
+            <br>
+            <a id="mail-link" href="#" class="btn-primary" style="margin-top:10px;">✉️ Diese Einschätzung an Joseph senden</a>
+        </div>
+
+        <a href="/" class="back-link">← Zurück zur Hauptseite (burn.tips)</a>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // 1. COUNTDOWN LOGIK
+        const zielDatum = new Date("2026-08-15T17:00:00").getTime();
+        
+        const timerInterval = setInterval(function() {
+            const jetzt = new Date().getTime();
+            const abstand = zielDatum - jetzt;
+            
+            if (abstand < 0) {
+                // Zeitpunkt erreicht!
+                clearInterval(timerInterval);
+                document.getElementById("timer-display").style.display = "none";
+                document.getElementById("download-area").style.display = "block";
+                return;
+            }
+            
+            // Zeit berechnen
+            const tage = Math.floor(abstand / (1000 * 60 * 60 * 24));
+            const stunden = Math.floor((abstand % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minuten = Math.floor((abstand % (1000 * 60 * 60)) / (1000 * 60));
+            const sekunden = Math.floor((abstand % (1000 * 60)) / 1000);
+            
+            // Formatieren
+            let text = "";
+            if(tage > 0) text += tage + "t ";
+            text += stunden.toString().padStart(2, '0') + "h ";
+            text += minuten.toString().padStart(2, '0') + "m ";
+            text += sekunden.toString().padStart(2, '0') + "s";
+            
+            document.getElementById("timer-display").innerHTML = "Noch: " + text;
+        }, 1000);
+
+        // 2. HONORARTOOL LOGIK
+        function generierePromptUndPreis() {
+            const problemEl = document.getElementById('problem').options[document.getElementById('problem').selectedIndex];
+            const umfeldEl = document.getElementById('umfeld').options[document.getElementById('umfeld').selectedIndex];
+            const integrationEl = document.getElementById('integration').options[document.getElementById('integration').selectedIndex];
+            
+            const problemText = problemEl.value;
+            const umfeldText = umfeldEl.value;
+            const integrationText = integrationEl.value;
+
+            const basisPreis = parseInt(problemEl.getAttribute('data-preis'));
+            const ersparnis = parseInt(problemEl.getAttribute('data-ersparnis'));
+            const faktor = parseFloat(umfeldEl.getAttribute('data-faktor'));
+            const aufpreis = parseInt(integrationEl.getAttribute('data-aufpreis'));
+            const wertplus = parseInt(integrationEl.getAttribute('data-wertplus'));
+
+            const projektWert = Math.round(basisPreis * faktor) + aufpreis;
+            const gesamtErsparnis = Math.round(ersparnis * faktor) + wertplus;
+            
+            const preisMin = Math.round((projektWert * 0.85) / 100) * 100;
+            const preisMax = Math.round((projektWert * 1.15) / 100) * 100;
+
+            const fertigerText = "Hallo Joseph, mein Ziel ist es, " + problemText + ". Dabei bewegen wir uns in einem Umfeld mit " + umfeldText + ". Das Ganze stellen wir uns " + integrationText + " vor.";
+            
+            const honorarText = "Geschätzter Gegenwert für dein Unternehmen: ca. " + gesamtErsparnis + " €/Jahr.<br>" +
+                                "Empfohlener Investitionsrahmen für dieses Projekt: " + preisMin + " € bis " + preisMax + " €.";
+            
+            document.getElementById('prompt-text').innerText = fertigerText;
+            document.getElementById('preis-text').innerHTML = honorarText;
+            document.getElementById('ergebnis-box').style.display = 'block';
+            
+            const mailto = "mailto:mail@burn.tips?subject=Projekt-Anfrage Maker Faire (Stand 170)&body=" + 
+                           encodeURIComponent(fertigerText + "\n\n" + honorarText.replace(/<br>/g, "\n"));
+            document.getElementById('mail-link').href = mailto;
+        }
+    </script>
+</body>
+</html>
