@@ -69,7 +69,7 @@
 
         h1 { margin-bottom: 5px; color: #222; font-size: 2.2em; font-weight: 700;}
         
-        /* NEU: Größerer Titel für den Lösungs-Designer */
+        /* Größerer Titel für den Lösungs-Designer */
         h2.berufstitel { 
             font-size: 1.7em; 
             color: #007bff; 
@@ -78,7 +78,7 @@
             font-weight: bold;
         }
         
-        /* NEU: Slogan Styling */
+        /* Slogan Styling */
         .subtitle { 
             font-size: 1.2em; 
             color: #555; 
@@ -102,7 +102,6 @@
             margin: 12px 0; 
             font-size: 1.1em; 
             display: grid;
-            /* Spalte 1: Label (110px), Spalte 2: Link (Rest) */
             grid-template-columns: 110px 1fr; 
             align-items: baseline;
         }
@@ -167,7 +166,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         
-        /* NEU: CSS Grid für die 8 Use-Cases (2 Spalten) */
+        /* CSS Grid für die 8 Use-Cases (2 Spalten) */
         .use-case-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -207,7 +206,7 @@
             border-top: none;
         }
         
-        /* NEU: Archiv-Link Styling */
+        /* Archiv-Link Styling */
         .archive-link {
             display: block;
             text-align: right;
@@ -218,10 +217,10 @@
             padding-top: 10px;
         }
 
-        /* NEU: Video-Thumbnail-Stil */
+        /* Video-Thumbnail-Stil */
         .video-thumbnail-link img {
             width: 100%;
-            max-width: 480px; /* HQ-Breite */
+            max-width: 480px; 
             height: auto;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -229,11 +228,11 @@
             border: 2px solid #eaeaea;
         }
         .video-thumbnail-link img:hover {
-            transform: scale(1.03); /* Leichtes Vergrößern */
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25); /* Tieferer Schatten */
+            transform: scale(1.03); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25); 
         }
 
-        /* 5. FOOTER-NOTIZ */
+        /* FOOTER-NOTIZ */
         .footer-note {
             text-align: center;
             font-size: 0.85em;
@@ -282,6 +281,18 @@
     
     <div class="webseiten-container">
         <main class="webseiten-inhalt">
+
+            <!-- NEU: temporärer Messe-Banner -->
+            <div style="background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 25px; border-radius: 12px; margin-bottom: 35px; text-align: center; box-shadow: 0 6px 15px rgba(0,123,255,0.3);">
+                <h2 style="color: white; margin-top: 0; border: none; padding: 0; font-size: 1.7em;">🎪 Treffe mich auf der Maker Faire Hannover!</h2>
+                <p style="font-size: 1.1em; margin-bottom: 20px; color: #f0f8ff;">
+                    Dieses Wochenende (15. & 16. August 2026) findest du mich an <strong>Stand 170</strong>.<br>
+                    Verpasse auch nicht meinen Vortrag: <em>"Das digitale Exoskelett"</em> (Sa, 16:25 Uhr).
+                </p>
+                <a href="maker-faire/" style="background: #ffffff; color: #007bff; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.1em; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.15); transition: transform 0.2s;">
+                    ► Zur Messe-Sonderseite & Honorar-Tool
+                </a>
+            </div>
 
             <details class="main-details" open>
                 <summary>Mein aktuelles Herzens-Projekt</summary>
