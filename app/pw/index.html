@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>halloPasswort | Burn.tips</title>
+    <style>
+        :root {
+            --bg-color: #fcfcfc;
+            --text-main: #222;
+            --border: #e0e0e0;
+            --accent-green: #2e7d32;
+            --accent-blue: #007bff;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg-color); color: var(--text-main); margin: 0; padding: 2rem 1rem; line-height: 1.6; }
+        .app-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 12px; border-top: 5px solid var(--accent-green); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        h1 { margin-top: 0; color: var(--accent-green); font-family: 'Georgia', serif; }
+        
+        .header-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+        .hash-lights { font-family: monospace; font-size: 0.85rem; color: #666; background: #f8f9fa; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border); }
+        .hash-lights span { margin-right: 15px; }
+        
+        .controls { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        input[type="text"], input[type="password"] { padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; font-family: monospace; flex: 1; min-width: 200px; }
+        button { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; background: #e0e0e0; color: #333; }
+        button.primary { background: var(--accent-blue); color: #fff; }
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: monospace; font-size: 0.95rem; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+        th { background: #f8f9fa; font-family: sans-serif; font-size: 0.85rem; text-transform: uppercase; color: #555; }
+        tr:hover { background-color: #f1f8ff; }
+        
+        .row-action-btn { background: transparent; border: 1px solid #ccc; padding: 2px 6px; font-size: 1rem; margin-left: 5px; }
+        .row-action-btn:hover { background: #eee; }
+        
+        .emoji-prefix { margin-right: 5px; font-style: normal; }
+        
+        .modal { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
+        .modal-content { background-color: #fff; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 90%; max-width: 500px; border-radius: 8px; }
+        .modal-buttons { display: flex; gap: 10px; margin-top: 20px; justify-content: flex-end; }
+        .btn-wide { flex: 2; background: #ccc; }
+        .btn-compact { flex: 1; background: var(--accent-blue); color: white; }
+
+        .hint { font-size: 0.85rem; color: #666; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <div class="header-bar">
+        <h1>halloPasswort</h1>
+        <div class="hash-lights" title="Dreier-Ampel (Base56 + Checksumme)">
+            DL: <span id="hash-dl">...</span>
+            PR: <span id="hash-pr">...</span>
+            BU: <span id="hash-bu">...</span>
+        </div>
+    </div>
+
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="🔍 Filtern..." onkeyup="filterTable()">
+        <button class="primary" onclick="openAddModal()">+ Neu</button>
+        <button onclick="alert('Exportiert alle sichtbaren Zeilen (Demo)')">💾 Export</button>
+    </div>
+
+    <table id="pwTable">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>URL / Dienst</th>
+                <th>Rumpf-PW (maskiert)</th>
+                <th>Benutzername</th>
+                <th>Aktion</th>
+            </tr>
+        </thead>
+        <tbody id="pwBody">
+            <!-- Beispiel-Daten -->
+            <tr>
+                <td><span class="emoji-prefix">🏛️</span></td>
+                <td>elster.de</td>
+                <td>********</td>
+                <td>st-id-12345</td>
+                <td>
+                    <button class="row-action-btn" onclick="copyMock()" title="Rumpf kopieren">⧉</button>
+                    <button class="row-action-btn" onclick="alert('Neuer Ping generiert (Demo)')" title="Neuer Ping">🔄</button>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="emoji-prefix">🔑</span></td>
+                <td>github.com</td>
+                <td>********</td>
+                <td>burn-tips</td>
+                <td>
+                    <button class="row-action-btn" onclick="copyMock()">⧉</button>
+                    <button class="row-action-btn" onclick="alert('Neuer Ping generiert (Demo)')">🔄</button>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="emoji-prefix">🙄</span></td>
+                <td>newsletter-tool</td>
+                <td>********</td>
+                <td>info@burn.tips</td>
+                <td>
+                    <button class="row-action-btn" onclick="copyMock()">⧉</button>
+                    <button class="row-action-btn" onclick="alert('Neuer Ping generiert (Demo)')">🔄</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="hint">
+        <strong>Insel-KI Prinzip:</strong> Diese Datei läuft zu 100% lokal in Ihrem Browser. Es gibt keine Cloud-Synchronisation und keinen externen Server. Speichern Sie diese HTML-Datei lokal ab (Strg+S), um Ihre Daten zu behalten.
+        <br><br><a href="/" style="color: var(--accent-blue); text-decoration: none;">← Zurück zu Burn.tips</a>
+    </div>
+</div>
+
+<!-- Modal für neuen Eintrag (Asymmetrisches Layout) -->
+<div id="addModal" class="modal">
+    <div class="modal-content">
+        <h2 style="margin-top:0;">Neuer Eintrag</h2>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+            <input type="text" placeholder="Status-Emoji (z.B. ⏳, ✅, 🏛️)" style="width: 100%; box-sizing: border-box;">
+            <input type="text" placeholder="URL oder Dienstname" style="width: 100%; box-sizing: border-box;">
+            <input type="text" placeholder="Benutzername" style="width: 100%; box-sizing: border-box;">
+            <input type="text" placeholder="Rumpf-Passwort (wird durch Ping ergänzt)" style="width: 100%; box-sizing: border-box;">
+        </div>
+        <div class="modal-buttons">
+            <button class="btn-wide" onclick="closeAddModal()">Abbrechen</button>
+            <button class="btn-compact" onclick="alert('Gespeichert (Demo)'); closeAddModal()">OK</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Simple UI Logic for the Demo Version
+    function filterTable() {
+        let input = document.getElementById("searchInput").value.toUpperCase();
+        let tr = document.getElementById("pwTable").getElementsByTagName("tr");
+        for (let i = 1; i < tr.length; i++) {
+            let tdUrl = tr[i].getElementsByTagName("td")[1];
+            let tdUser = tr[i].getElementsByTagName("td")[3];
+            if (tdUrl || tdUser) {
+                let txtValue = (tdUrl.textContent || tdUrl.innerText) + " " + (tdUser.textContent || tdUser.innerText);
+                tr[i].style.display = txtValue.toUpperCase().indexOf(input) > -1 ? "" : "none";
+            }       
+        }
+    }
+    
+    function copyMock() {
+        alert("Rumpf-Passwort in die Zwischenablage kopiert. (Demo)");
+    }
+    
+    function openAddModal() { document.getElementById('addModal').style.display = 'block'; }
+    function closeAddModal() { document.getElementById('addModal').style.display = 'none'; }
+    
+    // Generate mock hashes for the "Dreier-Ampel"
+    document.addEventListener("DOMContentLoaded", () => {
+        const chars = "abcdefghijkmnpqrstuvwxyz23456789ABCDEFGHJKLMNPQRSTUVWXYZ"; // Base56 example
+        const mockHash = () => {
+            let res = "";
+            for(let i=0; i<8; i++) res += chars.charAt(Math.floor(Math.random() * chars.length));
+            return res;
+        };
+        document.getElementById('hash-dl').innerText = mockHash();
+        document.getElementById('hash-pr').innerText = mockHash();
+        document.getElementById('hash-bu').innerText = mockHash();
+    });
+</script>
+</body>
+</html>
