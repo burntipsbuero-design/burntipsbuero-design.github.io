@@ -50,7 +50,25 @@
             padding: 8px;
             background: #fff;
         }
-        
+
+        /* NEU: Spamschutz RTL & Kopier-Knopf */
+        .rtl-mask {
+            direction: rtl;
+            unicode-bidi: bidi-override;
+        }
+        button.copy-btn {
+            background: none;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-left: 8px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #555;
+            vertical-align: middle;
+        }
+        button.copy-btn:hover { background: #eee; }
+
         /* 3. WEBSEITEN-CONTAINER */
         .webseiten-container {
             background: #ffffff; 
@@ -271,8 +289,16 @@
         <br>
 
         <ul class="contact-list">
-            <li><strong>Mobil / WA:</strong> <a href="https://wa.me/4915129035809" target="_blank">+49 1512 903 5809</a></li>
-            <li><strong>E-Mail:</strong> <a href="mailto:mail@burn.tips">mail@burn.tips</a></li>
+            <li><strong>Mobil / WA:</strong><span>
+                <span class="rtl-mask" style="color: #007bff; font-weight: 600;">9085 309 2151 94+</span>
+                <button class="copy-btn" onclick="navigator.clipboard.writeText('+49 1512 903 5809'); alert('Kopiert: +49 1512 903 5809')" title="Nummer kopieren">⧉</button>
+                </span>
+            </li>
+            <li><strong>E-Mail:</strong> <span>
+                <span class="rtl-mask" style="color: #007bff; font-weight: 600;">spit.nrub@liam</span>
+                <button class="copy-btn" onclick="navigator.clipboard.writeText('mail@burn.tips'); alert('Kopiert: mail@burn.tips')" title="E-Mail kopieren">⧉</button>
+                </span>
+            </li>
             <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/gj-tax/" target="_blank">gj-tax</a></li>
             <li><strong>YouTube:</strong> <a href="https://www.youtube.com/@Burn-tips" target="_blank">Ein Opa zum Plaudern</a></li>
             <li><strong>Instagram:</strong> <a href="https://www.instagram.com/burn.tips" target="_blank">@burn.tips</a></li>
