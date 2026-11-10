@@ -19,6 +19,24 @@
         }
         
         /* 2. VISITENKARTE */
+        /* NEU: Spamschutz RTL & Kopier-Knopf */
+        .rtl-mask {
+            direction: rtl;
+            unicode-bidi: bidi-override;
+        }
+        button.copy-btn {
+            background: none;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-left: 8px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #555;
+            vertical-align: middle;
+        }
+        button.copy-btn:hover { background: #eee; }
+
         .visitenkarte-container {
             max-width: 650px; 
             margin: 40px auto; 
@@ -50,25 +68,7 @@
             padding: 8px;
             background: #fff;
         }
-
-        /* NEU: Spamschutz RTL & Kopier-Knopf */
-        .rtl-mask {
-            direction: rtl;
-            unicode-bidi: bidi-override;
-        }
-        button.copy-btn {
-            background: none;
-            border: 1px solid #ccc;
-            cursor: pointer;
-            font-size: 0.9em;
-            margin-left: 8px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: #555;
-            vertical-align: middle;
-        }
-        button.copy-btn:hover { background: #eee; }
-
+        
         /* 3. WEBSEITEN-CONTAINER */
         .webseiten-container {
             background: #ffffff; 
@@ -87,7 +87,6 @@
 
         h1 { margin-bottom: 5px; color: #222; font-size: 2.2em; font-weight: 700;}
         
-        /* NEU: Größerer Titel für den Lösungs-Designer */
         h2.berufstitel { 
             font-size: 1.7em; 
             color: #007bff; 
@@ -96,7 +95,6 @@
             font-weight: bold;
         }
         
-        /* NEU: Slogan Styling */
         .subtitle { 
             font-size: 1.2em; 
             color: #555; 
@@ -120,7 +118,6 @@
             margin: 12px 0; 
             font-size: 1.1em; 
             display: grid;
-            /* Spalte 1: Label (110px), Spalte 2: Link (Rest) */
             grid-template-columns: 110px 1fr; 
             align-items: baseline;
         }
@@ -185,7 +182,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         
-        /* NEU: CSS Grid für die 8 Use-Cases (2 Spalten) */
         .use-case-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -193,7 +189,6 @@
             margin-top: 20px;
         }
         
-        /* Styling für die inneren Buttons der Use-Cases */
         .use-case-item summary {
             background-color: #f8f9fa;
             color: #333;
@@ -225,7 +220,6 @@
             border-top: none;
         }
         
-        /* NEU: Archiv-Link Styling */
         .archive-link {
             display: block;
             text-align: right;
@@ -236,10 +230,9 @@
             padding-top: 10px;
         }
 
-        /* NEU: Video-Thumbnail-Stil */
         .video-thumbnail-link img {
             width: 100%;
-            max-width: 480px; /* HQ-Breite */
+            max-width: 480px; 
             height: auto;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -247,8 +240,8 @@
             border: 2px solid #eaeaea;
         }
         .video-thumbnail-link img:hover {
-            transform: scale(1.03); /* Leichtes Vergrößern */
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25); /* Tieferer Schatten */
+            transform: scale(1.03); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25); 
         }
 
         /* 5. FOOTER-NOTIZ */
@@ -289,14 +282,18 @@
         <br>
 
         <ul class="contact-list">
-            <li><strong>Mobil / WA:</strong><span>
-                <span class="rtl-mask" style="color: #007bff; font-weight: 600;">9085 309 2151 94+</span>
-                <button class="copy-btn" onclick="navigator.clipboard.writeText('+49 1512 903 5809'); alert('Kopiert: +49 1512 903 5809')" title="Nummer kopieren">⧉</button>
+            <li>
+                <strong>Mobil / WA:</strong> 
+                <span>
+                    <span class="rtl-mask" style="color: #007bff; font-weight: 600;">9085 309 2151 94+</span>
+                    <button class="copy-btn" onclick="navigator.clipboard.writeText('+49 1512 903 5809'); alert('Kopiert: +49 1512 903 5809')" title="Nummer kopieren">⧉</button>
                 </span>
             </li>
-            <li><strong>E-Mail:</strong> <span>
-                <span class="rtl-mask" style="color: #007bff; font-weight: 600;">spit.nrub@liam</span>
-                <button class="copy-btn" onclick="navigator.clipboard.writeText('mail@burn.tips'); alert('Kopiert: mail@burn.tips')" title="E-Mail kopieren">⧉</button>
+            <li>
+                <strong>E-Mail:</strong> 
+                <span>
+                    <span class="rtl-mask" style="color: #007bff; font-weight: 600;">spit.nrub@liam</span>
+                    <button class="copy-btn" onclick="navigator.clipboard.writeText('mail@burn.tips'); alert('Kopiert: mail@burn.tips')" title="E-Mail kopieren">⧉</button>
                 </span>
             </li>
             <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/gj-tax/" target="_blank">gj-tax</a></li>
@@ -309,6 +306,7 @@
     <div class="webseiten-container">
         <main class="webseiten-inhalt">
 
+            <!-- NEU: Messe Logbuch & halloPasswort -->
             <details class="main-details" open>
                 <summary>Aktuelles & Messe-Logbuch</summary>
                 <div class="details-content">
@@ -461,31 +459,34 @@
             </details>
 
             <div class="flex-row legal-buttons" style="margin-top: 50px;">
+                <!-- NEU: Abmahnsicheres Impressum nach DDG -->
                 <details class="flex-col" style="min-width: 250px; background: none; border: none; padding: 0;">
                     <summary>Impressum</summary>
                     <div class="details-content" style="text-align: left; font-size: 0.9em;">
-                    <h4 style="margin-top:0;">Angaben gemäß § 5 TMG</h4>
+                    <h4 style="margin-top:0;">Angaben gemäß § 5 DDG</h4>
                         <p>
                             Burn.tips UG (haftungsbeschränkt)<br>
                             Lena-Christ-Str. 10 1/2<br>
                             84416 Taufkirchen (Vils)
                         </p>
                         <p><b>Vertreten durch:</b><br>Geschäftsführer Joseph Gaßner</p>
-                        <p><b>Kontakt</b><br>E-Mail: mail@burn.tips</p>
-                        <p><b>Registereintrag</b><br>Eintragung im Handelsregister.<br>Registergericht: Amtsgericht München<br>Registernummer: HRB B 252201</p>
+                        <p><b>Kontakt</b><br>Telefon: +49 1512 903 5809<br>E-Mail: mail@burn.tips</p>
+                        <p><b>Registereintrag</b><br>Eintragung im Handelsregister.<br>Registergericht: Amtsgericht München<br>Registernummer: HRB 252201</p>
+                        <p><b>Umsatzsteuer-ID</b><br>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>DE424204181</p>
                     </div>
                 </details>
 
+                <!-- NEU: Datenschutz inkl. Tracking-Freiheit und DPF für GitHub -->
                 <details class="flex-col" style="min-width: 250px; background: none; border: none; padding: 0;">
                     <summary>Datenschutz</summary>
                     <div class="details-content" style="text-align: left; font-size: 0.9em;">
                     <h4 style="margin-top:0;">Datenschutzerklärung</h4>
-                        <p><strong>1. Datenschutz auf einen Blick</strong><br>Personenbezogene Daten sind alle Daten, mit denen du persönlich identifiziert werden kannst.</p>
-                        <p><b>2. Verantwortlicher</b><br>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
-                        <p>Burn.tips UG (haftungsbeschränkt)<br>vertreten durch den Geschäftsführer Joseph Gaßner<br>Lena-Christ-Str. 10 1/2<br>84416 Taufkirchen (Vils)<br>E-Mail: mail@burn.tips</p>
-                        <p><b>3. Datenerfassung (Hosting)</b><br>Diese Website wird bei GitHub Pages gehostet (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA). GitHub erfasst Standard-Server-Logfiles (inkl. IP-Adresse) zur Sicherheit. Grundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
-                        <p><b>4. Externe Links</b><br>Bei Klick auf externe Links (WhatsApp, YouTube, Instagram) verlässt du diese Seite. Es gelten die Bestimmungen der jeweiligen Betreiber.</p>
-                        <p><b>5. Deine Rechte</b><br>Du hast das Recht auf unentgeltliche Auskunft, Berichtigung oder Löschung deiner Daten. Wende dich dazu an die oben angegebene Adresse von GitHub Inc.</p>
+                        <p><strong>1. Kein Tracking & Keine Cookies</strong><br>Diese Website ist ein digitales Exoskelett: pragmatisch und sparsam. Wir verwenden keinerlei Cookies, keine Analyse-Tools (wie Google Analytics) und keine sonstigen Tracking-Technologien. Es ist kein Consent-Banner erforderlich.</p>
+                        <p><strong>2. Datenschutz auf einen Blick</strong><br>Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Wenn Sie diese Website besuchen, werden lediglich technisch notwendige Daten durch den Hostinganbieter erfasst.</p>
+                        <p><b>3. Verantwortlicher</b><br>Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br>Burn.tips UG (haftungsbeschränkt)<br>vertreten durch den Geschäftsführer Joseph Gaßner<br>Lena-Christ-Str. 10 1/2<br>84416 Taufkirchen (Vils)<br>E-Mail: mail@burn.tips</p>
+                        <p><b>4. Datenerfassung (Hosting)</b><br>Diese Website wird bei GitHub Pages gehostet (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA). GitHub erfasst standardmäßig Server-Logfiles (inkl. IP-Adresse), um die Auslieferung und Sicherheit der Seite zu gewährleisten. Grundlage hierfür ist Art. 6 Abs. 1 lit. f DSGVO. <em>Die Datenübermittlung in die USA stützt sich auf den Angemessenheitsbeschluss der EU-Kommission zum EU-US Data Privacy Framework (DPF), unter dem GitHub Inc. zertifiziert ist.</em></p>
+                        <p><b>5. Externe Links</b><br>Bei Klick auf externe Links (WhatsApp, YouTube, LinkedIn, Instagram) verlassen Sie diese Seite. Es gelten die Datenschutzbestimmungen der jeweiligen Betreiber.</p>
+                        <p><b>6. Ihre Rechte</b><br>Sie haben das Recht auf unentgeltliche Auskunft, Berichtigung oder Löschung Ihrer Daten. Wende dich dazu an die oben angegebene Adresse.</p>
                     </div>
                 </details>
             </div>
