@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burn.tips | Insel-KI & Digitale Exoskelette</title>
+    <title>Burn.tips | Joseph Gaßner - Lösungs-Designer</title>
+    <meta name="description" content="Burn.tips: Insel-KI, Digitale Exoskelette & souveräne Werkzeuge für den Mittelstand.">
+    
     <style>
-        /* Basis-Styling: Clean, schnell & Serif-Fokus */
+        /* 1. BASIS-STYLING (Serif-Fokus für Lesbarkeit) */
         :root {
-            --bg-color: #fcfcfc;
+            --bg-color: #f4f4f4;
             --text-main: #222;
             --text-muted: #555;
             --accent: #d32f2f;
             --card-bg: #ffffff;
-            --border: #e0e0e0;
+            --border: #eaeaea;
+            --link-color: #007bff;
         }
         
         body {
@@ -24,20 +27,100 @@
             padding: 0;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-weight: normal;
             margin-top: 0;
         }
 
-        h1 {
-            font-size: 2.2rem;
-            color: var(--text-main);
+        /* 2. HYBRIDE VISITENKARTE (Top-Bereich) */
+        .visitenkarte-container {
+            max-width: 650px; 
+            margin: 40px auto 30px auto; 
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .visitenkarte-container img.profilbild {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; 
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+
+        .visitenkarte-container img.qrcode {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px;
+            background: #fff;
+        }
+
+        .visitenkarte-container h1 { 
+            font-size: 2.2rem; 
+            font-weight: 700;
+            margin-bottom: 5px; 
+            font-family: 'Georgia', serif;
+        }
+        
+        .visitenkarte-container h2.berufstitel { 
+            font-size: 1.4rem; 
+            color: var(--link-color); 
+            margin-top: 10px; 
+            margin-bottom: 5px; 
+            font-weight: bold;
+        }
+        
+        .visitenkarte-container .subtitle { 
+            font-size: 1.1rem; 
+            color: var(--text-muted); 
+            font-style: italic; 
+            margin-bottom: 25px; 
+        }
+
+        /* Kontakt-Liste mit RTL-Maskierung in der Karte */
+        .contact-list {
+             list-style: none;
+             padding: 0;
+             margin: 0 auto;
+             display: inline-block;
+             text-align: left;
+        }
+
+        .contact-list li { 
+            margin: 12px 0; 
+            font-size: 1.1rem; 
+            display: grid;
+            grid-template-columns: 100px 1fr auto; 
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        /* 3. WEBSEITEN-BEREICH (Unten) */
+        .webseiten-container {
+            background: var(--card-bg); 
+            width: 100%;
+            padding: 60px 20px;
+            box-sizing: border-box;
+            border-top: 1px solid var(--border); 
+        }
+
+        .webseiten-inhalt {
+            max-width: 800px; 
+            margin: 0 auto;
+        }
+
+        .webseiten-inhalt h2.section-title {
+            font-size: 1.8rem;
             border-bottom: 2px solid var(--text-main);
             padding-bottom: 0.5rem;
             margin-bottom: 0.5rem;
@@ -50,7 +133,7 @@
             font-style: italic;
         }
 
-        /* Messe-Kasten & Giveaway */
+        /* Messe-Kästen */
         .highlight-box {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
@@ -60,7 +143,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        .highlight-box h2 {
+        .highlight-box h3 {
             margin-bottom: 0.5rem;
             font-size: 1.4rem;
         }
@@ -83,12 +166,13 @@
             border: 1px solid var(--text-main);
         }
 
-        /* Lösungs-Raster */
+        /* Grid für 3 Säulen */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.5rem;
             margin-bottom: 3rem;
+            margin-top: 1.5rem;
         }
 
         .card {
@@ -97,7 +181,7 @@
             padding: 1.2rem;
         }
 
-        .card h3 {
+        .card h4 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
@@ -114,13 +198,9 @@
             padding-bottom: 1rem;
             -webkit-overflow-scrolling: touch;
         }
-        .carousel::-webkit-scrollbar {
-            height: 6px;
-        }
-        .carousel::-webkit-scrollbar-thumb {
-            background-color: var(--border);
-            border-radius: 3px;
-        }
+        .carousel::-webkit-scrollbar { height: 6px; }
+        .carousel::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 3px; }
+        
         .carousel-item {
             flex: 0 0 70%;
             max-width: 250px;
@@ -131,144 +211,26 @@
             text-align: center;
         }
         .carousel-item a {
-            color: var(--text-main);
+            color: var(--link-color);
             text-decoration: none;
             font-family: sans-serif;
             font-weight: bold;
         }
 
-        /* Kontakt & RTL-Maskierung */
-        .footer {
+        /* Footer / Legal (Flex) */
+        .legal-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 3rem;
             border-top: 1px solid var(--border);
             padding-top: 2rem;
             font-family: sans-serif;
-            font-size: 0.9rem;
-            color: var(--text-muted);
         }
-
-        /* Der Spamschutz-Trick */
-        .rtl-mask {
-            direction: rtl;
-            unicode-bidi: bidi-override;
-            display: inline-block;
-            color: var(--text-main);
-            font-weight: bold;
-        }
-
-        button.copy-btn {
-            background: none;
+        .legal-buttons details {
+            flex: 1;
+            min-width: 250px;
+            background: #fafafa;
             border: 1px solid var(--border);
-            cursor: pointer;
-            font-size: 1rem;
-            margin-left: 0.5rem;
-            padding: 2px 6px;
-            border-radius: 3px;
-            color: var(--text-main);
-        }
-        button.copy-btn:hover {
-            background: #eee;
-        }
-
-        .qr-placeholder {
-            display: inline-block;
-            width: 120px;
-            height: 120px;
-            background-color: #eee;
-            border: 1px dashed #ccc;
-            text-align: center;
-            line-height: 120px;
-            margin-top: 1rem;
-            color: #888;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    
-    <header>
-        <h1>Burn.tips</h1>
-        <p class="lead">Insel-KI & Digitale Exoskelette für den Mittelstand. <br>
-        Ein System muss Verstärker sein, keine Prothese.</p>
-        <p>Wo die Cloud-KI der Reisebus für das allgemeine Weltwissen ist, bauen wir mit der Insel-KI das wendige Motorrad für Ihre sensiblen Daten – cookie-frei, lokal und ohne Abo-Fessel.</p>
-    </header>
-
-    <!-- Messe Logbuch -->
-    <div class="highlight-box">
-        <h2>📍 Live-Logbuch: electronica & SEMICON München</h2>
-        <p>10. – 13. November 2026. Begleiten Sie mich auf der Suche nach den technischen Goldkörnern für lokale KI-Hardware und LoRa-Komponenten.</p>
-        <a href="/fair/electronica" class="btn">Zum aktuellen Messe-Logbuch</a>
-        <a href="/fair/maker-faire" class="btn btn-outline" style="margin-left: 0.5rem;">Rückblick Maker Faire</a>
-    </div>
-
-    <!-- Messe-Giveaway -->
-    <div class="highlight-box" style="border-left-color: #2e7d32;">
-        <h2>🎁 Messe-Giveaway: halloPasswort</h2>
-        <p>Kostenfrei zum Mitnehmen: Ihr souveränes Passwort-Werkzeug als autarke Einzeldatei. Kein Cloud-Tresor, keine Registrierung. Rumpf-Passwort im Code + Kopf-PIN im Gedächtnis.</p>
-        <a href="/app/pw" class="btn">halloPasswort herunterladen & testen</a>
-    </div>
-
-    <!-- 3 Säulen -->
-    <h2>Unsere Werkzeuge zum Anfassen</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Datenschutz durch Handauflegen</h3>
-            <p>Milchglas-Prinzip & Fensterbrief (halloSichtschutz). Sensible Daten schützen, ohne Mitarbeiter in Passwort-Schikanen zu verstricken.</p>
-        </div>
-        <div class="card">
-            <h3>Bürokratie-Bändiger</h3>
-            <p>Digitale Exoskelette, die sich dem Menschen anpassen. Z.B. fließende Brücken vom gewohnten Word-Dokument direkt ins moderne CRM.</p>
-        </div>
-        <div class="card">
-            <h3>Raiffeisen 2.0 (Energie-Mesh)</h3>
-            <p>Dezentrale Schwarm-Steuerung für thermische Speicher (Gefriertruhe, Boiler) per LoRa. Die Flatter-Abnahme gegen den Flatterstrom.</p>
-        </div>
-    </div>
-
-    <!-- Kanal-Karussell -->
-    <div class="carousel-wrapper">
-        <h2>Der „Opa zum Plaudern“ auf Social Media</h2>
-        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: -0.5rem;">Wischen für weitere Kanäle. Alle Beiträge gesammelt unter <a href="/sm/">burn.tips/sm/</a>.</p>
-        <div class="carousel">
-            <div class="carousel-item">
-                <a href="/sm/li">LinkedIn</a>
-                <p style="font-size: 0.85rem; margin-bottom: 0;">Insel-KI & Business</p>
-            </div>
-            <div class="carousel-item">
-                <a href="/sm/yt">YouTube</a>
-                <p style="font-size: 0.85rem; margin-bottom: 0;">Hörfilme & Plaudereien</p>
-            </div>
-            <div class="carousel-item">
-                <a href="/sm/ig">Instagram</a>
-                <p style="font-size: 0.85rem; margin-bottom: 0;">@roadtaxoffice</p>
-            </div>
-            <div class="carousel-item">
-                <a href="/sm/tt">TikTok</a>
-                <p style="font-size: 0.85rem; margin-bottom: 0;">Opa zum Plaudern</p>
-            </div>
-            <div class="carousel-item">
-                <a href="/sm/fb">Facebook</a>
-                <p style="font-size: 0.85rem; margin-bottom: 0;">Gedanken aus dem Leben</p>
-            </div>
-            <div class="carousel-item">
-                <a href="/sm/x">X (Twitter)</a>
-                <p style="font-size: 0.85rem; margin-bottom: 0;">Kurz & bündig</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Kontakt & Impressum mit RTL Maskierung -->
-    <div class="footer">
-        <h3>Impressum (Angaben gemäß § 5 DDG)</h3>
-        <p>
-            <strong>Burn.tips UG (haftungsbeschränkt)</strong><br>
-            Vertreten durch: Joseph Gaßner (Gesellschafter-Geschäftsführer)<br>
-            Lena-Christ-Str. 10 1/2<br>
-            84416 Taufkirchen (Vils)<br>
-            Deutschland
-        </p>
-
-        <p>
-            <strong>Kontakt:</strong><br>
-            E-Mail: <span class="rtl-mask">spit.nrub@liam</span> 
-            <button class="copy-btn" onclick="copyToClipboard('mail
+            border
