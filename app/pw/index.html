@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>halloPasswort | Burn.tips</title>
+    <title>halloPasswort v0.1 | Burn.tips</title>
     <style>
         :root {
             --bg-color: #fcfcfc;
@@ -14,7 +14,8 @@
         }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg-color); color: var(--text-main); margin: 0; padding: 2rem 1rem; line-height: 1.6; }
         .app-container { max-width: 1100px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 12px; border-top: 5px solid var(--accent-green); box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow-x: auto; }
-        h1 { margin-top: 0; color: var(--accent-green); font-family: 'Georgia', serif; }
+        h1 { margin-top: 0; color: var(--accent-green); font-family: 'Georgia', serif; display: inline-block; margin-bottom: 0;}
+        .version-tag { font-family: monospace; font-size: 0.9rem; color: #888; margin-left: 10px; vertical-align: super; }
         
         .header-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
         .hash-lights { font-family: monospace; font-size: 0.85rem; color: #666; background: #f8f9fa; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border); display: flex; gap: 15px; }
@@ -35,7 +36,6 @@
         /* Klartext Rumpf-PW & History (hinauswachsend) */
         .rumpf-pw { font-weight: bold; color: var(--accent-blue); letter-spacing: 1px; }
         .history-cell { color: #888; max-width: 150px; overflow-x: auto; direction: ltr; }
-        /* Versteckt die Scrollbar für cleanen Look, lässt aber scrollen/hinauswachsen zu */
         .history-cell::-webkit-scrollbar { height: 4px; }
         .history-cell::-webkit-scrollbar-thumb { background: transparent; }
         .history-cell:hover::-webkit-scrollbar-thumb { background: #ccc; }
@@ -55,14 +55,18 @@
         .modal-inputs { display: flex; flex-direction: column; gap: 10px; }
         .modal-inputs input { width: 100%; box-sizing: border-box; }
 
-        .hint { font-size: 0.85rem; color: #666; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem; font-family: sans-serif; }
+        .hint { font-size: 0.9rem; color: #444; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem; font-family: sans-serif; }
+        .hint p { margin-top: 0; margin-bottom: 1rem; }
+        .promo-box { background: #f8f9fa; padding: 12px; border-radius: 6px; margin-top: 20px; border-left: 4px solid var(--accent-green); font-size: 0.85rem; color: #555; }
     </style>
 </head>
 <body>
 
 <div class="app-container">
     <div class="header-bar">
-        <h1>halloPasswort</h1>
+        <div>
+            <h1>halloPasswort</h1><span class="version-tag">v0.1</span>
+        </div>
         <div class="hash-lights" title="Base56 + Mod24 Checksumme">
             <span>DL: <span id="hash-dl">...</span></span>
             <span>PR: <span id="hash-pr">...</span></span>
@@ -94,9 +98,16 @@
     </table>
     
     <div class="hint">
-        <strong>Das digitale Exoskelett:</strong> Das Rumpf-PW steht im Klartext – es ist durch Ihre persönliche Master-Passphrase im Kopf ohnehin maskiert. 
-        Die Datei speichert sich selbst als <code>.html</code>-Datei (inkl. Append-Only JSONL-Historie). Komplett offline, keine Cloud.
-        <br><br><a href="/" style="color: var(--accent-blue); text-decoration: none; font-weight: bold;">← Zurück zu Burn.tips</a>
+        <p><strong>Maskierung durch Pseudo-Sichtbarkeit:</strong> Das Rumpf-PW steht hier bewusst im Klartext. Die wahre Sicherheit entsteht in Ihrem Kopf (<em>Exoskelett-Prinzip</em>): Durch das Anfügen Ihrer persönlichen Master-Verlängerung (z. B. hängen Sie immer "123456" oder "!Hund23" an) wird jedes individuelle Passwort unknackbar, obwohl der Rumpf für alle sichtbar ist.</p>
+        
+        <p><strong>Messe-Demo v0.1:</strong> Diese Vorschauversion läuft komplett lokal und generiert die IDs rein zufällig (offline). In der finalen Ausbaustufe sorgt ein Server-Ping der Vita-Insel für weltweit einmalige, kryptografisch saubere Vita-IDs, ohne dass Daten abfließen.</p>
+        
+        <div class="promo-box">
+            <strong>Die Insel-KI Garantie:</strong> Diese Datei speichert sich selbst als <code>.html</code>-Datei (inkl. Append-Only JSONL-Historie). 
+            <span style="color: var(--accent-green); font-weight: bold;">Komplett offline, keine Cloud, ohne Cookies und absolut Tracking-frei.</span>
+        </div>
+
+        <br><a href="/" style="color: var(--accent-blue); text-decoration: none; font-weight: bold;">← Zurück zu Burn.tips</a>
     </div>
 </div>
 
@@ -123,9 +134,8 @@
 </script>
 
 <script>
-    // --- KRYPTOGRAFIE & HASHES (Base56 & Mod24) ---
-    const BASE56_CHARS = "abcdefghijkmnpqrstuvwxyz23456789ABCDEFGHJKLMNPQRSTUVWXYZ"; // Kein l, o, 0, 1
-    const MOD24_CHARS = "abcdefghijkmnpqrstuvwxyz"; // 24 lowercase letters (ohne l, o)
+    const BASE56_CHARS = "abcdefghijkmnpqrstuvwxyz23456789ABCDEFGHJKLMNPQRSTUVWXYZ"; 
+    const MOD24_CHARS = "abcdefghijkmnpqrstuvwxyz"; 
 
     function generatePing(length = 8) {
         let res = "";
@@ -151,7 +161,6 @@
         document.getElementById('hash-bu').innerText = generateHashWithChecksum();
     }
 
-    // --- DATEN-MANAGEMENT ---
     let pwData = [];
 
     function loadData() {
@@ -178,14 +187,13 @@
         if(entry) {
             if(entry.pw) {
                 if(!entry.history) entry.history = [];
-                entry.history.unshift(entry.pw); // Alt-Passwort in die Historie schieben
+                entry.history.unshift(entry.pw);
             }
             entry.pw = generatePing(8);
             renderTable();
         }
     }
 
-    // --- UI RENDERING ---
     function renderTable() {
         const tbody = document.getElementById('pwBody');
         tbody.innerHTML = "";
@@ -197,7 +205,6 @@
 
             const tr = document.createElement('tr');
             
-            // Historie formatieren (mit Komma getrennt, scrollbar)
             const historyHtml = row.history && row.history.length > 0 
                 ? row.history.join(" → ") 
                 : "";
@@ -218,7 +225,6 @@
         });
     }
 
-    // --- MODAL & NEUER EINTRAG ---
     function openAddModal() {
         document.getElementById('m-prefix').value = "";
         document.getElementById('m-url').value = "";
@@ -244,7 +250,7 @@
             id: newId,
             prefix: prefix,
             url: url,
-            pw: generatePing(8), // Direkt ein neues Rumpf-PW zuweisen
+            pw: generatePing(8),
             hint: hint,
             user: user,
             history: []
@@ -254,20 +260,15 @@
         renderTable();
     }
 
-    // --- LOKALES SPEICHERN (Self-Saving HTML via File System Access API) ---
     async function saveToDisk() {
-        // 1. JSONL String generieren
         const jsonl = pwData.map(row => JSON.stringify(row)).join("\n");
         
-        // 2. Aktuelles HTML holen und den Datenblock ersetzen
         let htmlContent = document.documentElement.outerHTML;
         const regex = /<script id="app-data" type="application\/jsonl">[\s\S]*?<\/script>/i;
         const newDataBlock = `<script id="app-data" type="application/jsonl">\n${jsonl}\n<\/script>`;
         htmlContent = "<!DOCTYPE html>\n" + htmlContent.replace(regex, newDataBlock);
 
-        // 3. Speichern Dialog
         try {
-            // Modern File System Access API
             if (window.showSaveFilePicker) {
                 const handle = await window.showSaveFilePicker({
                     suggestedName: 'halloPasswort.html',
@@ -285,7 +286,6 @@
             }
         } catch (err) {
             if (err.name !== 'AbortError') {
-                // Fallback für ältere Browser
                 const blob = new Blob([htmlContent], { type: 'text/html' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -299,7 +299,6 @@
         }
     }
 
-    // Initial load
     document.addEventListener('DOMContentLoaded', loadData);
 </script>
 </body>
