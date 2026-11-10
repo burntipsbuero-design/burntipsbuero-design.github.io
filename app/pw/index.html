@@ -13,35 +13,49 @@
             --accent-blue: #007bff;
         }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg-color); color: var(--text-main); margin: 0; padding: 2rem 1rem; line-height: 1.6; }
-        .app-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 12px; border-top: 5px solid var(--accent-green); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .app-container { max-width: 1100px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 12px; border-top: 5px solid var(--accent-green); box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow-x: auto; }
         h1 { margin-top: 0; color: var(--accent-green); font-family: 'Georgia', serif; }
         
-        .header-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem; }
-        .hash-lights { font-family: monospace; font-size: 0.85rem; color: #666; background: #f8f9fa; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border); }
-        .hash-lights span { margin-right: 15px; }
+        .header-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+        .hash-lights { font-family: monospace; font-size: 0.85rem; color: #666; background: #f8f9fa; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border); display: flex; gap: 15px; }
         
         .controls { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-        input[type="text"], input[type="password"] { padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; font-family: monospace; flex: 1; min-width: 200px; }
+        input[type="text"] { padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; font-family: monospace; }
+        .search-box { flex: 1; min-width: 200px; }
         button { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; background: #e0e0e0; color: #333; }
         button.primary { background: var(--accent-blue); color: #fff; }
+        button.save { background: var(--accent-green); color: #fff; }
         
-        table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: monospace; font-size: 0.95rem; }
-        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+        /* Table Layout (Nowrap, Single-Line) */
+        table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: monospace; font-size: 0.95rem; white-space: nowrap; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
         th { background: #f8f9fa; font-family: sans-serif; font-size: 0.85rem; text-transform: uppercase; color: #555; }
         tr:hover { background-color: #f1f8ff; }
+        
+        /* Klartext Rumpf-PW & History (hinauswachsend) */
+        .rumpf-pw { font-weight: bold; color: var(--accent-blue); letter-spacing: 1px; }
+        .history-cell { color: #888; max-width: 150px; overflow-x: auto; direction: ltr; }
+        /* Versteckt die Scrollbar für cleanen Look, lässt aber scrollen/hinauswachsen zu */
+        .history-cell::-webkit-scrollbar { height: 4px; }
+        .history-cell::-webkit-scrollbar-thumb { background: transparent; }
+        .history-cell:hover::-webkit-scrollbar-thumb { background: #ccc; }
         
         .row-action-btn { background: transparent; border: 1px solid #ccc; padding: 2px 6px; font-size: 1rem; margin-left: 5px; }
         .row-action-btn:hover { background: #eee; }
         
-        .emoji-prefix { margin-right: 5px; font-style: normal; }
-        
+        /* Asymmetrisches Modal */
         .modal { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
         .modal-content { background-color: #fff; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 90%; max-width: 500px; border-radius: 8px; }
         .modal-buttons { display: flex; gap: 10px; margin-top: 20px; justify-content: flex-end; }
-        .btn-wide { flex: 2; background: #ccc; }
+        .btn-wide { flex: 2; background: #e0e0e0; }
+        .btn-wide:hover { background: #d0d0d0; }
         .btn-compact { flex: 1; background: var(--accent-blue); color: white; }
+        .btn-compact:hover { background: #0056b3; }
+        
+        .modal-inputs { display: flex; flex-direction: column; gap: 10px; }
+        .modal-inputs input { width: 100%; box-sizing: border-box; }
 
-        .hint { font-size: 0.85rem; color: #666; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+        .hint { font-size: 0.85rem; color: #666; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem; font-family: sans-serif; }
     </style>
 </head>
 <body>
@@ -49,121 +63,244 @@
 <div class="app-container">
     <div class="header-bar">
         <h1>halloPasswort</h1>
-        <div class="hash-lights" title="Dreier-Ampel (Base56 + Checksumme)">
-            DL: <span id="hash-dl">...</span>
-            PR: <span id="hash-pr">...</span>
-            BU: <span id="hash-bu">...</span>
+        <div class="hash-lights" title="Base56 + Mod24 Checksumme">
+            <span>DL: <span id="hash-dl">...</span></span>
+            <span>PR: <span id="hash-pr">...</span></span>
+            <span>BU: <span id="hash-bu">...</span></span>
         </div>
     </div>
 
     <div class="controls">
-        <input type="text" id="searchInput" placeholder="🔍 Filtern..." onkeyup="filterTable()">
+        <input type="text" id="searchInput" class="search-box" placeholder="🔍 Filtern..." onkeyup="renderTable()">
         <button class="primary" onclick="openAddModal()">+ Neu</button>
-        <button onclick="alert('Exportiert alle sichtbaren Zeilen (Demo)')">💾 Export</button>
+        <button class="save" onclick="saveToDisk()" title="Schreibt die Daten in diese HTML-Datei zurück">💾 Speichern (JSONL)</button>
     </div>
 
     <table id="pwTable">
         <thead>
             <tr>
-                <th>Status</th>
+                <th>Nr/Term</th>
                 <th>URL / Dienst</th>
-                <th>Rumpf-PW (maskiert)</th>
+                <th>Rumpf-PW</th>
+                <th>PIN Hint</th>
                 <th>Benutzername</th>
                 <th>Aktion</th>
+                <th>Historie</th>
             </tr>
         </thead>
         <tbody id="pwBody">
-            <!-- Beispiel-Daten -->
-            <tr>
-                <td><span class="emoji-prefix">🏛️</span></td>
-                <td>elster.de</td>
-                <td>********</td>
-                <td>st-id-12345</td>
-                <td>
-                    <button class="row-action-btn" onclick="copyMock()" title="Rumpf kopieren">⧉</button>
-                    <button class="row-action-btn" onclick="alert('Neuer Ping generiert (Demo)')" title="Neuer Ping">🔄</button>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="emoji-prefix">🔑</span></td>
-                <td>github.com</td>
-                <td>********</td>
-                <td>burn-tips</td>
-                <td>
-                    <button class="row-action-btn" onclick="copyMock()">⧉</button>
-                    <button class="row-action-btn" onclick="alert('Neuer Ping generiert (Demo)')">🔄</button>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="emoji-prefix">🙄</span></td>
-                <td>newsletter-tool</td>
-                <td>********</td>
-                <td>info@burn.tips</td>
-                <td>
-                    <button class="row-action-btn" onclick="copyMock()">⧉</button>
-                    <button class="row-action-btn" onclick="alert('Neuer Ping generiert (Demo)')">🔄</button>
-                </td>
-            </tr>
+            <!-- Wird per JS befüllt -->
         </tbody>
     </table>
     
     <div class="hint">
-        <strong>Insel-KI Prinzip:</strong> Diese Datei läuft zu 100% lokal in Ihrem Browser. Es gibt keine Cloud-Synchronisation und keinen externen Server. Speichern Sie diese HTML-Datei lokal ab (Strg+S), um Ihre Daten zu behalten.
-        <br><br><a href="/" style="color: var(--accent-blue); text-decoration: none;">← Zurück zu Burn.tips</a>
+        <strong>Das digitale Exoskelett:</strong> Das Rumpf-PW steht im Klartext – es ist durch Ihre persönliche Master-Passphrase im Kopf ohnehin maskiert. 
+        Die Datei speichert sich selbst als <code>.html</code>-Datei (inkl. Append-Only JSONL-Historie). Komplett offline, keine Cloud.
+        <br><br><a href="/" style="color: var(--accent-blue); text-decoration: none; font-weight: bold;">← Zurück zu Burn.tips</a>
     </div>
 </div>
 
-<!-- Modal für neuen Eintrag (Asymmetrisches Layout) -->
 <div id="addModal" class="modal">
     <div class="modal-content">
-        <h2 style="margin-top:0;">Neuer Eintrag</h2>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-            <input type="text" placeholder="Status-Emoji (z.B. ⏳, ✅, 🏛️)" style="width: 100%; box-sizing: border-box;">
-            <input type="text" placeholder="URL oder Dienstname" style="width: 100%; box-sizing: border-box;">
-            <input type="text" placeholder="Benutzername" style="width: 100%; box-sizing: border-box;">
-            <input type="text" placeholder="Rumpf-Passwort (wird durch Ping ergänzt)" style="width: 100%; box-sizing: border-box;">
+        <h2 style="margin-top:0; font-family: 'Georgia', serif;">Neuer Eintrag</h2>
+        <div class="modal-inputs">
+            <input type="text" id="m-prefix" placeholder="Nr/Term (z.B. 01, 🏛️, 🔑)" maxlength="10">
+            <input type="text" id="m-url" placeholder="URL oder Dienstname">
+            <input type="text" id="m-user" placeholder="Benutzername">
+            <input type="text" id="m-hint" placeholder="PIN Hint (z.B. 'Standard')">
         </div>
         <div class="modal-buttons">
             <button class="btn-wide" onclick="closeAddModal()">Abbrechen</button>
-            <button class="btn-compact" onclick="alert('Gespeichert (Demo)'); closeAddModal()">OK</button>
+            <button class="btn-compact" onclick="saveNewEntry()">OK</button>
         </div>
     </div>
 </div>
 
+<!-- INSEL-KI DATENSPEICHER (JSONL) -->
+<script id="app-data" type="application/jsonl">
+{"id":"init1","prefix":"🏛️","url":"elster.de","pw":"Xk9pLm4A","hint":"Steuer","user":"st-id-12345","history":[]}
+{"id":"init2","prefix":"🔑","url":"github.com","pw":"aBcD3fGh","hint":"Dev","user":"burn-tips","history":["oldHash1","oldHash2"]}
+</script>
+
 <script>
-    // Simple UI Logic for the Demo Version
-    function filterTable() {
-        let input = document.getElementById("searchInput").value.toUpperCase();
-        let tr = document.getElementById("pwTable").getElementsByTagName("tr");
-        for (let i = 1; i < tr.length; i++) {
-            let tdUrl = tr[i].getElementsByTagName("td")[1];
-            let tdUser = tr[i].getElementsByTagName("td")[3];
-            if (tdUrl || tdUser) {
-                let txtValue = (tdUrl.textContent || tdUrl.innerText) + " " + (tdUser.textContent || tdUser.innerText);
-                tr[i].style.display = txtValue.toUpperCase().indexOf(input) > -1 ? "" : "none";
-            }       
+    // --- KRYPTOGRAFIE & HASHES (Base56 & Mod24) ---
+    const BASE56_CHARS = "abcdefghijkmnpqrstuvwxyz23456789ABCDEFGHJKLMNPQRSTUVWXYZ"; // Kein l, o, 0, 1
+    const MOD24_CHARS = "abcdefghijkmnpqrstuvwxyz"; // 24 lowercase letters (ohne l, o)
+
+    function generatePing(length = 8) {
+        let res = "";
+        for(let i=0; i<length; i++) res += BASE56_CHARS.charAt(Math.floor(Math.random() * BASE56_CHARS.length));
+        return res;
+    }
+
+    function calculateMod24(str) {
+        let sum = 0;
+        for(let i=0; i<str.length; i++) sum += str.charCodeAt(i);
+        return MOD24_CHARS.charAt(sum % 24);
+    }
+
+    function generateHashWithChecksum() {
+        let core = generatePing(7);
+        let check = calculateMod24(core);
+        return core + check;
+    }
+
+    function updateHashes() {
+        document.getElementById('hash-dl').innerText = generateHashWithChecksum();
+        document.getElementById('hash-pr').innerText = generateHashWithChecksum();
+        document.getElementById('hash-bu').innerText = generateHashWithChecksum();
+    }
+
+    // --- DATEN-MANAGEMENT ---
+    let pwData = [];
+
+    function loadData() {
+        const dataScript = document.getElementById('app-data').textContent.trim();
+        pwData = [];
+        if(dataScript) {
+            const lines = dataScript.split('\n');
+            for(let line of lines) {
+                if(line.trim()) {
+                    try { pwData.push(JSON.parse(line)); } catch(e) {}
+                }
+            }
+        }
+        renderTable();
+        updateHashes();
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text);
+    }
+
+    function doPing(id) {
+        const entry = pwData.find(d => d.id === id);
+        if(entry) {
+            if(entry.pw) {
+                if(!entry.history) entry.history = [];
+                entry.history.unshift(entry.pw); // Alt-Passwort in die Historie schieben
+            }
+            entry.pw = generatePing(8);
+            renderTable();
         }
     }
-    
-    function copyMock() {
-        alert("Rumpf-Passwort in die Zwischenablage kopiert. (Demo)");
+
+    // --- UI RENDERING ---
+    function renderTable() {
+        const tbody = document.getElementById('pwBody');
+        tbody.innerHTML = "";
+        const filter = document.getElementById('searchInput').value.toLowerCase();
+
+        pwData.forEach(row => {
+            const searchStr = `${row.url} ${row.user} ${row.prefix} ${row.hint}`.toLowerCase();
+            if (filter && !searchStr.includes(filter)) return;
+
+            const tr = document.createElement('tr');
+            
+            // Historie formatieren (mit Komma getrennt, scrollbar)
+            const historyHtml = row.history && row.history.length > 0 
+                ? row.history.join(" → ") 
+                : "";
+
+            tr.innerHTML = `
+                <td>${row.prefix || ''}</td>
+                <td>${row.url || ''}</td>
+                <td class="rumpf-pw">${row.pw || ''}</td>
+                <td>${row.hint || ''}</td>
+                <td>${row.user || ''}</td>
+                <td>
+                    <button class="row-action-btn" onclick="copyToClipboard('${row.pw}')" title="Rumpf kopieren">⧉</button>
+                    <button class="row-action-btn" onclick="doPing('${row.id}')" title="Neues Rumpf-PW (Ping) generieren">🔄</button>
+                </td>
+                <td class="history-cell" title="Historie scrollen">${historyHtml}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    // --- MODAL & NEUER EINTRAG ---
+    function openAddModal() {
+        document.getElementById('m-prefix').value = "";
+        document.getElementById('m-url').value = "";
+        document.getElementById('m-user').value = "";
+        document.getElementById('m-hint').value = "";
+        document.getElementById('addModal').style.display = 'block';
     }
     
-    function openAddModal() { document.getElementById('addModal').style.display = 'block'; }
-    function closeAddModal() { document.getElementById('addModal').style.display = 'none'; }
-    
-    // Generate mock hashes for the "Dreier-Ampel"
-    document.addEventListener("DOMContentLoaded", () => {
-        const chars = "abcdefghijkmnpqrstuvwxyz23456789ABCDEFGHJKLMNPQRSTUVWXYZ"; // Base56 example
-        const mockHash = () => {
-            let res = "";
-            for(let i=0; i<8; i++) res += chars.charAt(Math.floor(Math.random() * chars.length));
-            return res;
-        };
-        document.getElementById('hash-dl').innerText = mockHash();
-        document.getElementById('hash-pr').innerText = mockHash();
-        document.getElementById('hash-bu').innerText = mockHash();
-    });
+    function closeAddModal() {
+        document.getElementById('addModal').style.display = 'none';
+    }
+
+    function saveNewEntry() {
+        const prefix = document.getElementById('m-prefix').value;
+        const url = document.getElementById('m-url').value;
+        const user = document.getElementById('m-user').value;
+        const hint = document.getElementById('m-hint').value;
+        
+        if(!url) { alert("Bitte mindestens eine URL/Dienst angeben."); return; }
+
+        const newId = "id_" + Date.now();
+        pwData.push({
+            id: newId,
+            prefix: prefix,
+            url: url,
+            pw: generatePing(8), // Direkt ein neues Rumpf-PW zuweisen
+            hint: hint,
+            user: user,
+            history: []
+        });
+
+        closeAddModal();
+        renderTable();
+    }
+
+    // --- LOKALES SPEICHERN (Self-Saving HTML via File System Access API) ---
+    async function saveToDisk() {
+        // 1. JSONL String generieren
+        const jsonl = pwData.map(row => JSON.stringify(row)).join("\n");
+        
+        // 2. Aktuelles HTML holen und den Datenblock ersetzen
+        let htmlContent = document.documentElement.outerHTML;
+        const regex = /<script id="app-data" type="application\/jsonl">[\s\S]*?<\/script>/i;
+        const newDataBlock = `<script id="app-data" type="application/jsonl">\n${jsonl}\n<\/script>`;
+        htmlContent = "<!DOCTYPE html>\n" + htmlContent.replace(regex, newDataBlock);
+
+        // 3. Speichern Dialog
+        try {
+            // Modern File System Access API
+            if (window.showSaveFilePicker) {
+                const handle = await window.showSaveFilePicker({
+                    suggestedName: 'halloPasswort.html',
+                    types: [{
+                        description: 'HTML Dokument',
+                        accept: { 'text/html': ['.html'] },
+                    }],
+                });
+                const writable = await handle.createWritable();
+                await writable.write(htmlContent);
+                await writable.close();
+                alert("Erfolgreich lokal gespeichert!");
+            } else {
+                throw new Error("showSaveFilePicker not supported");
+            }
+        } catch (err) {
+            if (err.name !== 'AbortError') {
+                // Fallback für ältere Browser
+                const blob = new Blob([htmlContent], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'halloPasswort.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+        }
+    }
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', loadData);
 </script>
 </body>
 </html>
