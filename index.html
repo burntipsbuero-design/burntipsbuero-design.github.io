@@ -233,4 +233,195 @@
             min-width: 250px;
             background: #fafafa;
             border: 1px solid var(--border);
-            border
+            border-radius: 8px;
+        }
+        .legal-buttons summary {
+            padding: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #6c757d;
+            color: white;
+            border-radius: 8px;
+            list-style: none;
+            text-align: center;
+        }
+        .legal-buttons summary::-webkit-details-marker { display: none; }
+        .legal-buttons details[open] summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .legal-buttons .details-content {
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Spamschutz RTL */
+        .rtl-mask {
+            direction: rtl;
+            unicode-bidi: bidi-override;
+            font-weight: bold;
+            color: var(--link-color);
+        }
+        
+        button.copy-btn {
+            background: none;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: var(--text-main);
+        }
+        button.copy-btn:hover { background: #eee; }
+
+        @media screen and (max-width: 650px) {
+            .visitenkarte-container { margin: 15px; padding: 20px; }
+            .visitenkarte-container h1 { font-size: 1.8rem; }
+            .contact-list li { font-size: 0.95rem; grid-template-columns: 80px 1fr auto; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TEIL 1: HYBRIDE VISITENKARTE -->
+    <div class="visitenkarte-container">
+        
+        <img src="20260218_Profilbild_BVMID.png" alt="Portrait Joseph Gaßner" class="profilbild">
+
+        <h1>Joseph Gaßner</h1>
+        <h2 class="berufstitel">Lösungs-Designer</h2>
+        <p class="subtitle">Burn.tips UG (haftungsbeschränkt)</p>
+        
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://burn.tips" alt="QR-Code zu burn.tips" class="qrcode">
+        
+        <ul class="contact-list">
+            <li>
+                <strong>Mobil:</strong> 
+                <span class="rtl-mask">9085 309 2151 94+</span>
+                <button class="copy-btn" onclick="copyToClipboard('+49 1512 903 5809')" title="Kopieren">⧉</button>
+            </li>
+            <li>
+                <strong>E-Mail:</strong> 
+                <span class="rtl-mask">spit.nrub@liam</span>
+                <button class="copy-btn" onclick="copyToClipboard('mail@burn.tips')" title="Kopieren">⧉</button>
+            </li>
+            <li style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                <strong>vCard:</strong>
+                <a href="/h/" style="color: var(--text-main); text-decoration: underline;">Digitale Karte anzeigen</a>
+                <span></span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- TEIL 2: INHALT / PORTFOLIO -->
+    <div class="webseiten-container">
+        <main class="webseiten-inhalt">
+
+            <h2 class="section-title">Insel-KI & Digitale Exoskelette</h2>
+            <p class="lead">Ein System muss Verstärker sein, keine Prothese.</p>
+            <p>Wo die Cloud-KI der Reisebus für das allgemeine Weltwissen ist, bauen wir mit der Insel-KI das wendige Motorrad für Ihre sensiblen Daten – cookie-frei, lokal und ohne Abo-Fessel.</p>
+
+            <!-- Messe Logbuch -->
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <h3>📍 Live-Logbuch: electronica & SEMICON</h3>
+                <p>München, 10.–13.11.2026. Begleiten Sie mich auf der Suche nach technischen Goldkörnern für lokale KI-Hardware und LoRa-Komponenten.</p>
+                <a href="/fair/electronica" class="btn">Aktuelles Logbuch</a>
+                <a href="/fair/maker-faire" class="btn btn-outline" style="margin-left: 0.5rem;">Rückblick Hannover</a>
+            </div>
+
+            <!-- Messe-Giveaway -->
+            <div class="highlight-box" style="border-left-color: #2e7d32;">
+                <h3>🎁 Messe-Giveaway: halloPasswort</h3>
+                <p>Kostenfrei zum Mitnehmen: Ihr souveränes Passwort-Werkzeug als autarke Einzeldatei. Kein Cloud-Tresor, keine Registrierung. Rumpf-Passwort im Code + Kopf-PIN im Gedächtnis.</p>
+                <a href="/app/pw" class="btn">Direkt herunterladen</a>
+            </div>
+
+            <!-- 3 Säulen -->
+            <h3 style="font-size: 1.5rem; margin-top: 3rem;">Werkzeuge zum Anfassen</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>Datenschutz durch Handauflegen</h4>
+                    <p>Milchglas-Prinzip & Fensterbrief (halloSichtschutz). Sensible Daten schützen, ohne Mitarbeiter in Passwort-Schikanen zu verstricken.</p>
+                </div>
+                <div class="card">
+                    <h4>Bürokratie-Bändiger</h4>
+                    <p>Digitale Exoskelette, die sich anpassen. Brücken vom gewohnten Word-Dokument (Außendienst) fließend ins moderne CRM.</p>
+                </div>
+                <div class="card">
+                    <h4>Raiffeisen 2.0 (Energie-Mesh)</h4>
+                    <p>Dezentrale Schwarm-Steuerung für thermische Speicher (Gefriertruhe, Boiler) per LoRa. Flatter-Abnahme gegen den Flatterstrom.</p>
+                </div>
+            </div>
+
+            <!-- Kanal-Karussell -->
+            <div class="carousel-wrapper">
+                <h3 style="font-size: 1.5rem;">Der „Opa zum Plaudern“ auf Social Media</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: -0.5rem;">Wischen für weitere Kanäle. Komplettes Beitrags-Archiv unter <a href="/sm/">burn.tips/sm/</a>.</p>
+                <div class="carousel">
+                    <div class="carousel-item">
+                        <a href="/sm/li">LinkedIn</a>
+                        <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-main);">Insel-KI & Business</p>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="/sm/yt">YouTube</a>
+                        <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-main);">Hörfilme & Plaudereien</p>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="/sm/ig">Instagram</a>
+                        <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-main);">@roadtaxoffice</p>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="/sm/tt">TikTok</a>
+                        <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-main);">Opa zum Plaudern</p>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="/sm/fb">Facebook</a>
+                        <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-main);">Gedanken aus dem Leben</p>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="/sm/x">X (Twitter)</a>
+                        <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-main);">Kurz & bündig</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impressum & Legal -->
+            <div class="legal-buttons">
+                <details>
+                    <summary>Impressum (§ 5 DDG)</summary>
+                    <div class="details-content">
+                        <p><strong>Burn.tips UG (haftungsbeschränkt)</strong><br>
+                        Lena-Christ-Str. 10 1/2<br>
+                        84416 Taufkirchen (Vils)</p>
+                        <p><strong>Vertreten durch:</strong><br>Geschäftsführer Joseph Gaßner</p>
+                        <p><strong>Kontakt:</strong><br>E-Mail: mail@burn.tips</p>
+                        <p><strong>Registereintrag:</strong><br>Amtsgericht München, HRB B 252201</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Datenschutz (Tracking-frei)</summary>
+                    <div class="details-content">
+                        <p><strong>1. Datenschutz auf einen Blick</strong><br>Diese Seite operiert tracking- und cookie-frei.</p>
+                        <p><strong>2. Verantwortlicher</strong><br>Burn.tips UG, GF Joseph Gaßner, mail@burn.tips</p>
+                        <p><strong>3. Hosting</strong><br>Gehostet auf GitHub Pages (USA). Serverseitige Logfiles (IP-Adresse) werden kurzfristig zur Systemsicherheit erfasst (Art. 6 Abs. 1 lit. f DSGVO).</p>
+                    </div>
+                </details>
+            </div>
+
+        </main> 
+    </div> 
+
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Kopiert: ' + text);
+        }).catch(err => {
+            console.error('Fehler beim Kopieren: ', err);
+        });
+    }
+</script>
+
+</body>
+</html>
