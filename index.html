@@ -3,480 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>burn.tips - Joseph Gaßner | Lösungs-Designer</title>
-    <meta name="description" content="Hybride Visitenkarte von Joseph Gaßner, Lösungs-Designer. Pragmatische Konzepte, Offline-KI (Vita Solo) und smarte Transfer-Lösungen für den Alltag.">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-
+    <title>Burn.tips | Insel-KI & Digitale Exoskelette</title>
     <style>
-        /* 1. BODY */
+        /* Basis-Styling: Clean, schnell & Serif-Fokus */
+        :root {
+            --bg-color: #fcfcfc;
+            --text-main: #222;
+            --text-muted: #555;
+            --accent: #d32f2f;
+            --card-bg: #ffffff;
+            --border: #e0e0e0;
+        }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Georgia', 'Garamond', serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.6;
-            color: #333;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-        }
-        
-        /* 2. VISITENKARTE */
-        .visitenkarte-container {
-            max-width: 650px; 
-            margin: 40px auto; 
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            text-align: center;
-            box-sizing: border-box;
-            transition: margin 0.3s ease; 
-        }
-        
-        .visitenkarte-container img[src*="Profilbild"] {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%; 
-            object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
         }
 
-        img.qrcode {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 20px;
-            border: 1px solid #eaeaea;
-            border-radius: 8px;
-            padding: 8px;
-            background: #fff;
-        }
-        
-        /* 3. WEBSEITEN-CONTAINER */
-        .webseiten-container {
-            background: #ffffff; 
-            width: 100%;
-            padding: 60px 20px;
-            box-sizing: border-box;
-            border-top: 1px solid #eaeaea; 
-            text-align: center;
-        }
-
-        /* 4. WEBSEITEN-INHALT */
-        .webseiten-inhalt {
-            max-width: 850px; 
+        .container {
+            max-width: 800px;
             margin: 0 auto;
+            padding: 2rem 1.5rem;
         }
 
-        h1 { margin-bottom: 5px; color: #222; font-size: 2.2em; font-weight: 700;}
-        
-        /* Größerer Titel für den Lösungs-Designer */
-        h2.berufstitel { 
-            font-size: 1.7em; 
-            color: #007bff; 
-            margin-top: 15px; 
-            margin-bottom: 5px; 
-            font-weight: bold;
-        }
-        
-        /* Slogan Styling */
-        .subtitle { 
-            font-size: 1.2em; 
-            color: #555; 
-            font-style: italic; 
-            margin-top: 0; 
-            margin-bottom: 30px; 
-        }
-        
-        a { color: #007bff; text-decoration: none; font-weight: 600; transition: color 0.2s; }
-        a:hover { color: #0056b3; text-decoration: underline; }
-        
-        .contact-list {
-             list-style: none;
-             padding: 0;
-             margin: 0 auto;
-             display: inline-block;
-             text-align: left;
+        h1, h2, h3 {
+            font-weight: normal;
+            margin-top: 0;
         }
 
-        .contact-list li { 
-            margin: 12px 0; 
-            font-size: 1.1em; 
-            display: grid;
-            grid-template-columns: 110px 1fr; 
-            align-items: baseline;
-        }
-        
-        .flex-row {
-            display: flex;
-            gap: 25px;
-            justify-content: center;
-            flex-wrap: wrap; 
-            margin-top: 20px;
-            text-align: left;
-        }
-        .flex-col {
-            flex: 1;
-            min-width: 300px; 
-            background: #fafafa;
-            padding: 25px;
-            border-radius: 10px;
-            border: 1px solid #eee;
-            box-sizing: border-box;
+        h1 {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--text-main);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        /* HAUPT-BUTTONS (Blau) */
-        details.main-details {
-            margin-top: 20px;
-            width: 100%;
-            text-align: center;
+        .lead {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-style: italic;
         }
-        details.main-details > summary {
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1.1em;
-            list-style: none;
-            position: relative;
-            background-color: #007bff;
-            color: #ffffff;
-            padding: 15px 25px;
-            border-radius: 30px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
-            user-select: none;
-        }
-        details.main-details > summary::-webkit-details-marker { display: none; }
-        details.main-details > summary:hover { background-color: #0056b3; box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
-        details.main-details > summary:active { transform: translateY(1px); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        details.main-details > summary::after {
-            content: '\25BC'; font-size: 0.8em; transition: transform 0.3s ease; display: inline-block;
-        }
-        details.main-details[open] > summary::after { transform: rotate(180deg); }
-        
-        .details-content {
-            text-align: left;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            margin-top: 15px;
-            border: 1px solid #eee;
+
+        /* Messe-Kasten & Giveaway */
+        .highlight-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
+
+        .highlight-box h2 {
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        a.btn {
+            display: inline-block;
+            background-color: var(--text-main);
+            color: #fff;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+            font-family: sans-serif;
+            font-size: 0.9rem;
+        }
         
-        /* CSS Grid für die 8 Use-Cases (2 Spalten) */
-        .use-case-grid {
+        a.btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--text-main);
+        }
+
+        /* Lösungs-Raster */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
-        
-        /* Styling für die inneren Buttons der Use-Cases */
-        .use-case-item summary {
-            background-color: #f8f9fa;
-            color: #333;
-            border: 1px solid #ccc;
-            font-size: 1em;
-            padding: 12px 15px;
-            border-radius: 8px;
-            box-shadow: none;
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 1.2rem;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Wischbares Kanal-Karussell */
+        .carousel-wrapper {
+            margin-bottom: 3rem;
+        }
+        .carousel {
             display: flex;
-            justify-content: space-between;
-            width: 100%;
-            box-sizing: border-box;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            -webkit-overflow-scrolling: touch;
         }
-        .use-case-item summary:hover { background-color: #e2e6ea; }
-        .use-case-item[open] summary {
-            background-color: #e2e6ea;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
+        .carousel::-webkit-scrollbar {
+            height: 6px;
         }
-        .use-case-item .details-content {
-            margin-top: 0;
-            border-top: none;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            padding: 15px;
-            background: #fff;
-            box-shadow: none;
-            border: 1px solid #ccc;
-            border-top: none;
+        .carousel::-webkit-scrollbar-thumb {
+            background-color: var(--border);
+            border-radius: 3px;
         }
-        
-        /* Archiv-Link Styling */
-        .archive-link {
-            display: block;
-            text-align: right;
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #6c757d;
-            border-top: 1px solid #eee;
-            padding-top: 10px;
-        }
-
-        /* Video-Thumbnail-Stil */
-        .video-thumbnail-link img {
-            width: 100%;
-            max-width: 480px; 
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            border: 2px solid #eaeaea;
-        }
-        .video-thumbnail-link img:hover {
-            transform: scale(1.03); 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25); 
-        }
-
-        /* FOOTER-NOTIZ */
-        .footer-note {
+        .carousel-item {
+            flex: 0 0 70%;
+            max-width: 250px;
+            scroll-snap-align: start;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 1rem;
             text-align: center;
-            font-size: 0.85em;
-            color: #555;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eaeaea;
-            line-height: 1.5;
+        }
+        .carousel-item a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-family: sans-serif;
+            font-weight: bold;
         }
 
-        .legal-buttons summary { font-size: 0.95em; padding: 10px 20px; color: #ffffff; background-color: #6c757d; }
-        .legal-buttons summary:hover { background-color: #5a6268; }
+        /* Kontakt & RTL-Maskierung */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            font-family: sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
 
-        
-        @media screen and (max-width: 650px) {
-            .visitenkarte-container { margin: 15px auto; padding: 20px; }
-            h1 { font-size: 1.8em; }
-            h2.berufstitel { font-size: 1.7em; }
-            img.qrcode { width: 120px; height: 120px; margin-bottom: 15px; }
+        /* Der Spamschutz-Trick */
+        .rtl-mask {
+            direction: rtl;
+            unicode-bidi: bidi-override;
+            display: inline-block;
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        button.copy-btn {
+            background: none;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: 0.5rem;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: var(--text-main);
+        }
+        button.copy-btn:hover {
+            background: #eee;
+        }
+
+        .qr-placeholder {
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            background-color: #eee;
+            border: 1px dashed #ccc;
+            text-align: center;
+            line-height: 120px;
+            margin-top: 1rem;
+            color: #888;
         }
     </style>
 </head>
-
 <body>
-    <div class="visitenkarte-container">
-        
-        <img src="20260218_Profilbild_BVMID.png" width="800" height="600" alt="Portrait">
 
-        <h1>Joseph Gaßner</h1>
-        <h2 class="berufstitel">Lösungs-Designer</h2>
-        <p class="subtitle">Wir entwickeln Ihre Ideen zu greifbaren Konzepten</p>
-        
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://burn.tips" width="200" height="200" 
-             alt="QR-Code zu burn.tips" class="qrcode">
-        <br>
-
-        <ul class="contact-list">
-            <li><strong>WhatsApp:</strong> <a href="https://wa.me/4915129035809" target="_blank">+49 1512 903 5809</a></li>
-            <li><strong>E-Mail:</strong> <a href="mailto:mail@burn.tips">mail@burn.tips</a></li>
-            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/gj-tax/" target="_blank">gj-tax</a></li>
-            <li><strong>YouTube:</strong> <a href="https://www.youtube.com/@Burn-tips" target="_blank">Ein Opa zum Plaudern</a></li>
-            <li><strong>Instagram:</strong> <a href="https://www.instagram.com/burn.tips" target="_blank">@burn.tips</a></li>
-        </ul>
-
-    </div>
+<div class="container">
     
-    <div class="webseiten-container">
-        <main class="webseiten-inhalt">
+    <header>
+        <h1>Burn.tips</h1>
+        <p class="lead">Insel-KI & Digitale Exoskelette für den Mittelstand. <br>
+        Ein System muss Verstärker sein, keine Prothese.</p>
+        <p>Wo die Cloud-KI der Reisebus für das allgemeine Weltwissen ist, bauen wir mit der Insel-KI das wendige Motorrad für Ihre sensiblen Daten – cookie-frei, lokal und ohne Abo-Fessel.</p>
+    </header>
 
-            <!-- NEU: temporärer Messe-Banner -->
-            <div style="background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 25px; border-radius: 12px; margin-bottom: 35px; text-align: center; box-shadow: 0 6px 15px rgba(0,123,255,0.3);">
-                <h2 style="color: white; margin-top: 0; border: none; padding: 0; font-size: 1.7em;">🎪 Treffe mich auf der Maker Faire Hannover!</h2>
-                <p style="font-size: 1.1em; margin-bottom: 20px; color: #f0f8ff;">
-                    Dieses Wochenende (15. & 16. August 2026) findest du mich an <strong>Stand 170</strong>.<br>
-                    Verpasse auch nicht meinen Vortrag: <em>"Das digitale Exoskelett"</em> (Sa, 16:25 Uhr).
-                </p>
-                <a href="maker-faire/" style="background: #ffffff; color: #007bff; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.1em; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.15); transition: transform 0.2s;">
-                    ► Zur Messe-Sonderseite & Honorar-Tool
-                </a>
+    <!-- Messe Logbuch -->
+    <div class="highlight-box">
+        <h2>📍 Live-Logbuch: electronica & SEMICON München</h2>
+        <p>10. – 13. November 2026. Begleiten Sie mich auf der Suche nach den technischen Goldkörnern für lokale KI-Hardware und LoRa-Komponenten.</p>
+        <a href="/fair/electronica" class="btn">Zum aktuellen Messe-Logbuch</a>
+        <a href="/fair/maker-faire" class="btn btn-outline" style="margin-left: 0.5rem;">Rückblick Maker Faire</a>
+    </div>
+
+    <!-- Messe-Giveaway -->
+    <div class="highlight-box" style="border-left-color: #2e7d32;">
+        <h2>🎁 Messe-Giveaway: halloPasswort</h2>
+        <p>Kostenfrei zum Mitnehmen: Ihr souveränes Passwort-Werkzeug als autarke Einzeldatei. Kein Cloud-Tresor, keine Registrierung. Rumpf-Passwort im Code + Kopf-PIN im Gedächtnis.</p>
+        <a href="/app/pw" class="btn">halloPasswort herunterladen & testen</a>
+    </div>
+
+    <!-- 3 Säulen -->
+    <h2>Unsere Werkzeuge zum Anfassen</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Datenschutz durch Handauflegen</h3>
+            <p>Milchglas-Prinzip & Fensterbrief (halloSichtschutz). Sensible Daten schützen, ohne Mitarbeiter in Passwort-Schikanen zu verstricken.</p>
+        </div>
+        <div class="card">
+            <h3>Bürokratie-Bändiger</h3>
+            <p>Digitale Exoskelette, die sich dem Menschen anpassen. Z.B. fließende Brücken vom gewohnten Word-Dokument direkt ins moderne CRM.</p>
+        </div>
+        <div class="card">
+            <h3>Raiffeisen 2.0 (Energie-Mesh)</h3>
+            <p>Dezentrale Schwarm-Steuerung für thermische Speicher (Gefriertruhe, Boiler) per LoRa. Die Flatter-Abnahme gegen den Flatterstrom.</p>
+        </div>
+    </div>
+
+    <!-- Kanal-Karussell -->
+    <div class="carousel-wrapper">
+        <h2>Der „Opa zum Plaudern“ auf Social Media</h2>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: -0.5rem;">Wischen für weitere Kanäle. Alle Beiträge gesammelt unter <a href="/sm/">burn.tips/sm/</a>.</p>
+        <div class="carousel">
+            <div class="carousel-item">
+                <a href="/sm/li">LinkedIn</a>
+                <p style="font-size: 0.85rem; margin-bottom: 0;">Insel-KI & Business</p>
             </div>
-
-            <details class="main-details" open>
-                <summary>Mein aktuelles Herzens-Projekt</summary>
-                <div class="details-content">
-                    <h2>halloEU</h2>
-                    <p><strong>Die Zukunft gestalten, statt auf die Politik zu warten.</strong></p>
-                    <p>Fristen verstreichen, EU-Vorgaben wachsen – und die deutsche Gesetzgebung hinkt bei der Umsetzung oft hinterher. <strong>halloEU</strong> ist die pragmatische Antwort für den Mittelstand: Ein Ansatz, um Vorgaben wie die aktuelle Transparenzpflicht mit minimalem Aufwand proaktiv im eigenen Unternehmen zu lösen.</p>
-                    <ul>
-                        <li><p><strong>Fortschritt durch Pragmatismus:</strong> Das Unvermeidliche effizient umsetzen – mit klaren, greifbaren Prozessen, die den Betriebsablauf nicht stören.</p></li>
-                        <li><p><strong>Souveränität gewinnen:</strong> Wer EU-konform handelt, bevor die inländische Bürokratie zuschlägt, positioniert sich als moderner, verlässlicher Arbeitgeber und Partner.</p></li>
-                        <li><p><strong>Macher statt Verwalter:</strong> Intelligente Transfer-Lösungen, die es Mitarbeitern erlauben, komplexe Vorgaben fast nebenbei im gewohnten Tagesgeschäft zu erfüllen.</p></li>
-                    </ul>
-                <a href="#blog-sektion" class="archive-link" onclick="document.getElementById('blog-sektion').open = true;">► Zu den aktuellen Blog-Impulsen</a>                </div>
-            </details>
-
-            <details class="main-details">
-                <summary>Lösungen aus der Praxis</summary>
-                <div class="details-content">
-                    <p style="margin-top:0;">Mein Werkzeugkasten für Alltag und Business. Klicke auf ein Konzept, um mehr zu erfahren:</p>
-                    
-                    <div class="use-case-grid">
-                        
-                        <details class="use-case-item"><summary>Smarte FiBu & Steuer</summary><div class="details-content"><p>Finanzbuchhaltung, die nicht nur Belege sammelt, sondern die vollständige Einkommensteuererklärung gleich mit abbildet. Weniger Handgriffe, mehr Souveränität.</p></div></details>
-                        
-                        <details class="use-case-item"><summary>Offline-KI: Vita Solo</summary><div class="details-content"><p>Der unkomplizierte Einstieg. Die Hardware-Lösung für den sicheren ersten Schritt in die Welt der lokalen KI – komplett ohne Cloud-Zwang.</p></div></details>
-                        
-                        <details class="use-case-item"><summary>To-Do-System ". . / \ ."</summary><div class="details-content"><p>Mein Plädoyer für pragmatische Einfachheit. Ein Aufgaben-Management, das völlig ohne Strom funktioniert und überall sofort Klarheit im Kopf schafft.</p></div></details>
-                        
-                        <details class="use-case-item"><summary>Offline-KI: Vita Pad</summary><div class="details-content"><p>Die Standard-Lösung für den Schreibtisch. Das Konzept für größere KI-Aufgaben, die zuverlässig und autark direkt vor Ort verarbeitet werden müssen.</p></div></details>
-                        
-                        <details class="use-case-item"><summary>Die Visitenkarte Plus</summary><div class="details-content"><p>Eine werbeoptimierte Webseite mit minimalen Mitteln. Die digitale Visitenkarte, die gleichzeitig als starkes Werkzeug zur Kundengewinnung dient.</p></div></details>
-
-                        <details class="use-case-item"><summary>Offline-KI: Vita Butler</summary><div class="details-content"><p>Die Königsklasse. Das persönliche Offline-KI-Rechenzentrum für komplexe Aufgaben, die ein Mensch alleine gerade noch überblicken kann.</p></div></details>
-                        
-                        <details class="use-case-item">
-                            <summary>Strategie: Körpergewicht</summary>
-                            <div class="details-content">
-                                <p>Konzepte funktionieren nicht nur im Büro. Ein persönlicher Use-Case, der zeigt, wie sich Herausforderungen durch greifbare Strategien lösen lassen. (Aktueller Stand: bereits -32 kg!)</p>
-        
-                                <div style="text-align: center; margin-top: 15px;">
-                                    <a href="https://youtu.be/Ibk04YlE9hM" target="_blank" class="video-thumbnail-link" style="display: inline-block; width: 100%;">
-                                        <img src="https://img.youtube.com/vi/Ibk04YlE9hM/hqdefault.jpg" width="480" height="360" 
-                                             alt="YouTube Video-Vorschaubild: 26,5 kg weniger Zusatzgewicht"
-                                             style="width: 100%; max-width: 300px;">
-                                    </a>
-                                </div>
-                            </div>
-                        </details>
-
-                        <details class="use-case-item"><summary>Das Mitarbeiter-Exoskelett</summary><div class="details-content"><p>Keine Prothese, sondern ein Booster. Smarte Transfer-Lösungen, die es erfahrenen Mitarbeitern erlauben, in gewohnten Programmen zu arbeiten und nahtlos das CRM zu füttern.</p></div></details>
-                        
-                    </div>
-                </div>
-            </details>
-
-            <details class="main-details" id="blog-sektion">
-                <summary>Blog & BVMID-Impulse</summary>
-                <div class="details-content">
-                    <h3 style="margin-top:0; color: #007bff;">Neuigkeiten & Artikel</h3>
-                    <p>Hier teile ich regelmäßig meine Gedanken, Fachartikel und neue Konzepte für den Mittelstand.</p>
-
-                    <article
-                        style="background: #fff; padding: 25px; border-radius: 8px; border: 1px solid #eaeaea; margin-top: 15px; text-align: left;">
-
-                        <h3 style="margin-top: 0; color: #222; font-size: 1.4em;">Transparenz-Frist verstrichen: Warum wir nicht auf die
-                            Politik warten dürfen</h3>
-                        <p style="font-size: 0.9em; color: #666; margin-bottom: 25px;">Veröffentlicht am 09.06.2026 | Lesezeit: ca. 2
-                            Minuten</p>
-
-                        <p>Gestern, am 8. Juni 2026, sind wir in eine neue Realität aufgewacht. Die Umsetzungsfrist für die
-                            EU-Entgelttransparenzrichtlinie ist am Sonntag abgelaufen. Der deutsche Gesetzgeber? Glänzt durch Untätigkeit.
-                            Ein nationales Umsetzungsgesetz fehlt bisher völlig. Doch wer jetzt glaubt, er könne sich als Unternehmer
-                            entspannt zurücklehnen und abwarten, bis die Politik irgendwann liefert, verkennt die Lage: Arbeitsgerichte
-                            werden ab sofort im Lichte der EU-Richtlinie urteilen.</p>
-
-                        <p>Die reflexartige Reaktion in vielen Unternehmen ist nun oft blinder Aktionismus. Es werden hastig neue, komplexe
-                            HR-Software-Lösungen evaluiert, um Gehälter, Vergleichsgruppen und objektive Kriterien rechtssicher zu
-                            dokumentieren. Und wer leidet darunter im Betriebsalltag? Die erfahrenen Mitarbeiter. Plötzlich sollen
-                            langjährige Führungskräfte, die fachlich brillieren, gezwungen werden, sich durch starre Eingabemasken zu
-                            klicken, um der Bürokratie Genüge zu tun.</p>
-
-                        <h4 style="color: #007bff; margin-top: 25px;">Die Lösung: Transfer statt Transformation</h4>
-
-                        <p>An genau dieser Stelle greift mein Konzept des digitalen Exoskeletts für Mitarbeiter.</p>
-
-                        <blockquote
-                            style="border-left: 4px solid #007bff; padding-left: 15px; margin: 20px 0; font-style: italic; color: #444; background: #f8f9fa; padding: 15px; border-radius: 0 8px 8px 0;">
-                            "Ein Exoskelett ist keine Prothese, die uns das Denken abnimmt. Es ist ein Booster. Es erweitert unsere
-                            Fähigkeiten und baut Brücken zwischen menschlicher Expertise und digitalen Compliance-Vorgaben."
-                        </blockquote>
-
-                        <p>Wie sieht das in der Praxis aus? Nehmen wir die geforderte Dokumentation für eine faire, geschlechtsneutrale
-                            Gehaltseinstufung. Der erfahrene Abteilungsleiter verfasst seine Einschätzung zur Stelle und zum
-                            Anforderungsprofil weiterhin genau dort, wo er sich wohlfühlt und fließend arbeitet – zum Beispiel in einem
-                            einfachen Word-Dokument.</p>
-
-                        <p>Das Exoskelett agiert als smarte Transfer-Lösung lautlos im Hintergrund: Es liest diese unstrukturierten
-                            Informationen, prüft sie auf die geforderten objektiven Parameter der EU-Richtlinie und füttert das zentrale HR-
-                            oder CRM-System vollautomatisch. Die eloquenten Mitarbeiter in der Verwaltung sehen sofort alles sauber
-                            strukturiert vor sich, was sie für die Berichtspflichten benötigen.</p>
-
-                        <h4 style="color: #007bff; margin-top: 25px;">Menschlichkeit vor Paragrafen</h4>
-
-                        <p>Das Ergebnis ist echte Wertschätzung: Der Wert unserer älteren und erfahrenen Mitarbeiter wird weiterhin an ihrer
-                            fachlichen Lebenserfahrung gemessen – und nicht an ihrer Tippgeschwindigkeit oder ihrer Bereitschaft, sich in
-                            immer neue Software-Oberflächen einzuarbeiten. Die strengen Vorgaben der Entgelttransparenz werden so fast
-                            geräuschlos im Hintergrund erfüllt.</p>
-
-                        <p>Wir können als Mittelstand mit relativ geringem Einsatz längst EU-konformer und fortschrittlicher agieren als die
-                            deutsche Politik. Lassen Sie uns diese intelligenten Transfer-Lösungen nutzen, statt in bürokratischer
-                            Schockstarre auf das nächste Gesetz zu warten.</p>
-
-                    </article>
-
-                    <div style="border-left: 4px solid #6c757d; padding-left: 15px; margin-top: 20px; padding-top: 5px; padding-bottom: 5px;">
-                        <span style="font-size: 0.85em; color: #666;">22.05.2026 – Symposium-Rückblick</span>
-                        <h4 style="margin-top: 5px; margin-bottom: 5px; color: #444;">halloEU: DSGVO als Brücke für die Ukraine</h4>
-                        <p style="margin-top: 0; font-size: 0.9em; color: #555;">Einblicke aus dem Symposium mit ukrainischen Vertretern. Wie wir den Datenaustausch bei der EU-Annäherung pragmatisch und menschlich gestalten, ohne an Vorschriften zu ersticken.</p>
-                    </div>
-
-                    <a href="#" class="archive-link">► Zum vollständigen Artikel-Archiv (im Aufbau)</a>
-                </div>
-            </details>
-
-            <details class="main-details">
-                <summary>Meine Kurz-Geschichte</summary>
-                <div class="details-content">
-                    <p>Hallo, ich bin Joseph. Mein Weg führte mich von 29 Jahren Erfahrung im Steuerbüro (davon 16 Jahre als Steuerberater) hin zu meiner heutigen Berufung als Lösungs-Designer.</p>
-                    <p>Ich baue keine Luftschlösser, sondern pragmatische Systeme – sei es eine klare FiBu-Struktur oder die Architektur eines persönlichen Offline-KI-Rechenzentrums. Doch bei aller Liebe zur Struktur weiß ich: Hinter jedem System stehen immer Menschen.</p>
-                    <p>Ich selbst habe tiefe Täler durchschritten und eine 15-jährige Depression hinter mir gelassen. Diese Erfahrung prägt heute meine Arbeit und meine Videos. Ich bin eher der 'Opa zum Plaudern', für den absolute Menschlichkeit stets vor starren Paragrafen steht.</p>
-                    
-                    <div style="text-align: center; margin-top: 35px; margin-bottom: 10px;">
-                        <p style="font-size: 1.1em; margin-bottom: 20px;"><strong>Einblicke aus der Praxis:</strong> In meinen Videos spreche ich offen über Lebenserfahrung, den Mut für neue Wege und ganz pragmatische Alltagsentscheidungen.</p>
-                        
-                        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-                            <a href="https://youtu.be/gW-dd3P3fzI" target="_blank" class="video-thumbnail-link" style="flex: 1; min-width: 260px; max-width: 380px;">
-                                <img src="https://img.youtube.com/vi/gW-dd3P3fzI/hqdefault.jpg" width="480" height="360"
-                                     alt="YouTube Video-Vorschaubild: Ein Opa zum Plaudern über E-Auto SOH">
-                            </a>
-                            
-                            <a href="https://youtu.be/DweBl5maEgg" target="_blank" class="video-thumbnail-link" style="flex: 1; min-width: 260px; max-width: 380px;">
-                                <img src="https://img.youtube.com/vi/DweBl5maEgg/hqdefault.jpg" width="480" height="360"
-                                     alt="YouTube Video-Vorschaubild: Muss ein neues Auto teuer sein?">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </details>
-
-            <div class="flex-row legal-buttons" style="margin-top: 50px;">
-                <details class="flex-col" style="min-width: 250px; background: none; border: none; padding: 0;">
-                    <summary>Impressum</summary>
-                    <div class="details-content" style="text-align: left; font-size: 0.9em;">
-                    <h4 style="margin-top:0;">Angaben gemäß § 5 TMG</h4>
-                        <p>
-                            Burn.tips UG (haftungsbeschränkt)<br>
-                            Lena-Christ-Str. 10 1/2<br>
-                            84416 Taufkirchen (Vils)
-                        </p>
-                        <p><b>Vertreten durch:</b><br>Geschäftsführer Joseph Gaßner</p>
-                        <p><b>Kontakt</b><br>E-Mail: mail@burn.tips</p>
-                        <p><b>Registereintrag</b><br>Eintragung im Handelsregister.<br>Registergericht: Amtsgericht München<br>Registernummer: HRB B 252201</p>
-                    </div>
-                </details>
-
-                <details class="flex-col" style="min-width: 250px; background: none; border: none; padding: 0;">
-                    <summary>Datenschutz</summary>
-                    <div class="details-content" style="text-align: left; font-size: 0.9em;">
-                    <h4 style="margin-top:0;">Datenschutzerklärung</h4>
-                        <p><strong>1. Datenschutz auf einen Blick</strong><br>Personenbezogene Daten sind alle Daten, mit denen du persönlich identifiziert werden kannst.</p>
-                        <p><b>2. Verantwortlicher</b><br>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
-                        <p>Burn.tips UG (haftungsbeschränkt)<br>vertreten durch den Geschäftsführer Joseph Gaßner<br>Lena-Christ-Str. 10 1/2<br>84416 Taufkirchen (Vils)<br>E-Mail: mail@burn.tips</p>
-                        <p><b>3. Datenerfassung (Hosting)</b><br>Diese Website wird bei GitHub Pages gehostet (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA). GitHub erfasst Standard-Server-Logfiles (inkl. IP-Adresse) zur Sicherheit. Grundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
-                        <p><b>4. Externe Links</b><br>Bei Klick auf externe Links (WhatsApp, YouTube, Instagram) verlässt du diese Seite. Es gelten die Bestimmungen der jeweiligen Betreiber.</p>
-                        <p><b>5. Deine Rechte</b><br>Du hast das Recht auf unentgeltliche Auskunft, Berichtigung oder Löschung deiner Daten. Wende dich dazu an die oben angegebene Adresse von GitHub Inc.</p>
-                    </div>
-                </details>
+            <div class="carousel-item">
+                <a href="/sm/yt">YouTube</a>
+                <p style="font-size: 0.85rem; margin-bottom: 0;">Hörfilme & Plaudereien</p>
             </div>
-
-            <div class="footer-note">
-                <strong>Pragmatisch und effizient:</strong> Diese Seite besteht aus handgeschriebenem Code, verzichtet auf unnötigen Ballast und verursacht laut Ecograder lediglich 0,12 g CO₂ pro Aufruf (Digital Carbon Rating "A").
+            <div class="carousel-item">
+                <a href="/sm/ig">Instagram</a>
+                <p style="font-size: 0.85rem; margin-bottom: 0;">@roadtaxoffice</p>
             </div>
-            
-        </main> 
-    </div> 
-</body>
-</html>
+            <div class="carousel-item">
+                <a href="/sm/tt">TikTok</a>
+                <p style="font-size: 0.85rem; margin-bottom: 0;">Opa zum Plaudern</p>
+            </div>
+            <div class="carousel-item">
+                <a href="/sm/fb">Facebook</a>
+                <p style="font-size: 0.85rem; margin-bottom: 0;">Gedanken aus dem Leben</p>
+            </div>
+            <div class="carousel-item">
+                <a href="/sm/x">X (Twitter)</a>
+                <p style="font-size: 0.85rem; margin-bottom: 0;">Kurz & bündig</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kontakt & Impressum mit RTL Maskierung -->
+    <div class="footer">
+        <h3>Impressum (Angaben gemäß § 5 DDG)</h3>
+        <p>
+            <strong>Burn.tips UG (haftungsbeschränkt)</strong><br>
+            Vertreten durch: Joseph Gaßner (Gesellschafter-Geschäftsführer)<br>
+            Lena-Christ-Str. 10 1/2<br>
+            84416 Taufkirchen (Vils)<br>
+            Deutschland
+        </p>
+
+        <p>
+            <strong>Kontakt:</strong><br>
+            E-Mail: <span class="rtl-mask">spit.nrub@liam</span> 
+            <button class="copy-btn" onclick="copyToClipboard('mail
