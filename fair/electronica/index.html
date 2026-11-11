@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System- &amp; Hardware-Übersicht · electronica München 2026 | Burn.tips UG</title>
+<style>
+  :root {
+    --bg: #f7f4ed;
+    --paper: #fffdf8;
+    --ink: #1e2329;
+    --muted: #5b626b;
+    --accent: #1c3d6e;
+    --brass: #9e7b3b;
+    --brass-soft: #e6dcc5;
+    --border: #d8d0c0;
+    --ok: #25633d;
+    --font-serif: Georgia, "Times New Roman", Garamond, serif;
+    --base-size: 18px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: var(--base-size);
+    line-height: 1.6;
+  }
+  body.large-print { --base-size: 21px; }
+
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #182842;
+    color: #f8f5ec;
+    border-bottom: 3px solid var(--brass);
+    padding: 0.55rem 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.14);
+  }
+  .top-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.65rem;
+  }
+  .brand-mini {
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    font-size: 0.95rem;
+    color: #f3ead6;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .brand-mini a {
+    color: #f3ead6;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--brass);
+  }
+  .lang-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .col-picker {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(230,220,197,0.3);
+    border-radius: 6px;
+    padding: 0.2rem 0.4rem;
+    gap: 0.25rem;
+  }
+  .col-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #d6c7a9;
+    margin-right: 0.2rem;
+  }
+  .flag-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0.15rem 0.35rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #eae3d2;
+    font-family: var(--font-serif);
+    font-size: 0.8rem;
+    transition: all 0.15s;
+  }
+  .flag-btn:hover { background: rgba(255,255,255,0.14); }
+  .flag-btn.active {
+    background: #f7f4ed;
+    color: #182842;
+    border-color: var(--brass);
+    font-weight: bold;
+  }
+  .flag-svg { width: 20px; height: 14px; border-radius: 2px; display: block; box-shadow: 0 0 1px rgba(0,0,0,0.4); }
+
+  .tool-btn {
+    background: rgba(255,255,255,0.1);
+    color: #f8f5ec;
+    border: 1px solid rgba(230,220,197,0.45);
+    border-radius: 5px;
+    padding: 0.28rem 0.6rem;
+    font-family: var(--font-serif);
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .tool-btn:hover { background: rgba(255,255,255,0.22); }
+  .tool-btn.active { background: var(--brass); color: #fff; border-color: #f3ead6; }
+
+  .page-strip {
+    background: #efe9dc;
+    border-bottom: 1px solid var(--border);
+    padding: 0.45rem 1rem;
+  }
+  .page-strip-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+  }
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .tab-btn {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 0.88rem;
+    padding: 0.28rem 0.68rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .tab-btn:hover { border-color: var(--brass); }
+  .tab-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    font-weight: bold;
+  }
+  .tab-btn.has-note::after {
+    content: " •";
+    color: var(--brass);
+    font-weight: bold;
+  }
+  .tab-btn.active.has-note::after { color: #ffd97d; }
+
+  .save-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .save-btn {
+    background: var(--ok);
+    color: #fff;
+    border: 1px solid #1b4b2d;
+    border-radius: 4px;
+    padding: 0.3rem 0.7rem;
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .save-btn:hover { filter: brightness(1.08); }
+
+  .container {
+    max-width: 1180px;
+    margin: 1.4rem auto 2.5rem;
+    padding: 0 1rem;
+  }
+  .book-sheet {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--brass);
+    border-radius: 6px;
+    padding: 1.8rem 2rem;
+    box-shadow: 0 6px 24px rgba(24,40,66,0.06);
+  }
+  @media (max-width: 760px) {
+    .book-sheet { padding: 1.2rem 1rem; }
+  }
+
+  .synopse-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .synopse-grid.single-col {
+    grid-template-columns: 1fr;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  @media (max-width: 860px) {
+    .synopse-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+  }
+  .lang-col {
+    min-width: 0;
+  }
+  .lang-col + .lang-col {
+    border-left: 1px solid var(--brass-soft);
+    padding-left: 2rem;
+  }
+  .synopse-grid.single-col .lang-col + .lang-col { display: none; }
+  @media (max-width: 860px) {
+    .lang-col + .lang-col {
+      border-left: none;
+      border-top: 2px dashed var(--brass-soft);
+      padding-left: 0;
+      padding-top: 1.4rem;
+    }
+  }
+
+  .chapter-badge {
+    display: inline-block;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--brass);
+    border: 1px solid var(--brass-soft);
+    background: #fbf8f1;
+    padding: 0.15rem 0.55rem;
+    border-radius: 3px;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  h1, h2, h3 {
+    color: var(--accent);
+    line-height: 1.28;
+    margin-top: 0.2rem;
+  }
+  h1 { font-size: 1.65rem; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.42rem; margin-bottom: 0.4rem; }
+  .subtitle {
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-size: 1.02rem;
+  }
+  .pitch-box {
+    margin-bottom: 1.1rem;
+  }
+  .hw-box {
+    background: #f6f2e7;
+    border-left: 3px solid var(--brass);
+    padding: 0.75rem 1rem;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.94rem;
+  }
+  .hw-box strong {
+    display: block;
+    color: #182842;
+    margin-bottom: 0.25rem;
+  }
+
+  .toc-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 0.8rem;
+    margin-top: 1.4rem;
+  }
+  .toc-card {
+    border: 1px solid var(--border);
+    background: #fcfaf4;
+    border-radius: 5px;
+    padding: 0.75rem 0.9rem;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-serif);
+    transition: border-color 0.15s, transform 0.1s;
+  }
+  .toc-card:hover {
+    border-color: var(--brass);
+    transform: translateY(-1px);
+  }
+  .toc-num { font-weight: bold; color: var(--brass); font-size: 0.85rem; }
+  .toc-title { font-weight: bold; color: var(--accent); display: block; margin-top: 0.15rem; font-size: 1rem; }
+
+  /* Notizfeld Standard */
+  .notes-section {
+    margin-top: 2rem;
+    padding-top: 1.3rem;
+    border-top: 2px solid var(--brass-soft);
+  }
+  .notes-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+  }
+  .notes-title {
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 1rem;
+  }
+  .notes-hint {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .notes-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
+  }
+  .note-btn {
+    background: #f3efe4;
+    border: 1px solid var(--border);
+    color: var(--ink);
+    padding: 0.28rem 0.65rem;
+    border-radius: 4px;
+    font-family: var(--font-serif);
+    font-size: 0.84rem;
+    cursor: pointer;
+  }
+  .note-btn:hover { border-color: var(--brass); background: #ece5d5; }
+  .note-textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 0.85rem;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.55;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: #fffefb;
+    color: var(--ink);
+    resize: vertical;
+  }
+  .note-textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(28,61,110,0.12);
+  }
+  .attachments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.7rem;
+    margin-top: 0.75rem;
+  }
+  .att-card {
+    border: 1px solid var(--border);
+    background: #faf7ef;
+    border-radius: 5px;
+    padding: 0.55rem;
+    font-size: 0.84rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .att-thumb {
+    width: 100%;
+    max-height: 130px;
+    object-fit: contain;
+    background: #fff;
+    border: 1px solid #e5dec9;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .att-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.3rem;
+    word-break: break-all;
+  }
+  .att-del {
+    background: none;
+    border: 1px solid #cfa3a3;
+    color: #8b2626;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.76rem;
+    padding: 0.1rem 0.38rem;
+  }
+
+  .pager-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.6rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .nav-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .nav-btn:disabled { opacity: 0.35; cursor: default; }
+
+  /* Vorschau-Karte halloPasswort & Kontakt */
+  .pw-preview-card {
+    border: 2px solid var(--brass);
+    background: linear-gradient(180deg, #fffdf8 0%, #f6f0e2 100%);
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem;
+    margin: 1.2rem 0 1.6rem;
+  }
+  .pw-mock-row {
+    font-family: monospace;
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    margin: 0.7rem 0;
+    font-size: 0.9rem;
+    overflow-x: auto;
+  }
+  .cta-link {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.48rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.94rem;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.45rem 1rem;
+    align-items: center;
+    font-size: 0.95rem;
+  }
+  .rtl-mask {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    display: inline-block;
+  }
+  .copy-mini {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.8rem;
+    margin-left: 0.35rem;
+  }
+
+  /* Asymmetrisches Modal (Burn.tips Stil: OK kompakt rechts unten, Abbrechen breit) */
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 36, 0.62);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal-card {
+    background: var(--paper);
+    border: 2px solid var(--brass);
+    border-radius: 6px;
+    max-width: 480px;
+    width: 100%;
+    padding: 1.3rem 1.4rem;
+    box-shadow: 0 12px 34px rgba(0,0,0,0.28);
+  }
+  .modal-actions {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  .btn-cancel-wide {
+    flex: 1;
+    background: #e9e4d8;
+    border: 1px solid var(--border);
+    color: var(--ink);
+    padding: 0.55rem;
+    border-radius: 4px;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .btn-ok-compact {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0.55rem 1.1rem;
+    border-radius: 4px;
+    font-family: var(--font-serif);
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .field-input {
+    width: 100%;
+    padding: 0.5rem 0.65rem;
+    margin-top: 0.35rem;
+    margin-bottom: 0.7rem;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+
+  footer {
+    max-width: 1180px;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+    text-align: center;
+    font-size: 0.84rem;
+    color: var(--muted);
+  }
+
+  @media print {
+    .top-bar, .page-strip, .pager-bar, .notes-toolbar { display: none !important; }
+    .book-sheet { box-shadow: none; border: 1px solid #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="top-inner">
+    <div class="brand-mini">
+      <span>Burn.tips UG</span> · <a href="https://burn.tips/">burn.tips</a>
+    </div>
+
+    <div class="lang-controls">
+      <div class="col-picker" id="picker-left" title=" Hauptsprache / Linke Spalte ">
+        <span class="col-label" id="lbl-col1">Spalte 1</span>
+        <button class="flag-btn" data-col="1" data-lang="de" onclick="setLang(1,'de')"><span class="flag-slot" data-f="de"></span>DE</button>
+        <button class="flag-btn" data-col="1" data-lang="en" onclick="setLang(1,'en')"><span class="flag-slot" data-f="en"></span>EN</button>
+        <button class="flag-btn" data-col="1" data-lang="zh" onclick="setLang(1,'zh')"><span class="flag-slot" data-f="zh"></span>ZH</button>
+        <button class="flag-btn" data-col="1" data-lang="vi" onclick="setLang(1,'vi')"><span class="flag-slot" data-f="vi"></span>VI</button>
+      </div>
+
+      <button class="tool-btn" id="btn-dual-toggle" onclick="toggleDualMode()" title="1- oder 2-Spalten-Synopse">⇄ 2 Spalten</button>
+
+      <div class="col-picker" id="picker-right" title=" Zweitsprache / Rechte Spalte ">
+        <span class="col-label" id="lbl-col2">Spalte 2</span>
+        <button class="flag-btn" data-col="2" data-lang="de" onclick="setLang(2,'de')"><span class="flag-slot" data-f="de"></span>DE</button>
+        <button class="flag-btn" data-col="2" data-lang="en" onclick="setLang(2,'en')"><span class="flag-slot" data-f="en"></span>EN</button>
+        <button class="flag-btn" data-col="2" data-lang="zh" onclick="setLang(2,'zh')"><span class="flag-slot" data-f="zh"></span>ZH</button>
+        <button class="flag-btn" data-col="2" data-lang="vi" onclick="setLang(2,'vi')"><span class="flag-slot" data-f="vi"></span>VI</button>
+      </div>
+
+      <button class="tool-btn" id="btn-font" onclick="toggleFontSize()" title="Seniorengerechte Schriftgröße">A+</button>
+      <button class="tool-btn" onclick="openQrModal()" title="Seitengenauen QR-Code zeigen">▣ QR</button>
+    </div>
+  </div>
+</header>
+
+<nav class="page-strip">
+  <div class="page-strip-inner">
+    <div class="tabs" id="page-tabs"></div>
+    <div class="save-pill">
+      <button class="save-btn" onclick="exportSelfContainedHtml()" id="btn-save-html">💾 HTML inkl. Notizen sichern</button>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <article class="book-sheet">
+    <div id="page-content"></div>
+
+    <section class="notes-section" id="notes-wrapper" style="display:none;">
+      <div class="notes-header">
+        <span class="notes-title" id="lbl-notes-title">Lokales Messe-Notizfeld</span>
+        <span class="notes-hint" id="lbl-notes-hint">100 % lokal im Browser &amp; im baugleichen HTML-Export · Strg+V für Bilder</span>
+      </div>
+      <div class="notes-toolbar">
+        <button class="note-btn" onclick="triggerFileEmbed()" id="btn-att-embed">📎 Bild / Datei einbetten</button>
+        <input type="file" id="hidden-file-input" style="display:none" multiple onchange="handleFilesSelected(this.files)">
+        <button class="note-btn" onclick="openLinkModal()" id="btn-att-link">🔗 Anhang / Pfad verknüpfen</button>
+        <button class="note-btn" onclick="copyCurrentNote()" id="btn-note-copy">⧉ Notiz kopieren</button>
+      </div>
+      <textarea class="note-textarea" id="chapter-note-input" placeholder="Standnummer, Ansprechpartner, MOQ, Preise, Skizzen-Ideen ..."></textarea>
+      <div class="attachments-grid" id="attachments-list"></div>
+    </section>
+
+    <div class="pager-bar">
+      <button class="nav-btn" id="btn-prev" onclick="stepPage(-1)">◄ Zurück</button>
+      <span id="page-indicator" style="font-size:0.9rem;color:var(--muted);"></span>
+      <button class="nav-btn" id="btn-next" onclick="stepPage(1)">Weiter ►</button>
+    </div>
+  </article>
+</main>
+
+<footer>
+  Zero Cookies · Zero Trackers · Zero Cloud · 100 % Local Standalone HTML + Append-Only JSONL · Burn.tips UG (haftungsbeschränkt)
+</footer>
+
+<!-- Modal: QR-Code -->
+<div class="modal-backdrop" id="qr-modal" onclick="if(event.target===this)closeModal('qr-modal')">
+  <div class="modal-card" style="text-align:center;">
+    <h3 id="qr-modal-title" style="margin-top:0;">Direktlink zu dieser Buchseite</h3>
+    <div id="qr-canvas-wrap" style="background:#fff;padding:12px;display:inline-block;border:1px solid var(--border);border-radius:6px;"></div>
+    <p id="qr-url-display" style="font-family:monospace;font-size:0.82rem;word-break:break-all;color:var(--muted);margin:0.6rem 0;"></p>
+    <div class="modal-actions">
+      <button class="btn-cancel-wide" onclick="closeModal('qr-modal')">Schließen</button>
+      <button class="btn-ok-compact" onclick="copyShareUrl()">Link ⧉</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Link / Datei-Pfad verknüpfen -->
+<div class="modal-backdrop" id="link-modal" onclick="if(event.target===this)closeModal('link-modal')">
+  <div class="modal-card">
+    <h3 style="margin-top:0;" id="lbl-modal-link-h">Externen Anhang / Pfad verknüpfen</h3>
+    <label style="font-size:0.88rem;">Bezeichnung (z. B. Sinhoo Katalog S. 14 / STEP-Zeichnung)</label>
+    <input type="text" id="link-label-inp" class="field-input" placeholder="Katalog / Visitenkarte / Zeichnung">
+    <label style="font-size:0.88rem;">URL oder lokaler Dateipfad</label>
+    <input type="text" id="link-url-inp" class="field-input" placeholder="https://... oder ./katalog.pdf">
+    <div class="modal-actions">
+      <button class="btn-cancel-wide" onclick="closeModal('link-modal')">Abbrechen</button>
+      <button class="btn-ok-compact" onclick="confirmAddLink()">OK</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Bild-Vollansicht -->
+<div class="modal-backdrop" id="img-modal" onclick="closeModal('img-modal')">
+  <div class="modal-card" style="max-width:860px;text-align:center;">
+    <img id="img-modal-target" src="" alt="Vorschau" style="max-width:100%;max-height:75vh;border-radius:4px;">
+    <div class="modal-actions">
+      <button class="btn-cancel-wide" onclick="closeModal('img-modal')">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<!-- Eingebetteter Append-Only JSONL-Datentresor (wird beim baugleichen HTML-Export fortgeschrieben) -->
+<script id="vita-jsonl-store" type="application/x-jsonl"></script>
+
+<script>
+/* === 1. SVG-Flaggen (rein lokal, null externe Requests) === */
+const FLAGS = {
+  de: '<svg class="flag-svg" viewBox="0 0 5 3"><rect width="5" height="3" fill="#000"/><rect width="5" height="2" y="1" fill="#D00"/><rect width="5" height="1" y="2" fill="#FFCE00"/></svg>',
+  en: '<svg class="flag-svg" viewBox="0 0 60 36"><rect width="60" height="36" fill="#012169"/><path d="M0,0 L60,36 M60,0 L0,36" stroke="#FFF" stroke-width="7"/><path d="M0,0 L60,36 M60,0 L0,36" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V36 M0,18 H60" stroke="#FFF" stroke-width="11"/><path d="M30,0 V36 M0,18 H60" stroke="#C8102E" stroke-width="6.5"/></svg>',
+  zh: '<svg class="flag-svg" viewBox="0 0 30 20"><rect width="30" height="20" fill="#DE2910"/><polygon fill="#FFDE00" points="5,2 6,5 9,5 6.5,6.8 7.5,9.8 5,8 2.5,9.8 3.5,6.8 1,5 4,5"/><circle fill="#FFDE00" cx="10" cy="2" r="0.9"/><circle fill="#FFDE00" cx="12" cy="4" r="0.9"/><circle fill="#FFDE00" cx="12" cy="7" r="0.9"/><circle fill="#FFDE00" cx="10" cy="9" r="0.9"/></svg>',
+  vi: '<svg class="flag-svg" viewBox="0 0 30 20"><rect width="30" height="20" fill="#DA251D"/><polygon fill="#FFFF00" points="15,4 16.9,9.8 23,9.8 18.1,13.4 19.9,19.2 15,15.6 10.1,19.2 11.9,13.4 7,9.8 13.1,9.8"/></svg>'
+};
+
+/* === 2. Mehrsprachige Buch-Inhalte (DE, EN, ZH, VI) === */
+const UI_TEXT = {
+  de: {
+    docTitle: "System- & Hardware-Übersicht · Edition electronica München 2026",
+    docSub: "Burn.tips UG (haftungsbeschränkt) · 7 modulare Bausteine für lokale KI-Hardware, Laststeuerung & digitale Exoskelette",
+    introLead: "Wir entwickeln kompakte, langlebige Elektronik- und Softwaresysteme nach dem Prinzip „Digitales Exoskelett“ (Verstärker statt Prothese). Wir starten mit kleinen Pilotserien und skalieren über modulare Standard-Baugruppen – zu 100 % lokal, ohne Cloud-Zwang.",
+    tocHeading: "Kapitelverzeichnis (Direktwahl)",
+    tabStart: "Start",
+    tabExtras: "Werkzeug & Kontakt",
+    hwLabel: "Relevante Hardware- & Fertigungs-Bausteine:",
+    notesTitle: "Lokales Messe-Notizfeld (Kapitel ",
+    notesHint: "100 % lokal auf Ihrem Gerät · Strg+V fügt Bilder direkt ein",
+    btnEmbed: "📎 Bild / Datei einbetten",
+    btnLink: "🔗 Anhang / Pfad verknüpfen",
+    btnCopyNote: "⧉ Notiz kopieren",
+    btnSaveHtml: "💾 Baugleiches HTML sichern",
+    prev: "◄ Zurück",
+    next: "Weiter ►",
+    dualOn: "⇄ 2 Spalten",
+    dualOff: "▭ 1 Spalte",
+    extrasTitle: "Live-Mitnehmsel & Direktkontakt",
+    pwTitle: "Geschenk zur Messe: halloPasswort (Offline-Einzeldatei)",
+    pwDesc: "Unser serverloses Passwort- & Rumpf-Merkwerkzeug in einer einzigen lokalen HTML-Datei – mit Base56-Generator, Revisions-Ampel und Append-Only JSONL-Architektur.",
+    pwCta: "halloPasswort jetzt öffnen →",
+    contactTitle: "Direktkontakt · Burn.tips UG (haftungsbeschränkt)"
+  },
+  en: {
+    docTitle: "Modular Systems & Hardware Portfolio · electronica Munich 2026 Edition",
+    docSub: "Burn.tips UG (Bavaria, Germany) · 7 Modular Building Blocks for Local Edge-AI, Grid Buffering & Digital Exoskeletons",
+    introLead: "We design compact, long-life electronic and software systems built as 'Digital Exoskeletons' (human boosters rather than cloud prostheses). Starting from agile pilot batches, we scale via standardized modular building blocks — 100% local, zero cloud dependency.",
+    tocHeading: "Chapter Directory (Select Page)",
+    tabStart: "Cover",
+    tabExtras: "Tool & Contact",
+    hwLabel: "Key Hardware & Precision Component Requirements:",
+    notesTitle: "Local Trade Fair Notes (Chapter ",
+    notesHint: "100% local on your device · Press Ctrl+V to paste photos",
+    btnEmbed: "📎 Embed Photo / File",
+    btnLink: "🔗 Link External File / URL",
+    btnCopyNote: "⧉ Copy Note",
+    btnSaveHtml: "💾 Save Standalone HTML",
+    prev: "◄ Previous",
+    next: "Next ►",
+    dualOn: "⇄ 2 Columns",
+    dualOff: "▭ 1 Column",
+    extrasTitle: "Live Giveaway & Direct Engineering Contact",
+    pwTitle: "Trade Fair Giveaway: halloPasswort (Zero-Cloud Single-File App)",
+    pwDesc: "Our serverless password & stem-masking tool packed into a single offline HTML file — powered by Base56 generation and append-only JSONL records.",
+    pwCta: "Open halloPasswort →",
+    contactTitle: "Direct Contact · Burn.tips UG (Bavaria, Germany)"
+  },
+  zh: {
+    docTitle: "模块化系统与硬件需求总览 —— 2026 慕尼黑电子展特刊",
+    docSub: "德国巴伐利亚州 Burn.tips UG 研发公司 · 本地边缘 AI、智能电网调峰与数字外骨骼七大核心方案",
+    introLead: "我们专注于研发紧凑、长寿命的软硬件系统，秉持“数字外骨骼”（赋能于人，而非云端替代）的设计理念。从研发打样与小批量试产起步，通过标准化模块稳步扩展 —— 100% 本地运行，零云端依赖。",
+    tocHeading: "章节导航（点击直达单页）",
+    tabStart: "封面总览",
+    tabExtras: "工具与联系",
+    hwLabel: "核心精密五金与硬件结构需求：",
+    notesTitle: "展会本地随手记（第 ",
+    notesHint: "100% 仅保存在本机浏览器 · 支持 Ctrl+V 直接粘贴名片或样品照片",
+    btnEmbed: "📎 嵌入照片/附件",
+    btnLink: "🔗 关联外部图纸/链接",
+    btnCopyNote: "⧉ 复制笔记",
+    btnSaveHtml: "💾 保存完整独立 HTML",
+    prev: "◄ 上一页",
+    next: "下一页 ►",
+    dualOn: "⇄ 双语对照",
+    dualOff: "▭ 单栏阅读",
+    extrasTitle: "现场实用工具与技术对接联系方式",
+    pwTitle: "展会体验礼：halloPasswort（零云端单文件密码工具）",
+    pwDesc: "无需服务器、纯本地运行的单文件 HTML 密码辅助工具，内置 Base56 编码与只读追加 JSONL 审计链。",
+    pwCta: "立即打开 halloPasswort →",
+    contactTitle: "技术与商务联系 · Burn.tips UG（德国巴伐利亚）"
+  },
+  vi: {
+    docTitle: "Hồ sơ Hệ thống Mô-đun & Phần cứng · Ấn bản electronica Munich 2026",
+    docSub: "Burn.tips UG (Bavaria, Đức) · 7 Khối kiến trúc cho AI Cục bộ, Điều phối Lưới điện & Khung xương ngoài Số",
+    introLead: "Chúng tôi thiết kế các hệ thống phần cứng và phần mềm nhỏ gọn, bền bỉ theo triết lý „Khung xương ngoài Số“ (công cụ tăng lực cho con người thay vì phụ thuộc đám mây). Khởi đầu từ các lô thử nghiệm nhỏ và mở rộng qua các mô-đun tiêu chuẩn – 100% cục bộ.",
+    tocHeading: "Mục lục Chương (Chọn trang)",
+    tabStart: "Trang đầu",
+    tabExtras: "Công cụ & Liên hệ",
+    hwLabel: "Yêu cầu Linh kiện Cơ khí Chính xác & Phần cứng:",
+    notesTitle: "Ghi chú Hội chợ Cục bộ (Chương ",
+    notesHint: "100% lưu cục bộ trên thiết bị · Nhấn Ctrl+V để dán ảnh trực tiếp",
+    btnEmbed: "📎 Đính kèm Ảnh / Tệp",
+    btnLink: "🔗 Liên kết Đường dẫn / Bản vẽ",
+    btnCopyNote: "⧉ Sao chép",
+    btnSaveHtml: "💾 Lưu tệp HTML Độc lập",
+    prev: "◄ Trước",
+    next: "Tiếp ►",
+    dualOn: "⇄ Song ngữ",
+    dualOff: "▭ 1 Cột",
+    extrasTitle: "Công cụ Tặng kèm & Liên hệ Trực tiếp",
+    pwTitle: "Quà tặng Triển lãm: halloPasswort (Ứng dụng Mật khẩu 1 Tệp Ngoại tuyến)",
+    pwDesc: "Công cụ quản lý gợi nhớ mật khẩu chạy hoàn toàn ngoại tuyến trong một tệp HTML duy nhất – sử dụng mã Base56 và chuỗi nhật ký JSONL bất biến.",
+    pwCta: "Mở halloPasswort ngay →",
+    contactTitle: "Liên hệ Trực tiếp · Burn.tips UG (Đức)"
+  }
+};
+
+const CHAPTERS = [
+  {
+    num: "01",
+    de: {
+      badge: "01 · Vita Butler & KI-Tender",
+      title: "Modulares Lokal-KI-System & Physisches Sicherheits-Gateway",
+      sub: "Lüfterlose Desktop-Steuereinheit mit anreihbaren 24V-Rechenknoten",
+      pitch: "Physisch getrennte (Air-Gapped) KI-Arbeitseinheit auf dem Schreibtisch: Der Vita Butler bildet das Sicherheits-Gateway mit SD-Karten-Schlüssel und echtem Hardware-Bestätigungstaster, während sich KI-Tender als eigenständige Rechenknoten werkzeuglos koppeln lassen – volle KI-Kraft vor Ort ohne Cloud-Abfluss.",
+      hw: "24V-DC-Daisy-Chain-Stromschiene (verriegelbare Steckverbinder), Dual-LAN (In/Out), gefederte Pogopin-Kontakte zum werkzeuglosen Andocken, CNC-Kupfer-/Alu-Entwärmungsblöcke und SMT-Einpressmuttern."
+    },
+    en: {
+      badge: "01 · Vita Butler & KI-Tender",
+      title: "Modular Local Edge-AI System & Physical Security Gateway",
+      sub: "Fanless aluminum desktop controller paired with stackable 24V compute nodes",
+      pitch: "An air-gapped desktop AI unit: Vita Butler serves as the physical security gateway with SD-card identity licensing and tactile hardware confirmation triggers, while KI-Tender compute modules dock tool-free as scalable local AI nodes — delivering on-premise intelligence with zero cloud exposure.",
+      hw: "24V DC daisy-chain power bus (high-current terminals & conductive copper busbars), Dual-LAN (In/Out), spring-loaded Pogopins for tool-free module docking, custom CNC copper/aluminum heat blocks, and rugged SMT nuts."
+    },
+    zh: {
+      badge: "01 · Vita Butler & KI-Tender",
+      title: "模块化本地边缘 AI 系统与物理安全网关",
+      sub: "无风扇铝合金桌面主控 + 24V 串联扩展算力节点",
+      pitch: "物理隔离（Air-Gapped）的桌面边缘 AI 架构：Vita Butler 主控作为安全网关，采用 SD 卡身份授权与实体按键物理确认；KI-Tender 独立算力节点支持免工具模块化拼接扩展 —— 在本地释放强大算力，彻底杜绝云端数据泄露。",
+      hw: "24V 直流菊花链供电母线（大电流端子与贴片铜排汇流条）、双网口串联（In/Out）、用于模块免工具对接的高精度弹簧针（Pogopins）、定制 CNC 铜/铝导热块及高强度贴片螺母（SMT Nuts）。"
+    },
+    vi: {
+      badge: "01 · Vita Butler & KI-Tender",
+      title: "Hệ thống AI Cục bộ Dạng Mô-đun & Cổng Bảo mật Vật lý",
+      sub: "Bộ điều khiển để bàn không quạt kết hợp các nút tính toán 24V ghép nối chuỗi",
+      pitch: "Thiết bị AI để bàn tách biệt vật lý (air-gapped): Vita Butler đóng vai trò cổng bảo mật với thẻ SD định danh và nút xác nhận vật lý, kết hợp cùng các mô-đun tính toán KI-Tender ghép nối không cần dụng cụ – mang lại sức mạnh AI tại chỗ mà không lo rủi ro đám mây.",
+      hw: "Nguồn chuỗi 24V DC (đầu nối dòng cao & thanh cái đồng), cổng LAN kép (In/Out), chân tiếp xúc lò xo Pogopin ghép nối nhanh, khối tản nhiệt đồng/nhôm CNC và đai ốc dán bề mặt SMT."
+    }
+  },
+  {
+    num: "02",
+    de: {
+      badge: "02 · Felux (.flx)",
+      title: "Dreistufiger Datentresor nach dem „Fensterbrief-Prinzip“",
+      sub: "Sichtbares Leit-Skelett außen · Milchglas-Vorschau · Hardware-Tresor innen",
+      pitch: "Inspiriert vom klassischen Fensterbriefumschlag: Unkritische Leitdaten bleiben außen lesbar, eine Tages-PIN öffnet die anonymisierte „Milchglas“-Arbeitsansicht, und erst ein physischer Sicherheitsschlüssel entsperrt die echte .flx-Klartextkassette.",
+      hw: "Robuste FIDO2-/Hardware-Token-Schnittstellen, präzise Metallgehäuse für Schlüssel-Sticks und verschleißfreie Steckkontakte für den täglichen Kanzlei- und Praxiseinsatz."
+    },
+    en: {
+      badge: "02 · Felux (.flx)",
+      title: "Three-Tier Data Vault Built on the 'Window-Envelope Principle'",
+      sub: "Routing metadata outside · Frosted-glass preview · Hardware-locked core",
+      pitch: "Inspired by the classic window envelope: routing metadata stays visible on the outside, a daily PIN unlocks an anonymized 'frosted-glass' working view, and only a physical hardware key opens the raw .flx plaintext vault cartridge.",
+      hw: "Rugged FIDO2/hardware key interfaces, precision-machined metal token enclosures, and high-cycle connectors built for daily professional office operation."
+    },
+    zh: {
+      badge: "02 · Felux (.flx)",
+      title: "基于“开窗信封原理”的三级数据保险箱",
+      sub: "外层路由摘要可视 · 中层毛玻璃脱敏预览 · 内层硬件密钥解锁",
+      pitch: "灵感源自经典开窗信封：外层仅显示非敏感流转信息，日常 PIN 码可打开脱敏的“毛玻璃”协作视图，唯有插入物理硬件密钥才能解锁底层的 .flx 原始明文数据匣。",
+      hw: "高可靠物理安全密钥接口、精密 CNC 金属密钥外壳以及耐高频插拔的工业级连接器组件。"
+    },
+    vi: {
+      badge: "02 · Felux (.flx)",
+      title: "Két Dữ liệu Ba Tầng theo Nguyên lý „Phong bì Cửa sổ“",
+      sub: "Siêu dữ liệu định tuyến bên ngoài · Lớp xem trước kính mờ · Khóa cứng vật lý",
+      pitch: "Lấy cảm hứng từ phong bì cửa sổ cổ điển: siêu dữ liệu định tuyến hiển thị bên ngoài, mã PIN hàng ngày mở lớp xem trước ẩn danh („kính mờ“), và chỉ khóa cứng vật lý mới mở được kho dữ liệu gốc .flx.",
+      hw: "Giao tiếp khóa bảo mật phần cứng FIDO2 bền bỉ, vỏ kim loại gia công chính xác và cổng kết nối chịu tần suất cắm rút cao."
+    }
+  },
+  {
+    num: "03",
+    de: {
+      badge: "03 · halloStrompreis / ThermoMesh",
+      title: "Dezentraler thermischer Netzpuffer über LoRa-Mesh",
+      sub: "Flattern im Stromnetz dämpfen mit Millionen Haushalts-Kühlgeräten",
+      pitch: "Steckerfertige 230V-Zwischenstecker vernetzen bestehende Tiefkühltruhen, Kühlschränke und Warmwasserspeicher per autarkem LoRa-Mesh-Funk zu einem riesigen virtuellen Schwarm-Puffer – kühlt bei Stromüberschuss vor und überbrückt Lastspitzen ohne Komfortverlust, ohne Cloud und ohne Abo.",
+      hw: "Hochstromklemmen und verlustarme Kupfersammelschienen auf der Platine (230V AC / 16A–32A Relais-Lastpfade), kompakte Wärmeableitung und robuste Antennen-/Gehäuseverschraubungen."
+    },
+    en: {
+      badge: "03 · halloStrompreis / ThermoMesh",
+      title: "Distributed Thermal Grid Buffer via Autonomous LoRa Mesh",
+      sub: "Smoothing renewable grid fluctuations through household thermal inertia",
+      pitch: "Plug-and-play 230V smart load endpoints use autonomous LoRa mesh radio to coordinate millions of existing freezers, fridges, and water heaters into a virtual thermal grid buffer — absorbing solar/wind peaks with zero cloud servers and zero subscription fees.",
+      hw: "High-current PCB terminals and low-loss conductive copper busbars (230V AC / 16A–32A relay switching paths), cool-running contact geometry, and compact thermal dissipation parts."
+    },
+    zh: {
+      badge: "03 · halloStrompreis / ThermoMesh",
+      title: "基于自组网 LoRa Mesh 的分布式热能电网缓冲系统",
+      sub: "协同千家万户冷柜与热水器，低成本平抑新能源电网波动",
+      pitch: "即插即用的 230V 智能负载终端，利用独立自组网的 LoRa Mesh 无线电技术，将海量现有的家用冷柜、冰箱与热水器协同为庞大的虚拟蓄能缓冲池 —— 在绿电过剩时蓄冷蓄热，削峰填谷，零云端服务器、零月租费。",
+      hw: "230V AC / 16A–32A 大电流 PCB 接线端子、低损耗低发热贴片铜排/汇流条（继电器大电流回路），以及紧凑型导热与稳固安装结构件。"
+    },
+    vi: {
+      badge: "03 · halloStrompreis / ThermoMesh",
+      title: "Bộ đệm Lưới điện Nhiệt Phân tán qua Mạng LoRa Mesh",
+      sub: "Ổn định dao động lưới điện bằng quán tính nhiệt hộ gia đình",
+      pitch: "Ổ cắm trung gian 230V cắm-là-chạy dùng sóng vô tuyến LoRa Mesh độc lập để kết nối hàng triệu tủ đông, tủ lạnh và bình nước nóng gia đình thành bộ đệm lưới điện ảo khổng lồ – không đám mây, không phí thuê bao.",
+      hw: "Đầu nối dòng điện cao trên PCB và thanh dẫn đồng tổn hao thấp (đóng cắt rơ-le 230V AC / 16A–32A), tản nhiệt gọn nhẹ và cơ khí vỏ bền chắc."
+    }
+  },
+  {
+    num: "04",
+    de: {
+      badge: "04 · Vita Basis & Eco-KI",
+      title: "Append-Only-Langzeitarchiv & Solar-gespeiste „Insel-KI“",
+      sub: "Erst revisionssicher festhalten, anschließend entspannt auswerten",
+      pitch: "Herstellerunabhängige Unternehmensakten aus reinem HTML und unveränderbaren JSONL-Ereignisketten mit eindeutiger Vita-ID (Base56 + Prüfziffer) – kombiniert mit lokalen „Insel-KI“-Knoten, die schwere OCR- und Audio-Stapeljobs genau dann abarbeiten, wenn kostenloser Balkon- oder Dachsolarstrom anliegt.",
+      hw: "24V-Gleichstrom-Pufferanbindung für Batterie- und Solarspeicher, verlustarme DC-Verteilerschienen und dauerlaufgeeignete Passivkühlkörper für gebrauchte oder modulare Rechenknoten."
+    },
+    en: {
+      badge: "04 · Vita Basis & Eco-AI",
+      title: "Append-Only Long-Term Archive & Solar-Powered 'Island AI'",
+      sub: "Record immutably first — process and book calmly afterward",
+      pitch: "Vendor-independent business records built on pure HTML and immutable JSONL event logs stamped with Base56 Vita-IDs — paired with local 'Island AI' compute clusters that run heavy OCR and audio batch jobs asynchronously whenever surplus solar power is available.",
+      hw: "Low-loss 24V DC solar/battery buffer interconnects, modular busbar power distribution, and fanless passive cooling blocks for 24/7 off-grid compute nodes."
+    },
+    zh: {
+      badge: "04 · Vita Basis & Eco-KI",
+      title: "只读追加长效归档架构与光伏驱动的“孤岛 AI”",
+      sub: "先不可篡改地忠实记录，再从容异步处理与记账",
+      pitch: "不依赖任何商业软件厂商的企业长效档案体系（纯原生 HTML + 带 Base56 校验 Vita-ID 的只读追加 JSONL 事件链），配合本地“孤岛 AI”计算节点 —— 在光伏余电充沛时自动异步批量处理 OCR 识别与语音转写任务。",
+      hw: "24V 直流光伏与储能电池低损配电端子、模块化汇流母线，以及适合全天候无风扇运行的被动散热五金件。"
+    },
+    vi: {
+      badge: "04 · Vita Basis & Eco-KI",
+      title: "Lưu trữ Chỉ-ghi-thêm (Append-Only) & „AI Đảo“ Chạy Điện Mặt trời",
+      sub: "Ghi nhận bất biến trước – xử lý và hạch toán thảnh thơi sau",
+      pitch: "Hồ sơ doanh nghiệp bền vững không phụ thuộc phần mềm (HTML thuần + nhật ký JSONL bất biến theo Vita-ID), kết hợp các cụm „AI Đảo“ cục bộ tự động xử lý OCR và âm thanh hàng loạt khi có điện mặt trời dư thừa.",
+      hw: "Kết nối đệm DC 24V tổn hao thấp cho pin mặt trời, thanh phân phối nguồn mô-đun và khối tản nhiệt thụ động hoạt động bền bỉ."
+    }
+  },
+  {
+    num: "05",
+    de: {
+      badge: "05 · Vita Fax / halloFax",
+      title: "„Digitalisierung durch Handauflegen“ – Das Ein-Knopf-Beleggerät",
+      sub: "Erfahrung zählt mehr als Tippgeschwindigkeit",
+      pitch: "Radikal vereinfachtes Tischgerät für Handwerksbetriebe und erfahrene Mitarbeiter: Papierbeleg auflegen, einen einzigen großen Hardware-Taster drücken – schon entsteht lokal ein revisionssicherer Satz aus Bild, OCR-Text und strukturierter JSONL-Buchungsvorlage ganz ohne Software-Menüs.",
+      hw: "Robuste mechanische Großtaster, stabile Gehäusebolzen/Abstandshalter (Studs & Standoffs) und magnetische Pogopin-Kamerabrücken für wartungsfreie Tischgeräte."
+    },
+    en: {
+      badge: "05 · Vita Fax / halloFax",
+      title: "'Digitization by Laying On Hands' — The One-Button Document Station",
+      sub: "Measuring employees by professional experience, not typing speed",
+      pitch: "An ultra-simple desktop appliance for skilled trades and senior staff: place a paper document down, press a single physical button, and immediately generate a tamper-evident local bundle (image, OCR text, and structured JSONL accounting entry) with zero software menus.",
+      hw: "Heavy-duty tactile push-button mounts, precision PCB standoffs/studs, and magnetic Pogopin camera bridges for zero-maintenance desktop appliances."
+    },
+    zh: {
+      badge: "05 · Vita Fax / halloFax",
+      title: "“放手即数字化” —— 极简一键式桌面单据终端",
+      sub: "让资深员工的价值取决于专业经验，而非打字速度",
+      pitch: "专为手工业者与资深员工打造的极简桌面设备：只需放上纸质单据，按下一颗坚固的实体大按键，即可在本地自动生成防篡改的图像、OCR 文本与结构化 JSONL 记账凭证，全程无需打开复杂的软件菜单。",
+      hw: "高寿命工业级实体按键固定结构、精密 PCB 螺柱/隔离柱（Studs & Standoffs）以及磁吸弹簧针镜头模组连接件。"
+    },
+    vi: {
+      badge: "05 · Vita Fax / halloFax",
+      title: "„Số hóa Bằng cách Đặt tay“ – Thiết bị Chứng từ Một Nút bấm",
+      sub: "Trân trọng kinh nghiệm nghề nghiệp thay vì tốc độ gõ phím",
+      pitch: "Thiết bị để bàn tối giản dành cho thợ lành nghề và nhân sự giàu kinh nghiệm: đặt chứng từ giấy xuống, nhấn một nút vật lý duy nhất để tạo ngay bản ghi kế toán có cấu trúc và giá trị pháp lý mà không cần mở menu phần mềm phức tạp.",
+      hw: "Cơ cấu nút nhấn cơ khí siêu bền, trụ đỡ PCB chính xác (Studs/Standoffs) và khớp nối mô-đun camera qua chân Pogopin nam châm."
+    }
+  },
+  {
+    num: "06",
+    de: {
+      badge: "06 · Daheimleben",
+      title: "Kamerafreie Sicherheit im Alter für selbstbestimmtes Wohnen",
+      sub: "60-GHz-mmWave-Radar & wasserdichter LoRa-Notrufring ohne Monatsabo",
+      pitch: "Würdevolle Assistenztechnik statt Überwachungskameras: Berührungslose 60-GHz-Radarsensoren erkennen Stürze und ungewöhnliche Inaktivität vollkommen bildfrei, ergänzt durch magnetische Pogopin-Wandhalterungen und einen wasserdichten LoRa-Funkring mit großer Reichweite.",
+      hw: "Vergoldete, korrosionsfeste Magnet-Pogopins zum einhändigen Laden/Aufstecken durch Senioren, kompakte HF-Schirmgehäuse und präzise Mikrodrehteile für tragbare Notrufringe."
+    },
+    en: {
+      badge: "06 · Daheimleben",
+      title: "Camera-Free Elder Safety for Dignified Independent Living",
+      sub: "60 GHz mmWave radar & waterproof LoRa emergency ring — subscription-free",
+      pitch: "Privacy-first home safety without cameras: 60 GHz millimeter-wave radar detects falls and unusual inactivity without capturing optical images, paired with effortless magnetic Pogopin wall mounts and a long-range waterproof LoRa emergency ring.",
+      hw: "Gold-plated corrosion-resistant magnetic Pogopin charging/docking contacts for effortless senior handling, compact RF shielding parts, and miniature CNC metal ring components."
+    },
+    zh: {
+      badge: "06 · Daheimleben",
+      title: "无摄像头长者居家安全守护系统",
+      sub: "60 GHz 毫米波雷达 + 防水远距离 LoRa 紧急呼叫指环（零月租）",
+      pitch: "守护隐私与尊严的养老安全方案：采用 60 GHz 毫米波雷达精准识别跌倒与异常静止，全程不采集任何光学画面；搭配适合长者单手盲吸充电的磁吸 Pogopin 墙座与防水 LoRa 远距呼救指环。",
+      hw: "镀金耐腐蚀磁吸弹簧针充电触点（方便老人单手吸附）、紧凑型射频屏蔽五金件及穿戴级微型精密 CNC 金属件。"
+    },
+    vi: {
+      badge: "06 · Daheimleben",
+      title: "Hệ thống An toàn Tại gia Không Camera cho Người cao tuổi",
+      sub: "Radar sóng milimet 60 GHz & Nhẫn khẩn cấp LoRa chống nước không phí tháng",
+      pitch: "Hệ thống bảo vệ quyền riêng tư sử dụng radar sóng milimet 60 GHz, đế gắn tường nam châm Pogopin và nhẫn khẩn cấp LoRa chống nước – phát hiện té ngã chính xác giúp người lớn tuổi sống tự lập mà không cần camera hay phí hàng tháng.",
+      hw: "Chân sạc nam châm Pogopin mạ vàng chống ăn mòn dễ thao tác bằng một tay, linh kiện che chắn RF nhỏ gọn và chi tiết kim loại CNC siêu nhỏ."
+    }
+  },
+  {
+    num: "07",
+    de: {
+      badge: "07 · halloBillard & halloPasswort",
+      title: "Visueller Fair-Play-Verhandlungstisch & Lokale Sicherheits-Mikrowerkzeuge",
+      sub: "Eine Datei = Programm + Tresor · Null Cookies · Null Cloud",
+      pitch: "Sofort im Browser startende Einzeldatei-Werkzeuge: halloBillard verwandelt zähes Preisfeilschen in ein visuelles Ausbalancieren fairer Leistungspakete auf Augenhöhe, während halloPasswort starke Base56-Zugangsdaten durch Rumpf-Maskierung rein offline beherrschbar macht.",
+      hw: "Reine Vanilla-HTML/CSS/JS-Referenzarchitektur als begleitendes Software-Ökosystem für alle Hardware-Bausteine – auslieferbar direkt auf SD-Karte oder Sicherheits-Stick."
+    },
+    en: {
+      badge: "07 · halloBillard & halloPasswort",
+      title: "Visual Fair-Deal Negotiation Table & Offline Security Micro-Tools",
+      sub: "Single HTML file = application + vault · Zero cookies · Zero cloud",
+      pitch: "Zero-install browser micro-tools: halloBillard turns rigid price haggling into visual win-win scope balancing, while halloPasswort manages strong Base56 credentials offline via intuitive stem-masking inside a single portable HTML file.",
+      hw: "Pure Vanilla HTML/CSS/JS companion software stack shipped directly on SD cards or hardware security sticks alongside our physical appliances."
+    },
+    zh: {
+      badge: "07 · halloBillard & halloPasswort",
+      title: "可视化双赢商务沙盘与纯离线安全微工具",
+      sub: "单个 HTML 文件即是软件也是数据仓 · 零 Cookie · 零云端",
+      pitch: "免安装即开即用的单文件工具集：halloBillard 将生硬的压价博弈转化为直观透明的服务范围平衡沙盘；halloPasswort 则通过独创的词干掩码机制，在纯离线单文件中安全管理高强度 Base56 密码。",
+      hw: "纯原生 HTML/CSS/JS 配套软件生态，可直接预装于硬件设备的 SD 授权卡或物理安全密钥中随货交付。"
+    },
+    vi: {
+      badge: "07 · halloBillard & halloPasswort",
+      title: "Bàn Đàm phán Trực quan Công bằng & Công cụ Mật khẩu Ngoại tuyến",
+      sub: "Một tệp HTML duy nhất = Ứng dụng + Kho lưu trữ · Không Cookie · Không Đám mây",
+      pitch: "Các công cụ vi mô chạy trực tiếp trên trình duyệt: halloBillard biến việc ép giá thành sự cân bằng gói dịch vụ trực quan đôi bên cùng có lợi, trong khi halloPasswort tạo và quản lý thông tin đăng nhập Base56 thuần ngoại tuyến.",
+      hw: "Hệ sinh thái phần mềm HTML/CSS/JS thuần túy đi kèm trực tiếp trên thẻ nhớ SD hoặc khóa cứng bảo mật cùng thiết bị phần cứng."
+    }
+  }
+];
+
+/* === 3. Vita-ID Generator (Kalenderpräfix + Base56 + Modulo-24 Prüfbuchstabe ohne l/o) === */
+const B56 = "23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz";
+const MOD24 = "abcdefghijkmnpqrstuvwxyz"; // 24 Kleinbuchstaben ohne l und o
+function generateVitaId() {
+  const d = new Date();
+  const yr = String(d.getFullYear()).slice(-2);
+  const mCode = "123456789ABC"[d.getMonth()];
+  const day = String(d.getDate()).padStart(2, "0");
+  let rand = "";
+  let sum = 0;
+  for (let i = 0; i < 5; i++) {
+    const idx = Math.floor(Math.random() * B56.length);
+    rand += B56[idx];
+    sum += idx * (i + 3);
+  }
+  const chk = MOD24[sum % 24];
+  return "K" + yr + mCode + day + "-" + rand + chk;
+}
+
+/* === 4. Zustandssteuerung & Lokaler JSONL-Speicher === */
+const STORAGE_KEY = "burntips_electronica2026_dossier_jsonl_v1";
+let state = {
+  lang1: "de",
+  lang2: "en",
+  dual: true,
+  page: "00", // "00" = Start, "01".."07" = Kapitel, "08" = Extras
+  notes: {},       // { "01": "Text..." }
+  attachments: {}  // { "01": [ {id, kind:'embed'|'link', name, mime, dataUrl, url, ts} ] }
+};
+let jsonlLines = [];
+
+function loadJsonlStore() {
+  const embeddedEl = document.getElementById("vita-jsonl-store");
+  const embeddedRaw = embeddedEl ? embeddedEl.textContent.trim() : "";
+  let localRaw = "";
+  try { localRaw = localStorage.getItem(STORAGE_KEY) || ""; } catch(e) {}
+
+  const combined = [embeddedRaw, localRaw].filter(Boolean).join("\n");
+  const seenIds = new Set();
+  jsonlLines = [];
+
+  if (combined) {
+    combined.split("\n").forEach(line => {
+      const t = line.trim();
+      if (!t) return;
+      try {
+        const obj = JSON.parse(t);
+        if (obj && obj.vid && !seenIds.has(obj.vid)) {
+          seenIds.add(obj.vid);
+          jsonlLines.push(obj);
+          applyEventToState(obj);
+        }
+      } catch(e) {}
+    });
+  }
+  syncLocalBackup();
+}
+
+function applyEventToState(ev) {
+  if (ev.op === "note_set" && ev.ch) {
+    state.notes[ev.ch] = ev.text || "";
+  } else if (ev.op === "att_add" && ev.ch && ev.item) {
+    if (!state.attachments[ev.ch]) state.attachments[ev.ch] = [];
+    if (!state.attachments[ev.ch].some(x => x.id === ev.item.id)) {
+      state.attachments[ev.ch].push(ev.item);
+    }
+  } else if (ev.op === "att_del" && ev.ch && ev.attId) {
+    if (state.attachments[ev.ch]) {
+      state.attachments[ev.ch] = state.attachments[ev.ch].filter(x => x.id !== ev.attId);
+    }
+  }
+}
+
+function appendJsonlEvent(op, payload) {
+  const entry = Object.assign({
+    vid: generateVitaId(),
+    ts: new Date().toISOString(),
+    op: op
+  }, payload);
+  jsonlLines.push(entry);
+  applyEventToState(entry);
+  syncLocalBackup();
+}
+
+function syncLocalBackup() {
+  const serialized = jsonlLines.map(o => JSON.stringify(o)).join("\n");
+  try { localStorage.setItem(STORAGE_KEY, serialized); } catch(e) {}
+}
+
+/* === 5. URL-Hash-Routing (#en-zh&p=01, Heimatmarkt DE sauber ohne Hash) === */
+function normLang(code) {
+  if (!code) return null;
+  const c = code.toLowerCase();
+  if (c === "cn") return "zh";
+  return ["de", "en", "zh", "vi"].includes(c) ? c : null;
+}
+
+function parseUrlHash() {
+  const raw = (location.hash || "").replace(/^#/, "").trim();
+  if (!raw) {
+    state.lang1 = "de";
+    state.lang2 = "en";
+    state.dual = false;
+    state.page = "00";
+    return;
+  }
+  const parts = raw.split("&");
+  parts.forEach((seg, idx) => {
+    if (seg.startsWith("p=")) {
+      const p = seg.slice(2).padStart(2, "0");
+      if (["00","01","02","03","04","05","06","07","08"].includes(p)) state.page = p;
+    } else if (idx === 0 && seg) {
+      if (seg.includes("-")) {
+        const [a, b] = seg.split("-");
+        const l1 = normLang(a) || "en";
+        const l2 = normLang(b) || "zh";
+        state.lang1 = l1;
+        state.lang2 = l2;
+        state.dual = (l1 !== l2);
+      } else {
+        const l1 = normLang(seg);
+        if (l1) {
+          state.lang1 = l1;
+          state.dual = false;
+        }
+      }
+    }
+  });
+}
+
+function updateUrlHash() {
+  const isDefaultHome = (!state.dual && state.lang1 === "de" && state.page === "00");
+  if (isDefaultHome) {
+    history.replaceState(null, "", location.pathname + location.search);
+    return;
+  }
+  let h = state.dual ? (state.lang1 + "-" + state.lang2) : state.lang1;
+  if (state.page !== "00") h += "&p=" + state.page;
+  history.replaceState(null, "", "#" + h);
+}
+
+/* === 6. Rendering === */
+function injectFlags() {
+  document.querySelectorAll(".flag-slot").forEach(el => {
+    const f = el.getAttribute("data-f");
+    if (FLAGS[f]) el.innerHTML = FLAGS[f];
+  });
+}
+
+function renderAll() {
+  const t1 = UI_TEXT[state.lang1];
+  document.title = t1.docTitle + " | Burn.tips UG";
+
+  // Sprach-Buttons aktivieren
+  document.querySelectorAll(".flag-btn").forEach(btn => {
+    const col = btn.getAttribute("data-col");
+    const lg = btn.getAttribute("data-lang");
+    const active = (col === "1" && lg === state.lang1) || (col === "2" && lg === state.lang2);
+    btn.classList.toggle("active", active);
+  });
+
+  document.getElementById("picker-right").style.display = state.dual ? "inline-flex" : "none";
+  const dualBtn = document.getElementById("btn-dual-toggle");
+  dualBtn.textContent = state.dual ? t1.dualOn : t1.dualOff;
+  dualBtn.classList.toggle("active", state.dual);
+  document.getElementById("btn-save-html").textContent = t1.btnSaveHtml;
+
+  // Seiten-Reiter
+  const tabsEl = document.getElementById("page-tabs");
+  const pages = ["00","01","02","03","04","05","06","07","08"];
+  tabsEl.innerHTML = pages.map(p => {
+    let label = p;
+    if (p === "00") label = t1.tabStart;
+    else if (p === "08") label = t1.tabExtras;
+    const hasNote = Boolean((state.notes[p] && state.notes[p].trim()) || (state.attachments[p] && state.attachments[p].length));
+    return `<button class="tab-btn ${state.page===p?'active':''} ${hasNote?'has-note':''}" onclick="goPage('${p}')">${label}</button>`;
+  }).join("");
+
+  // Hauptinhalt
+  const host = document.getElementById("page-content");
+  const notesWrap = document.getElementById("notes-wrapper");
+
+  if (state.page === "00") {
+    notesWrap.style.display = "none";
+    host.innerHTML = renderCoverSynopse();
+  } else if (state.page === "08") {
+    notesWrap.style.display = "none";
+    host.innerHTML = renderExtrasSynopse();
+  } else {
+    const idx = parseInt(state.page, 10) - 1;
+    host.innerHTML = renderChapterSynopse(CHAPTERS[idx]);
+    notesWrap.style.display = "block";
+    renderNoteArea(state.page);
+  }
+
+  // Pager unten
+  const curIdx = pages.indexOf(state.page);
+  const prevBtn = document.getElementById("btn-prev");
+  const nextBtn = document.getElementById("btn-next");
+  prevBtn.textContent = t1.prev;
+  nextBtn.textContent = t1.next;
+  prevBtn.disabled = (curIdx <= 0);
+  nextBtn.disabled = (curIdx >= pages.length - 1);
+  document.getElementById("page-indicator").textContent = (curIdx + 1) + " / " + pages.length;
+}
+
+function renderCoverCol(lg) {
+  const t = UI_TEXT[lg];
+  const cards = CHAPTERS.map(ch => `
+    <button class="toc-card" onclick="goPage('${ch.num}')">
+      <span class="toc-num">${ch[lg].badge}</span>
+      <span class="toc-title">${ch[lg].title}</span>
+    </button>
+  `).join("");
+  return `
+    <div class="lang-col">
+      <span class="chapter-badge">electronica Munich 2026</span>
+      <h1>${t.docTitle}</h1>
+      <div class="subtitle">${t.docSub}</div>
+      <p>${t.introLead}</p>
+      <h3 style="margin-top:1.4rem;margin-bottom:0.4rem;font-size:1.08rem;">${t.tocHeading}</h3>
+      <div class="toc-cards">${cards}</div>
+    </div>
+  `;
+}
+
+function renderCoverSynopse() {
+  return `<div class="synopse-grid ${state.dual?'':'single-col'}">
+    ${renderCoverCol(state.lang1)}
+    ${state.dual ? renderCoverCol(state.lang2) : ''}
+  </div>`;
+}
+
+function renderChapterCol(ch, lg) {
+  const c = ch[lg];
+  const t = UI_TEXT[lg];
+  return `
+    <div class="lang-col">
+      <span class="chapter-badge">${c.badge}</span>
+      <h2>${c.title}</h2>
+      <div class="subtitle">${c.sub}</div>
+      <div class="pitch-box">${c.pitch}</div>
+      <div class="hw-box">
+        <strong>${t.hwLabel}</strong>
+        <span>${c.hw}</span>
+      </div>
+    </div>
+  `;
+}
+
+function renderChapterSynopse(ch) {
+  return `<div class="synopse-grid ${state.dual?'':'single-col'}">
+    ${renderChapterCol(ch, state.lang1)}
+    ${state.dual ? renderChapterCol(ch, state.lang2) : ''}
+  </div>`;
+}
+
+/* RTL-Maskierte Kontaktdaten (im Quelltext ausschließlich rückwärts abgelegt) */
+const REV_MAIL = "spit.nrub@liam";
+const REV_PHONE = "9085 309 2151 94+";
+function decodeRev(s) { return s.split("").reverse().join(""); }
+
+function renderExtrasCol(lg) {
+  const t = UI_TEXT[lg];
+  const pwHash = (lg === "de") ? "" : ("#" + lg);
+  return `
+    <div class="lang-col">
+      <span class="chapter-badge">Burn.tips Ecosystem</span>
+      <h2>${t.extrasTitle}</h2>
+
+      <div class="pw-preview-card">
+        <h3 style="margin-top:0;">🔑 ${t.pwTitle}</h3>
+        <p style="margin:0.4rem 0 0.7rem;">${t.pwDesc}</p>
+        <div class="pw-mock-row">✅ 01 · portal.example.com · Rumpf-PW + Base56 · [100% Offline HTML]</div>
+        <a class="cta-link" href="https://burn.tips/app/pw/${pwHash}" target="_blank" rel="noopener">${t.pwCta}</a>
+      </div>
+
+      <h3>${t.contactTitle}</h3>
+      <p style="margin:0.2rem 0 0.8rem;"><strong>Joseph Gaßner</strong> · Managing Director<br>Lena-Christ-Str. 10 1/2 · 84416 Taufkirchen (Vils) · Germany<br><span style="font-size:0.86rem;color:var(--muted);">USt-IdNr. / VAT ID: DE424204181</span></p>
+      <div class="contact-grid">
+        <strong>Mobil / WA:</strong>
+        <span><span class="rtl-mask">${REV_PHONE}</span> <button class="copy-mini" onclick="copyDecoded('${REV_PHONE}', this)">⧉</button></span>
+        <strong>E-Mail:</strong>
+        <span><a href="#" onclick="openRtlMail(event)"><span class="rtl-mask">${REV_MAIL}</span></a> <button class="copy-mini" onclick="copyDecoded('${REV_MAIL}', this)">⧉</button></span>
+        <strong>LinkedIn:</strong>
+        <span><a href="https://www.linkedin.com/in/gj-tax/" target="_blank" rel="noopener">gj-tax</a></span>
+        <strong>Web:</strong>
+        <span><a href="https://burn.tips/" target="_blank" rel="noopener">burn.tips</a></span>
+      </div>
+    </div>
+  `;
+}
+
+function renderExtrasSynopse() {
+  return `<div class="synopse-grid ${state.dual?'':'single-col'}">
+    ${renderExtrasCol(state.lang1)}
+    ${state.dual ? renderExtrasCol(state.lang2) : ''}
+  </div>`;
+}
+
+/* === 7. Notizfeld & Anhänge (Einbetten + Verknüpfen + Strg+V) === */
+let noteDebounce = null;
+function renderNoteArea(chNum) {
+  const t = UI_TEXT[state.lang1];
+  const closeBr = (state.lang1 === "zh") ? " 章）" : ")";
+  document.getElementById("lbl-notes-title").textContent = t.notesTitle + chNum + closeBr;
+  document.getElementById("lbl-notes-hint").textContent = t.notesHint;
+  document.getElementById("btn-att-embed").textContent = t.btnEmbed;
+  document.getElementById("btn-att-link").textContent = t.btnLink;
+  document.getElementById("btn-note-copy").textContent = t.btnCopyNote;
+
+  const ta = document.getElementById("chapter-note-input");
+  ta.value = state.notes[chNum] || "";
+  ta.oninput = () => {
+    state.notes[chNum] = ta.value;
+    clearTimeout(noteDebounce);
+    noteDebounce = setTimeout(() => {
+      appendJsonlEvent("note_set", { ch: chNum, text: ta.value });
+      renderTabsDotOnly();
+    }, 450);
+  };
+
+  renderAttachments(chNum);
+}
+
+function renderTabsDotOnly() {
+  const pages = ["00","01","02","03","04","05","06","07","08"];
+  const btns = document.querySelectorAll("#page-tabs .tab-btn");
+  btns.forEach((b, i) => {
+    const p = pages[i];
+    const hasNote = Boolean((state.notes[p] && state.notes[p].trim()) || (state.attachments[p] && state.attachments[p].length));
+    b.classList.toggle("has-note", hasNote);
+  });
+}
+
+function renderAttachments(chNum) {
+  const list = state.attachments[chNum] || [];
+  const grid = document.getElementById("attachments-list");
+  if (!list.length) { grid.innerHTML = ""; return; }
+
+  grid.innerHTML = list.map(att => {
+    if (att.kind === "embed" && att.dataUrl && att.dataUrl.startsWith("data:image/")) {
+      return `<div class="att-card">
+        <img class="att-thumb" src="${att.dataUrl}" alt="${escapeHtml(att.name)}" onclick="previewImage('${att.id}','${chNum}')">
+        <div class="att-meta">
+          <span>📎 ${escapeHtml(att.name)}</span>
+          <button class="att-del" onclick="removeAttachment('${chNum}','${att.id}')">✕</button>
+        </div>
+      </div>`;
+    } else if (att.kind === "embed") {
+      return `<div class="att-card">
+        <div style="padding:0.5rem;background:#fff;border:1px solid #e5dec9;border-radius:3px;">📄 <a href="${att.dataUrl}" download="${escapeHtml(att.name)}">${escapeHtml(att.name)}</a></div>
+        <div class="att-meta">
+          <span>Eingebettet</span>
+          <button class="att-del" onclick="removeAttachment('${chNum}','${att.id}')">✕</button>
+        </div>
+      </div>`;
+    } else {
+      return `<div class="att-card">
+        <div style="padding:0.5rem;background:#fff;border:1px solid #e5dec9;border-radius:3px;">🔗 <a href="${escapeHtml(att.url)}" target="_blank" rel="noopener">${escapeHtml(att.name)}</a></div>
+        <div class="att-meta">
+          <span style="font-size:0.75rem;color:var(--muted);">${escapeHtml(att.url)}</span>
+          <button class="att-del" onclick="removeAttachment('${chNum}','${att.id}')">✕</button>
+        </div>
+      </div>`;
+    }
+  }).join("");
+}
+
+function triggerFileEmbed() {
+  document.getElementById("hidden-file-input").click();
+}
+
+function handleFilesSelected(fileList) {
+  if (!fileList || !fileList.length) return;
+  const ch = state.page;
+  Array.from(fileList).forEach(file => {
+    if (file.type.startsWith("image/")) {
+      compressImageFile(file, dataUrl => {
+        appendJsonlEvent("att_add", {
+          ch: ch,
+          item: { id: generateVitaId(), kind: "embed", name: file.name, mime: "image/jpeg", dataUrl: dataUrl }
+        });
+        renderAttachments(ch);
+        renderTabsDotOnly();
+      });
+    } else {
+      const reader = new FileReader();
+      reader.onload = e => {
+        appendJsonlEvent("att_add", {
+          ch: ch,
+          item: { id: generateVitaId(), kind: "embed", name: file.name, mime: file.type || "application/octet-stream", dataUrl: e.target.result }
+        });
+        renderAttachments(ch);
+        renderTabsDotOnly();
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+  document.getElementById("hidden-file-input").value = "";
+}
+
+function compressImageFile(file, callback) {
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = new Image();
+    img.onload = () => {
+      const maxDim = 1280;
+      let w = img.width, h = img.height;
+      if (w > maxDim || h > maxDim) {
+        if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; }
+        else { w = Math.round(w * maxDim / h); h = maxDim; }
+      }
+      const c = document.createElement("canvas");
+      c.width = w; c.height = h;
+      const ctx = c.getContext("2d");
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, w, h);
+      ctx.drawImage(img, 0, 0, w, h);
+      callback(c.toDataURL("image/jpeg", 0.8));
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+// Zwischenablage-Bilder per Strg+V direkt ins aktive Kapitel-Notizfeld einbetten
+document.addEventListener("paste", e => {
+  if (state.page === "00" || state.page === "08") return;
+  const items = (e.clipboardData && e.clipboardData.items) ? Array.from(e.clipboardData.items) : [];
+  const imgItem = items.find(it => it.type && it.type.startsWith("image/"));
+  if (imgItem) {
+    const f = imgItem.getAsFile();
+    if (f) {
+      const named = new File([f], "Screenshot-" + new Date().toTimeString().slice(0,8).replace(/:/g,"") + ".jpg", { type: f.type });
+      handleFilesSelected([named]);
+    }
+  }
+});
+
+function openLinkModal() {
+  document.getElementById("link-label-inp").value = "";
+  document.getElementById("link-url-inp").value = "";
+  document.getElementById("link-modal").classList.add("open");
+}
+
+function confirmAddLink() {
+  const name = document.getElementById("link-label-inp").value.trim() || "Externer Anhang";
+  const url = document.getElementById("link-url-inp").value.trim();
+  if (!url) { closeModal("link-modal"); return; }
+  appendJsonlEvent("att_add", {
+    ch: state.page,
+    item: { id: generateVitaId(), kind: "link", name: name, url: url }
+  });
+  closeModal("link-modal");
+  renderAttachments(state.page);
+  renderTabsDotOnly();
+}
+
+function removeAttachment(ch, attId) {
+  appendJsonlEvent("att_del", { ch: ch, attId: attId });
+  renderAttachments(ch);
+  renderTabsDotOnly();
+}
+
+function previewImage(attId, ch) {
+  const item = (state.attachments[ch] || []).find(x => x.id === attId);
+  if (item && item.dataUrl) {
+    document.getElementById("img-modal-target").src = item.dataUrl;
+    document.getElementById("img-modal").classList.add("open");
+  }
+}
+
+function copyCurrentNote() {
+  const txt = state.notes[state.page] || "";
+  navigator.clipboard.writeText(txt);
+}
+
+/* === 8. Baugleiche Standalone-HTML-Sicherung (inkl. eingebettetem JSONL) === */
+function exportSelfContainedHtml() {
+  // Laufende Texteingabe vorher sicher festschreiben
+  if (state.page !== "00" && state.page !== "08") {
+    const curVal = document.getElementById("chapter-note-input").value;
+    if (curVal !== (state.notes[state.page] || "")) {
+      appendJsonlEvent("note_set", { ch: state.page, text: curVal });
+    }
+  }
+  const serialized = jsonlLines.map(o => JSON.stringify(o)).join("\n");
+  const clone = document.documentElement.cloneNode(true);
+  const storeClone = clone.querySelector("#vita-jsonl-store");
+  if (storeClone) {
+    storeClone.textContent = "\n" + serialized + "\n";
+  }
+  const fullHtml = "<!DOCTYPE html>\n" + clone.outerHTML;
+  const blob = new Blob([fullHtml], { type: "text/html;charset=utf-8" });
+  const a = document.createElement("a");
+  const stamp = new Date().toISOString().slice(0,10).replace(/-/g,"");
+  a.href = URL.createObjectURL(blob);
+  a.download = "BurnTips-Dossier-electronica2026-" + stamp + ".html";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+
+/* === 9. Navigation & Hilfsfunktionen === */
+function setLang(col, lg) {
+  if (col === 1) state.lang1 = lg;
+  else state.lang2 = lg;
+  updateUrlHash();
+  renderAll();
+}
+
+function toggleDualMode() {
+  state.dual = !state.dual;
+  if (state.dual && state.lang1 === state.lang2) {
+    state.lang2 = (state.lang1 === "en") ? "zh" : "en";
+  }
+  updateUrlHash();
+  renderAll();
+}
+
+function goPage(p) {
+  state.page = p;
+  updateUrlHash();
+  renderAll();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function stepPage(delta) {
+  const pages = ["00","01","02","03","04","05","06","07","08"];
+  const idx = pages.indexOf(state.page);
+  const next = pages[idx + delta];
+  if (next) goPage(next);
+}
+
+function toggleFontSize() {
+  document.body.classList.toggle("large-print");
+  document.getElementById("btn-font").classList.toggle("active");
+}
+
+function openRtlMail(ev) {
+  ev.preventDefault();
+  location.href = "mailto:" + decodeRev(REV_MAIL);
+}
+
+function copyDecoded(revStr, btn) {
+  navigator.clipboard.writeText(decodeRev(revStr));
+  const old = btn.textContent;
+  btn.textContent = "✓";
+  setTimeout(() => btn.textContent = old, 1200);
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove("open");
+}
+
+function escapeHtml(s) {
+  return String(s || "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+/* === 10. Kompakter Offline-QR-Generator (ISO/IEC 18004 Byte-Mode Version 1..6, Level L) === */
+const QR_CAP_L = [0, 17, 32, 53, 78, 106, 134];
+const QR_EC_LEN = [0, 7, 10, 15, 20, 26, 18]; // Codewords pro Block (V6 hat 2 Blöcke à 18)
+const QR_BLOCKS = [0, 1, 1, 1, 1, 1, 2];
+const QR_ALIGN = [[], [], [6,18], [6,22], [6,26], [6,30], [6,34]];
+
+function gfMul(x, y) {
+  if (x === 0 || y === 0) return 0;
+  return GF_EXP[(GF_LOG[x] + GF_LOG[y]) % 255];
+}
+const GF_EXP = new Uint8Array(512), GF_LOG = new Uint8Array(256);
+(function initGF(){
+  let x = 1;
+  for (let i = 0; i < 255; i++) {
+    GF_EXP[i] = x; GF_LOG[x] = i;
+    x <<= 1; if (x & 0x100) x ^= 0x11d;
+  }
+  for (let i = 255; i < 512; i++) GF_EXP[i] = GF_EXP[i - 255];
+})();
+
+function rsGeneratorPoly(deg) {
+  let poly = [1];
+  for (let i = 0; i < deg; i++) {
+    const next = new Array(poly.length + 1).fill(0);
+    for (let j = 0; j < poly.length; j++) {
+      next[j] ^= poly[j];
+      next[j + 1] ^= gfMul(poly[j], GF_EXP[i]);
+    }
+    poly = next;
+  }
+  return poly;
+}
+
+function rsEncode(data, ecLen) {
+  const gen = rsGeneratorPoly(ecLen);
+  const res = new Uint8Array(ecLen);
+  for (let i = 0; i < data.length; i++) {
+    const factor = data[i] ^ res[0];
+    res.copyWithin(0, 1);
+    res[ecLen - 1] = 0;
+    for (let j = 0; j < ecLen; j++) res[j] ^= gfMul(gen[j + 1], factor);
+  }
+  return res;
+}
+
+function makeQrSvg(text) {
+  const bytes = new TextEncoder().encode(text);
+  let ver = 1;
+  while (ver <= 6 && bytes.length > QR_CAP_L[ver]) ver++;
+  if (ver > 6) return `<div style="padding:1rem;font-size:0.85rem;">URL zu lang für Kurz-QR (${bytes.length} B)</div>`;
+
+  const size = 17 + ver * 4;
+  const totalCodewords = (function(){
+    let modules = size * size - 3 * 64 - 2 * (size - 16) - 1 - (ver >= 2 ? 25 : 0);
+    if (ver >= 2) modules += 10; // Überlappung Timing/Alignment
+    return Math.floor(modules / 8);
+  })();
+  const numBlocks = QR_BLOCKS[ver];
+  const ecPerBlock = QR_EC_LEN[ver];
+  const totalDataBytes = totalCodewords - numBlocks * ecPerBlock;
+
+  // Bitstream aufbauen
+  const bits = [];
+  const pushBits = (val, len) => { for (let i = len - 1; i >= 0; i--) bits.push((val >> i) & 1); };
+  pushBits(0b0100, 4); // Byte-Modus
+  pushBits(bytes.length, 8);
+  bytes.forEach(b => pushBits(b, 8));
+  for (let i = 0; i < 4 && bits.length < totalDataBytes * 8; i++) bits.push(0);
+  while (bits.length % 8 !== 0) bits.push(0);
+
+  const dataBytes = [];
+  for (let i = 0; i < bits.length; i += 8) {
+    let b = 0;
+    for (let j = 0; j < 8; j++) b = (b << 1) | bits[i + j];
+    dataBytes.push(b);
+  }
+  let padToggle = true;
+  while (dataBytes.length < totalDataBytes) {
+    dataBytes.push(padToggle ? 0xEC : 0x11);
+    padToggle = !padToggle;
+  }
+
+  // Blöcke & Fehlerkorrektur
+  const blocksData = [], blocksEc = [];
+  const blockLen = totalDataBytes / numBlocks;
+  for (let b = 0; b < numBlocks; b++) {
+    const slice = dataBytes.slice(b * blockLen, (b + 1) * blockLen);
+    blocksData.push(slice);
+    blocksEc.push(Array.from(rsEncode(slice, ecPerBlock)));
+  }
+  const finalBytes = [];
+  for (let i = 0; i < blockLen; i++) for (let b = 0; b < numBlocks; b++) finalBytes.push(blocksData[b][i]);
+  for (let i = 0; i < ecPerBlock; i++) for (let b = 0; b < numBlocks; b++) finalBytes.push(blocksEc[b][i]);
+
+  // Matrix initialisieren
+  const mat = Array.from({ length: size }, () => new Int8Array(size)); // 0 leer, 1 dunkel, -1 hell
+  const isFunc = Array.from({ length: size }, () => new Uint8Array(size));
+
+  function setFinder(r, c) {
+    for (let dy = -1; dy <= 7; dy++) {
+      for (let dx = -1; dx <= 7; dx++) {
+        const y = r + dy, x = c + dx;
+        if (y < 0 || y >= size || x < 0 || x >= size) continue;
+        const dark = (dx >= 0 && dx <= 6 && (dy === 0 || dy === 6)) ||
+                     (dy >= 0 && dy <= 6 && (dx === 0 || dx === 6)) ||
+                     (dx >= 2 && dx <= 4 && dy >= 2 && dy <= 4);
+        mat[y][x] = dark ? 1 : -1;
+        isFunc[y][x] = 1;
+      }
+    }
+  }
+  setFinder(0, 0); setFinder(0, size - 7); setFinder(size - 7, 0);
+
+  if (ver >= 2) {
+    const pos = QR_ALIGN[ver];
+    const ay = pos[1], ax = pos[1];
+    for (let dy = -2; dy <= 2; dy++) {
+      for (let dx = -2; dx <= 2; dx++) {
+        const dark = Math.max(Math.abs(dx), Math.abs(dy)) !== 1;
+        mat[ay + dy][ax + dx] = dark ? 1 : -1;
+        isFunc[ay + dy][ax + dx] = 1;
+      }
+    }
+  }
+
+  for (let i = 8; i < size - 8; i++) {
+    if (!isFunc[6][i]) { mat[6][i] = (i % 2 === 0) ? 1 : -1; isFunc[6][i] = 1; }
+    if (!isFunc[i][6]) { mat[i][6] = (i % 2 === 0) ? 1 : -1; isFunc[i][6] = 1; }
+  }
+  mat[size - 8][8] = 1; isFunc[size - 8][8] = 1;
+
+  // Format-Info-Plätze reservieren
+  for (let i = 0; i < 9; i++) {
+    if (i !== 6) { isFunc[8][i] = 1; isFunc[i][8] = 1; }
+  }
+  for (let i = 0; i < 8; i++) {
+    isFunc[8][size - 1 - i] = 1;
+    isFunc[size - 1 - i][8] = 1;
+  }
+
+  // Datenbits im Zickzack platzieren + Maske 0 ((r+c)%2===0)
+  let bitIdx = 0;
+  const totalBits = finalBytes.length * 8;
+  let upward = true;
+  for (let right = size - 1; right >= 1; right -= 2) {
+    if (right === 6) right = 5;
+    for (let vert = 0; vert < size; vert++) {
+      const r = upward ? (size - 1 - vert) : vert;
+      for (let j = 0; j < 2; j++) {
+        const c = right - j;
+        if (!isFunc[r][c]) {
+          let dark = false;
+          if (bitIdx < totalBits) {
+            dark = ((finalBytes[bitIdx >> 3] >> (7 - (bitIdx & 7))) & 1) === 1;
+            bitIdx++;
+          }
+          if ((r + c) % 2 === 0) dark = !dark;
+          mat[r][c] = dark ? 1 : -1;
+        }
+      }
+    }
+    upward = !upward;
+  }
+
+  // Format-Bits für Level L (01) + Maske 000 => vorberechneter BCH-Wert: 0x77C4
+  const fmt = 0x77C4;
+  const fBits = [];
+  for (let i = 0; i < 15; i++) fBits.push((fmt >> i) & 1);
+  for (let i = 0; i <= 5; i++) mat[8][i] = fBits[i] ? 1 : -1;
+  mat[8][7] = fBits[6] ? 1 : -1;
+  mat[8][8] = fBits[7] ? 1 : -1;
+  mat[7][8] = fBits[8] ? 1 : -1;
+  for (let i = 9; i < 15; i++) mat[14 - i][8] = fBits[i] ? 1 : -1;
+  for (let i = 0; i < 8; i++) mat[8][size - 1 - i] = fBits[i] ? 1 : -1;
+  for (let i = 8; i < 15; i++) mat[size - 15 + i][8] = fBits[i] ? 1 : -1;
+
+  // Als scharfes SVG ausgeben
+  const scale = 6, margin = 3;
+  const dim = (size + margin * 2) * scale;
+  let rects = "";
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (mat[r][c] === 1) {
+        rects += `<rect x="${(c + margin) * scale}" y="${(r + margin) * scale}" width="${scale}" height="${scale}"/>`;
+      }
+    }
+  }
+  return `<svg width="${dim}" height="${dim}" viewBox="0 0 ${dim} ${dim}" xmlns="http://www.w3.org/2000/svg"><rect width="${dim}" height="${dim}" fill="#fff"/><g fill="#182842">${rects}</g></svg>`;
+}
+
+function getShareableUrl() {
+  const base = location.href.startsWith("file:")
+    ? "https://burn.tips/fair/electronica/dossier/" + location.hash
+    : location.href;
+  return base;
+}
+
+function openQrModal() {
+  const url = getShareableUrl();
+  document.getElementById("qr-canvas-wrap").innerHTML = makeQrSvg(url);
+  document.getElementById("qr-url-display").textContent = url;
+  document.getElementById("qr-modal").classList.add("open");
+}
+
+function copyShareUrl() {
+  navigator.clipboard.writeText(getShareableUrl());
+  closeModal("qr-modal");
+}
+
+/* === Start === */
+window.addEventListener("hashchange", () => { parseUrlHash(); renderAll(); });
+injectFlags();
+loadJsonlStore();
+parseUrlHash();
+renderAll();
+</script>
+</body>
+</html>
