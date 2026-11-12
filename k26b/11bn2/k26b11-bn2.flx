@@ -1,0 +1,52 @@
+/**
+ * ============================================================================
+ * 🛡️ BURN.TIPS — VITA KLARTEXT-TRESOR-PATRONE (.flx)
+ * ============================================================================
+ * Aktenzeichen / Vita-ID : K26B11-bn2
+ * Dateiname (klein)      : k26b11-bn2.flx
+ * Zugehöriger Fensterbrief: k26b11-bn2.htm (Datenschutzstandard)
+ *
+ * ARCHITEKTUR-HINWEIS FÜR ENTWICKLER & PRÜFER (LESBARE MESSE-DEMOVERSION):
+ * ----------------------------------------------------------------------------
+ * 1. PHYSISCHE DATENTRENNUNG:
+ *    Die Datei `k26b11-bn2.htm` enthält im Quelltext keinerlei personen- oder
+ *    unternehmensbezogene Klartextdaten. Selbst ein Brute-Force-Angriff auf die
+ *    Tages-PIN (1234) im HTML-Dokument legt lediglich die neutralen
+ *    Milchglas-Rollenbezeichnungen offen.
+ *
+ * 2. WARUM IST DIESE .FLX-DATEI HIER IM KLARTEXT LESBAR?
+ *    Dies ist eine unverschlüsselte Anschauungs-Patrone für die electronica 2026,
+ *    damit Sie im Texteditor unmittelbar nachvollziehen können, wie die
+ *    Pergament-Schnipsel physisch getrennt vom HTML-Gerüst transportiert werden.
+ *
+ * 3. PRODUKTIV-BETRIEB (AES-256-GCM + halloPasswort):
+ *    Im produktiven Kanzlei- und Unternehmenseinsatz liegt dieser Payload
+ *    vollständig chiffriert auf einem physischen Hardware-Stick (IT-Butler /
+ *    SD-Schlüssel) und wird erst im Arbeitsspeicher durch die Kombination aus
+ *    Base56-Rumpfpasswort (`k9M#vP2x!`) + mentaler Kopf-Endung (`123456789`)
+ *    entschlüsselt:
+ *
+ *    [CHIFFRIERTER PRODUKTIV-BLOCK (SIMULATION)]:
+ *    "flx://aes256gcm:IV=9f8a7b6c5d4e:TAG=3a2b1c:7F9A2B8C4D1E6F0A3B5C..."
+ * ============================================================================
+ */
+
+window.VITA_FLX_DATA = {
+  _meta: {
+    vitaId: "K26B11-bn2",
+    version: "1.0-MESSE-DEMO",
+    encryptionStatus: "UNVERSCHLÜSSELTE LESE-DEMO (Original: AES-256-GCM via halloPasswort)",
+    keyHint: "Base56-Rumpf (k9M#vP2x!) + Kopf-Endung (123456789)",
+    statusBanner: "🔓 <strong>Messe-Demoversion geladen (<code>k26b11-bn2.flx</code>):</strong> Diese Tresor-Patrone ist zu Prüfzwecken im Texteditor unverschlüsselt lesbar. Im Produktivbetrieb ist sie per <code>halloPasswort</code> (AES-256-GCM) auf dem Hardware-Stick versiegelt."
+  },
+  s1: "Burn.tips UG (haftungsbeschränkt)",
+  s2: "84416 Taufkirchen (Vils), Lena-Christ-Str. 10 1/2",
+  s3: "DE424204181",
+  s4: "„Argon“ (Platz 4)",
+  s5: "„Carbon“ (Platz 1)",
+  s6: "50 % des 5-Stunden-Kontingents",
+  s7: "„Flash-Lite“-Notfallmodus",
+  s8: "99-€-Tarif in das 219-€-Abo",
+  s9_sig: "Joseph Gaßner",
+  s9: "Joseph Gaßner, Geschäftsführer"
+};

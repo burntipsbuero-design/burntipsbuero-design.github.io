@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K26B11-bn2 | Drei-Schichten-Fensterbrief (Datenschutzstandard)</title>
+<style>
+  :root {
+    --desk-bg: #181a1f;
+    --parchment: #f4ecd8;
+    --parchment-edge: #e2d5b5;
+    --ink: #2b2623;
+    --accent-gold: #c59b27;
+    --accent-red: #8b1e16;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 24px 16px 60px;
+    background-color: var(--desk-bg);
+    background-image: radial-gradient(circle at 50% 20%, #232730 0%, var(--desk-bg) 75%);
+    color: #e6edf3;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* --- STEUERPULT OBEN --- */
+  .control-deck {
+    width: 100%;
+    max-width: 860px;
+    background: #21252d;
+    border: 1px solid #363b46;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 28px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+  }
+
+  .deck-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #323742;
+  }
+
+  .deck-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #f0f6fc;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .vita-id-badge {
+    background: #121418;
+    color: var(--accent-gold);
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid #3d3522;
+    font-size: 0.82rem;
+  }
+
+  .zip-downloads {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .zip-link {
+    background: #2b303b;
+    color: #e6edf3;
+    text-decoration: none;
+    border: 1px solid #484f58;
+    padding: 6px 11px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .zip-link:hover {
+    background: #353b48;
+    border-color: var(--accent-gold);
+  }
+
+  .zip-link.primary {
+    background: #238636;
+    border-color: rgba(240,246,252,0.15);
+  }
+
+  .zip-link.primary:hover { background: #2ea043; }
+
+  .btn-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .stage-btn {
+    background: #2b303b;
+    color: #d0d7de;
+    border: 1px solid #424a57;
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stage-btn:hover {
+    background: #353b48;
+    border-color: #636e82;
+    color: #fff;
+  }
+
+  .stage-btn.active {
+    background: #1f2937;
+    border-color: var(--accent-gold);
+    color: #fff;
+    box-shadow: 0 0 0 2px rgba(197, 155, 39, 0.25);
+  }
+
+  /* --- SIMULATIONS- & STATUS-ZEILE --- */
+  .sim-bar {
+    background: #14161b;
+    border: 1px solid #2d323e;
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 0.83rem;
+  }
+
+  .sim-status {
+    color: #9da7b3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .status-pill {
+    background: #1e222a;
+    border: 1px solid #3b4252;
+    padding: 3px 10px;
+    border-radius: 4px;
+    color: #7ee787;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+
+  .usb-slot {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #1a1d24;
+    border: 1px dashed #484f58;
+    padding: 4px 10px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .usb-stick {
+    display: inline-block;
+    background: linear-gradient(90deg, #b8860b, #e6b800);
+    color: #111;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    transform: translateX(135%);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .usb-stick.inserted {
+    transform: translateX(0%);
+  }
+
+  /* --- HINWEIS BEI FEHLENDER ODER GELADENER .FLX DATEI --- */
+  .cartridge-notice {
+    display: none;
+    margin-top: 12px;
+    background: rgba(139, 30, 22, 0.22);
+    border: 1px solid #d93025;
+    color: #ffdad6;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .cartridge-notice.demo-loaded {
+    background: rgba(35, 134, 54, 0.16);
+    border-color: #2ea043;
+    color: #aff5b4;
+  }
+
+  .manual-load-label {
+    display: inline-block;
+    margin-top: 8px;
+    background: #2b303b;
+    border: 1px solid #636e82;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .manual-load-label:hover { background: #3b4252; }
+
+  /* --- PERGAMENT-FENSTERBRIEF --- */
+  .parchment-sheet {
+    width: 100%;
+    max-width: 860px;
+    background-color: var(--parchment);
+    background-image: 
+      radial-gradient(rgba(180, 150, 100, 0.12) 20%, transparent 80%),
+      linear-gradient(to bottom right, #f7f0df, #ede1c4, #f3ead3);
+    color: var(--ink);
+    padding: 48px 56px;
+    border-radius: 4px;
+    box-shadow: 
+      0 20px 50px rgba(0, 0, 0, 0.65),
+      inset 0 0 40px rgba(139, 109, 59, 0.18);
+    border: 1px solid var(--parchment-edge);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    line-height: 1.85;
+    font-size: 1.04rem;
+    position: relative;
+  }
+
+  @media (max-width: 640px) {
+    .parchment-sheet { padding: 28px 20px; font-size: 0.96rem; }
+  }
+
+  .letter-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid rgba(43, 38, 35, 0.2);
+    padding-bottom: 18px;
+    margin-bottom: 26px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .recipient-block {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .stamp-meta {
+    text-align: right;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 0.82rem;
+    color: #5a4f43;
+  }
+
+  h1.subject-line {
+    font-size: 1.18rem;
+    margin: 0 0 22px 0;
+    color: #1a1615;
+    line-height: 1.4;
+  }
+
+  /* --- DIE FESTEN ORIGINAL-LÜCKEN (UNVERRÜCKBARER TEXTSPIEGEL) --- */
+  .punch-hole {
+    display: inline-block;
+    vertical-align: baseline;
+    position: relative;
+    width: var(--orig-w, 18ch);
+    height: 1.15em;
+    margin: 0 1px;
+    background-color: transparent;
+    border-bottom: 1.5px solid rgba(90, 79, 67, 0.48);
+    transition: border-color 0.35s ease;
+    overflow: visible;
+  }
+
+  .punch-hole.sig-slot {
+    width: 28ch;
+    height: 3.9em;
+    margin-top: 6px;
+    display: inline-block;
+    border-bottom: 1.5px solid rgba(90, 79, 67, 0.45);
+  }
+
+  /* --- ZWEIZEILIGES, LEUCHTENDES MILCHGLAS (CSS-VIEW) --- */
+  .milk-layer {
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    transform: translateX(-50%) translateY(-4px) scale(0.95);
+    z-index: 5;
+    background: rgba(255, 252, 244, 0.92);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(212, 175, 55, 0.65);
+    border-radius: 5px;
+    /* Warmer Elfenbein-Lichtschein (Glow), damit es sich klar von Nachbarbuchstaben abhebt */
+    box-shadow: 
+      0 0 12px 4px rgba(255, 248, 225, 0.95),
+      0 3px 10px rgba(0, 0, 0, 0.22);
+    padding: 2px 8px 3px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-align: center;
+    line-height: 1.12;
+    white-space: nowrap;
+    pointer-events: none;
+    /* In Stufe 1 & 3 für Strg+F komplett unsichtbar */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.28s;
+  }
+
+  .punch-hole.sig-slot .milk-layer {
+    bottom: 6px;
+  }
+
+  .milk-top {
+    display: block;
+    font-size: 0.56rem;
+    font-weight: 600;
+    color: #6e5a3b;
+    letter-spacing: 0.2px;
+  }
+
+  .milk-bot {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #1f242c;
+  }
+
+  /* --- DYNAMISCH NACHGELADENE PERGAMENT-SCHNIPSEL (.FLX) --- */
+  .snippet-layer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 3;
+    background-color: transparent;
+    color: #14110f;
+    font-weight: 700;
+    white-space: nowrap;
+    line-height: 1.2;
+    pointer-events: none;
+    /* In Stufe 1 & 2 für Strg+F komplett unsichtbar */
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(var(--fly-x, 40px), var(--fly-y, -35px)) rotate(var(--fly-rot, 8deg)) scale(1.18);
+    transition: opacity 0.5s ease, transform 0.55s cubic-bezier(0.18, 0.89, 0.32, 1.15), visibility 0.5s;
+  }
+
+  /* --- STUFE 2 AKTIV: MILCHGLAS LEUCHTET & IST MIT STRG+F AUFFINDBAR --- */
+  body.mode-milk .milk-layer {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  /* --- STUFE 3 AKTIV: KLARTEXT RASTET EIN & IST MIT STRG+F AUFFINDBAR --- */
+  body.mode-flx .punch-hole {
+    border-bottom-color: transparent;
+  }
+
+  body.mode-flx .snippet-layer {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+
+  .signature-area {
+    margin-top: 34px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(43, 38, 35, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .fountain-sig {
+    font-family: "Brush Script MT", "Segoe Script", "Lucida Handwriting", Georgia, cursive;
+    font-size: 2.1rem;
+    color: #162a72;
+    font-weight: normal;
+    line-height: 1.1;
+    margin-bottom: 4px;
+    transform: rotate(-2deg);
+    display: inline-block;
+  }
+
+  .wax-seal {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #b8251e, #7a140f 70%, #4d0a07);
+    color: #f7d794;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.45), inset 0 0 10px rgba(255,200,150,0.35);
+    border: 2px dashed rgba(247, 215, 148, 0.45);
+    text-align: center;
+    line-height: 1.05;
+    user-select: none;
+  }
+
+  .wax-seal .seal-ring {
+    font-family: ui-monospace, monospace;
+    font-size: 0.48rem;
+    letter-spacing: 0.5px;
+    opacity: 0.85;
+  }
+
+  .wax-seal .seal-ki {
+    font-size: 1.35rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 2px 0;
+  }
+</style>
+</head>
+<body class="mode-skeleton">
+
+  <!-- STEUERPULT -->
+  <div class="control-deck">
+    <div class="deck-header">
+      <div class="deck-title">
+        <span>🛡️ Drei-Schichten-Fensterbrief</span>
+        <span class="vita-id-badge">k26b11-bn2.htm</span>
+      </div>
+      <div class="zip-downloads">
+        <a class="zip-link" href="k26b11-bn2_datenschutzstandard.zip" download>
+          📥 1. ZIP: Datenschutzstandard
+        </a>
+        <a class="zip-link primary" href="k26b11-bn2_klartext-schluesselbund.zip" download>
+          🔑 2. ZIP: Klartext-Schlüsselbund
+        </a>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button id="btn-stage-1" class="stage-btn active" onclick="activateStage(1)">
+        ✉️ 1. Fensterbrief (Datenschutzstandard)
+      </button>
+      <button id="btn-stage-2" class="stage-btn" onclick="activateStage(2)">
+        🌫️ 2. Milchglas-Struktur (CSS-View)
+      </button>
+      <button id="btn-stage-3" class="stage-btn" onclick="activateStage(3)">
+        🔑 3. Klartext-Tresor (.flx | halloPasswort)
+      </button>
+    </div>
+
+    <div class="sim-bar">
+      <div class="sim-status">
+        <span>Ansicht: <span id="view-display" class="status-pill">Stufe 1: Lückentext-Linien</span></span>
+        <span>|</span>
+        <span>halloPasswort: <span id="pw-display" class="status-pill" style="color:#f2cc60;">[Gesperrt]</span></span>
+      </div>
+      <div class="usb-slot">
+        <span>Slot:</span>
+        <span id="usb-stick" class="usb-stick">💾 k26b11-bn2.flx</span>
+      </div>
+    </div>
+
+    <div id="cartridge-notice" class="cartridge-notice"></div>
+    <input type="file" id="manual-file-input" accept=".flx,.js,.json" style="display:none" onchange="handleManualCartridge(event)">
+  </div>
+
+  <!-- AB WERK GESTANZTER PERGAMENT-BRIEF (FESTER TEXTSPIEGEL IN ALLEN 3 STUFEN) -->
+  <main class="parchment-sheet">
+    <div class="letter-top">
+      <div class="recipient-block">
+        <strong>An die Bundesnetzagentur</strong><br>
+        Koordinierungsstelle für digitale Dienste (DSA)<br>
+        Tulpenfeld 4, 53113 Bonn
+      </div>
+      <div class="stamp-meta">
+        Aktenzeichen: <strong>K26B11-bn2</strong><br>
+        Datum: 12.11.2026<br>
+        Drei-Schichten-Fensterbrief
+      </div>
+    </div>
+
+    <h1 class="subject-line">
+      Meldung eines mutmaßlichen Dark Patterns gemäß Art. 25 Digital Services Act (DSA) – Ungefragte Tarif- und Modell-Umschaltung zu Lasten zahlender Geschäftskunden
+    </h1>
+
+    <p>Sehr geehrte Damen und Herren,</p>
+
+    <p>
+      hiermit reichen wir im Namen der 
+      <span class="punch-hole" data-slot="s1" data-top="Absender" data-bot="Kapitalgesellschaft" style="--orig-w:29.5ch; --fly-x:-60px; --fly-y:-40px; --fly-rot:-9deg;"></span>
+      mit Sitz in 
+      <span class="punch-hole" data-slot="s2" data-top="Firmensitz" data-bot="Ort &amp; Registeradresse" style="--orig-w:43.5ch; --fly-x:50px; --fly-y:-30px; --fly-rot:7deg;"></span>
+      (USt-IdNr.: 
+      <span class="punch-hole" data-slot="s3" data-top="Steuer-ID" data-bot="Umsatzsteuer-ID" style="--orig-w:11ch; --fly-x:-40px; --fly-y:35px; --fly-rot:6deg;"></span>)
+      Beschwerde wegen einer irreführenden Oberflächengestaltung („Dunkles Muster“) bei einem großen KI-Plattformdienst ein.
+    </p>
+
+    <p>
+      <strong>1. Sachverhalt nach dem Update vom 11.11.2026:</strong><br>
+      Obwohl im produktiven Geschäftsbetrieb explizit das ressourcenschonende Standardmodell 
+      <span class="punch-hole" data-slot="s4" data-top="Nutzerwahl" data-bot="Standard-Modell" style="--orig-w:16ch; --fly-x:65px; --fly-y:-25px; --fly-rot:-8deg;"></span>
+      ausgewählt und aktiviert wurde, überschreibt die Benutzeroberfläche diese Nutzerauswahl mehrfach täglich eigenmächtig (u. a. nach Kamera-Uploads oder Funkzellenwechseln) und schaltet stillschweigend auf das kostenintensivere Spitzenmodell 
+      <span class="punch-hole" data-slot="s5" data-top="Zwangsumschaltung" data-bot="Premium-Modell" style="--orig-w:17ch; --fly-x:-55px; --fly-y:45px; --fly-rot:10deg;"></span>
+      um. Dieser Wechsel erfolgt ohne explizite, transparente Zustimmung des Nutzers.
+    </p>
+
+    <p>
+      <strong>2. Konkreter Schaden &amp; Upselling-Druck:</strong><br>
+      Durch diese unbemerkte Zwangsumschaltung wurden innerhalb weniger Rückfragen über 
+      <span class="punch-hole" data-slot="s6" data-top="Kontingent-Verlust" data-bot="Verbrauchte Zeit" style="--orig-w:27.5ch; --fly-x:40px; --fly-y:50px; --fly-rot:-6deg;"></span>
+      aufgezehrt. Der geschäftliche Account wurde mitten im laufenden Messebetrieb für 30 Minuten auf den leistungsschwachen 
+      <span class="punch-hole" data-slot="s7" data-top="Kontosperre" data-bot="Drosselungs-Modus" style="--orig-w:23ch; --fly-x:-70px; --fly-y:-20px; --fly-rot:5deg;"></span>
+      gedrosselt – unmittelbar verbunden mit der Aufforderung, vom bestehenden 
+      <span class="punch-hole" data-slot="s8" data-top="Upselling-Druck" data-bot="Abo-Preisspanne" style="--orig-w:24ch; --fly-x:55px; --fly-y:35px; --fly-rot:-7deg;"></span>
+      zu wechseln.
+    </p>
+
+    <p>
+      <strong>3. Anregung zur Abhilfe:</strong><br>
+      Wir bitten Sie, diesen Fall im Rahmen der Aufsicht über digitale Dienste zu prüfen und den Plattformbetreiber zur Einrichtung einer dauerhaften Voreinstellungssperre (<code>Default-Lock</code>) zu verpflichten, sodass eine vom Kunden getroffene Modellwahl niemals ohne ausdrückliche Bestätigung in eine teurere Abrechnungsstufe umgeschaltet werden darf.
+    </p>
+
+    <div class="signature-area">
+      <div>
+        Mit freundlichen Grüßen<br>
+        <span class="punch-hole sig-slot" data-slot="s9" data-top="Rechtsverbindlich" data-bot="Signatur &amp; Geschäftsführung" style="--fly-x:-45px; --fly-y:30px; --fly-rot:-5deg;"></span>
+      </div>
+      <div class="wax-seal" title="Burn.tips KI-Fensterbrief Siegel">
+        <span class="seal-ring">BURN.TIPS</span>
+        <span class="seal-ki">KI</span>
+        <span class="seal-ring">FENSTERBRIEF</span>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Globaler Speicher für die physisch getrennte Klartext-Patrone (k26b11-bn2.flx)
+    window.VITA_FLX_DATA = null;
+
+    let animTimer = null;
+
+    function stopAnim() {
+      if (animTimer) clearInterval(animTimer);
+    }
+
+    // Baut die zweizeiligen Milchglas-Plättchen (mit Leerzeichen für Strg+F) und die Klartext-Schnipsel auf
+    function renderLayers() {
+      document.querySelectorAll('.punch-hole').forEach(hole => {
+        const slot = hole.getAttribute('data-slot');
+        const topText = hole.getAttribute('data-top');
+        const botText = hole.getAttribute('data-bot');
+        hole.innerHTML = '';
+
+        if (topText && botText) {
+          const m = document.createElement('span');
+          m.className = 'milk-layer';
+          // Echtes Leerzeichen zwischen Zeile 1 und Zeile 2 für saubere Strg+F Suche
+          m.innerHTML = '<span class="milk-top">' + topText + '</span> <span class="milk-bot">' + botText + '</span>';
+          hole.appendChild(m);
+        }
+
+        if (window.VITA_FLX_DATA && window.VITA_FLX_DATA[slot]) {
+          const s = document.createElement('span');
+          s.className = 'snippet-layer';
+          if (slot === 's9' && window.VITA_FLX_DATA.s9_sig) {
+            s.innerHTML = '<span class="fountain-sig">' + window.VITA_FLX_DATA.s9_sig + '</span><br>' + window.VITA_FLX_DATA.s9;
+          } else {
+            s.textContent = window.VITA_FLX_DATA[slot];
+          }
+          hole.appendChild(s);
+        }
+      });
+    }
+
+    // Lädt die k26b11-bn2.flx aus demselben Ordner nach (wenn vorhanden)
+    function loadFlxCartridge(callback) {
+      if (window.VITA_FLX_DATA) {
+        callback(true);
+        return;
+      }
+
+      const oldScript = document.getElementById('loader-flx');
+      if (oldScript) oldScript.remove();
+
+      const s = document.createElement('script');
+      s.id = 'loader-flx';
+      s.src = 'k26b11-bn2.flx';
+      s.onload = () => callback(Boolean(window.VITA_FLX_DATA));
+      s.onerror = () => callback(false);
+      document.head.appendChild(s);
+    }
+
+    function activateStage(stage) {
+      stopAnim();
+      renderLayers();
+      const notice = document.getElementById('cartridge-notice');
+      notice.style.display = 'none';
+      notice.classList.remove('demo-loaded');
+
+      document.querySelectorAll('.stage-btn').forEach((b, idx) => {
+        b.classList.toggle('active', idx === stage - 1);
+      });
+
+      const viewEl = document.getElementById('view-display');
+      const pwEl = document.getElementById('pw-display');
+      const stickEl = document.getElementById('usb-stick');
+
+      // STUFE 1: Reiner Fensterbrief (Datenschutzstandard)
+      if (stage === 1) {
+        document.body.className = 'mode-skeleton';
+        viewEl.textContent = 'Stufe 1: Lückentext-Linien';
+        pwEl.textContent = '[Gesperrt]';
+        stickEl.classList.remove('inserted');
+        return;
+      }
+
+      // STUFE 2: Milchglas-Struktur (Direkter CSS-View ohne PIN)
+      if (stage === 2) {
+        document.body.className = 'mode-milk';
+        viewEl.textContent = 'Stufe 2: Milchglas (Strg+F aktiv)';
+        pwEl.textContent = '[Nur Struktur-Ansicht]';
+        stickEl.classList.remove('inserted');
+        return;
+      }
+
+      // STUFE 3: Klartext-Tresor (.flx via halloPasswort)
+      if (stage === 3) {
+        document.body.className = 'mode-skeleton';
+
+        loadFlxCartridge((found) => {
+          if (!found) {
+            viewEl.textContent = 'Stufe 3: Tresor fehlt';
+            pwEl.textContent = 'Kein .flx-Stick';
+            stickEl.classList.remove('inserted');
+            notice.style.display = 'block';
+            notice.innerHTML = `
+              <strong>🔒 Datenschutzstandard bewiesen: Keine <code>k26b11-bn2.flx</code> im Ordner!</strong><br>
+              Du hast die einzelne Fensterbrief-Datei geöffnet. Die Milchglas-Struktur (Stufe 2) ist als CSS-View frei einsehbar, aber deine vertraulichen Klartextdaten und die Unterschrift stehen nicht im HTML-Quelltext – sie liegen physisch getrennt in der <code>k26b11-bn2.flx</code>.<br>
+              <label class="manual-load-label" for="manual-file-input">🔑 k26b11-bn2.flx vom Stick / Ordner auswählen...</label>
+            `;
+            return;
+          }
+          renderLayers();
+          viewEl.textContent = 'Stufe 3: Klartext-Tresor';
+          stickEl.classList.add('inserted');
+
+          if (window.VITA_FLX_DATA._meta && window.VITA_FLX_DATA._meta.statusBanner) {
+            notice.classList.add('demo-loaded');
+            notice.style.display = 'block';
+            notice.innerHTML = window.VITA_FLX_DATA._meta.statusBanner;
+          }
+
+          const fullPass = 'k9M#vP2x!123456789';
+          let step = 0;
+          pwEl.textContent = '';
+          animTimer = setInterval(() => {
+            step += 2;
+            pwEl.textContent = fullPass.slice(0, step);
+            if (step >= fullPass.length) {
+              stopAnim();
+              pwEl.textContent = fullPass;
+              document.body.className = 'mode-flx';
+            }
+          }, 55);
+        });
+      }
+    }
+
+    function handleManualCartridge(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const fn = new Function(e.target.result);
+          fn();
+          renderLayers();
+          activateStage(3);
+        } catch (err) {
+          alert('Die gewählte Datei ist keine gültige k26b11-bn2.flx Patrone.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // Initial Milchglas-Knoten vorbereiten
+    renderLayers();
+  </script>
+</body>
+</html>
