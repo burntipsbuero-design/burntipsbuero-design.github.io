@@ -19,7 +19,6 @@
     --font-serif: Georgia, 'Times New Roman', Garamond, serif;
     --font-mono: 'Courier New', Courier, monospace;
   }
-  /* Skins für E-Ink & Mahagoni */
   body.skin-eink-bw {
     --bg: #ffffff; --paper: #ffffff; --ink: #000000; --muted: #222222;
     --accent: #000000; --felt: #ffffff; --felt-border: #000000; --border: #000000;
@@ -74,21 +73,20 @@
   .lang-strip {
     display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;
   }
-  /* Jäger & Sammler Above-the-Fold Schild */
   .jaeger-card {
     border: 3px solid var(--accent); padding: 14px; border-radius: 8px;
     background: var(--paper);
   }
   .jaeger-title {
-    font-size: 1.35rem; font-weight: bold; color: var(--accent);
+    font-size: 1.32rem; font-weight: bold; color: var(--accent);
     border-bottom: 2px solid var(--border); padding-bottom: 6px; margin-bottom: 8px;
   }
   .jaeger-list {
-    margin: 8px 0; padding-left: 20px; font-size: 1.05rem;
+    margin: 8px 0; padding-left: 20px; font-size: 1.03rem;
   }
-  .jaeger-list li { margin-bottom: 6px; }
+  .jaeger-list li { margin-bottom: 5px; }
   .qr-row {
-    display: grid; grid-template-columns: 165px 1fr; gap: 14px;
+    display: grid; grid-template-columns: 184px 1fr; gap: 14px;
     align-items: center; margin-top: 10px; padding-top: 10px;
     border-top: 2px dashed var(--border);
   }
@@ -97,11 +95,10 @@
     .qr-box { margin: 0 auto; }
   }
   .qr-box {
-    width: 156px; height: 156px; border: 2px solid #000;
+    width: 176px; height: 188px; border: 2px solid #000;
     background: #fff; padding: 6px; display: flex;
-    align-items: center; justify-content: center;
+    flex-direction: column; align-items: center; justify-content: center;
   }
-  /* Taschenrechner-Handschlag */
   .calc-pad {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
     max-width: 340px; margin-top: 8px;
@@ -112,7 +109,6 @@
     border: 2px solid var(--ink); width: 100%; max-width: 340px;
     text-align: right; background: var(--bg); color: var(--ink);
   }
-  /* 15er Billardtisch */
   .billiard-wrap {
     border: 8px solid var(--felt-border); border-radius: 14px;
     background: var(--felt); position: relative;
@@ -128,7 +124,7 @@
   }
   .sector-label {
     position: absolute; top: 8px; font-size: 0.85rem; font-weight: bold;
-    color: #ffffff; background: rgba(0,0,0,0.55); padding: 2px 8px;
+    color: #ffffff; background: rgba(0,0,0,0.58); padding: 2px 8px;
     border-radius: 4px; pointer-events: none;
   }
   .ball {
@@ -139,18 +135,15 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.45);
     transition: width 0.15s, height 0.15s;
   }
-  /* 1-5: Helle Volle */
   .ball-light-solid {
     background: #fdfbf2; color: #000000; border: 3px solid #000000;
   }
-  /* 6-10: Dunkle Volle */
   .ball-dark-solid {
     background: #1a1a1a; color: #ffffff; border: 3px solid #ffffff;
   }
   body.skin-eink-bwr .ball-dark-solid {
     background: #cc0000; color: #ffffff; border: 3px solid #000000;
   }
-  /* 11-15: Dunkle Halbe (Bauchbinde) */
   .ball-dark-striped {
     background: linear-gradient(to bottom, #ffffff 0%, #ffffff 24%, #1a1a1a 25%, #1a1a1a 75%, #ffffff 76%, #ffffff 100%);
     color: #ffffff; border: 3px solid #000000;
@@ -163,7 +156,6 @@
     border: 2px solid var(--border); border-radius: 6px; margin-top: 8px;
     background: var(--bg); align-items: center;
   }
-  /* 3-Spalten Synopse Tabelle */
   .synopse-table {
     width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.92rem;
   }
@@ -173,7 +165,6 @@
   .synopse-table th {
     background: var(--bg); font-weight: bold; text-align: left;
   }
-  /* Milchglas (.flx) */
   .milchglas {
     filter: blur(4px); user-select: none; cursor: pointer;
     background: rgba(139,30,30,0.08); padding: 2px 6px; border-radius: 4px;
@@ -210,7 +201,7 @@
   <div>
     <span class="badge" id="file-id-badge">hf2</span>
     <span id="ampel-status">🟢 <strong>Stand synchron</strong> (Fr, 13.11.2026)</span>
-    <span class="badge" id="hash-display" title="Download-Hash | Programm-Ist | Backup-Status">DL:7k9m · IST:7k9m · BK:ok</span>
+    <span class="badge" id="hash-display" title="Download-Hash | Programm-Ist | Backup-Status">DL:8p3k · IST:8p3k · BK:ok</span>
   </div>
   <div style="display:flex; gap:6px; align-items:center;">
     <select id="skin-select" onchange="changeSkin(this.value)" style="width:auto;">
@@ -227,13 +218,13 @@
 <nav class="nav-tabs" id="main-nav">
   <button onclick="showSection('sec-jaeger')" id="tab-jaeger" class="active">📦 1. Halle B5 Jäger & Sammler (QR)</button>
   <button onclick="showSection('sec-billiard')" id="tab-billiard">🎱 2. 15er-Billard & 3-Spalten-Synopse</button>
-  <button onclick="showSection('sec-katalog')" id="tab-katalog">📋 3. Mein 7er-Katalog & Steuer-Radar</button>
+  <button onclick="showSection('sec-katalog')" id="tab-katalog">📋 3. 7er-Katalog & Steuer-Radar</button>
   <button onclick="showSection('sec-dialog')" id="tab-dialog">💬 4. Stilles Fensterbrett & JSONL</button>
   <button onclick="showSection('sec-cockpit')" id="tab-cockpit">🧭 5. Master-Cockpit (B5/A1)</button>
 </nav>
 
 <!-- ===================================================================== -->
-<!-- KAPITEL 1: JÄGER & SAMMLER (ABOVE THE FOLD FÜR HALLE B5 + LIVE-QR)    -->
+<!-- KAPITEL 1: JÄGER & SAMMLER (ABOVE THE FOLD FÜR HALLE B5 + ISO-QR)     -->
 <!-- ===================================================================== -->
 <section id="sec-jaeger" class="card">
   <div class="lang-strip">
@@ -244,7 +235,7 @@
     <button onclick="setLang('fr')" id="btn-lang-fr">🇫🇷 FR (hf26)</button>
   </div>
 
-  <!-- Vorzeige-Schild (Exakt 1 Handybildschirm hoch) -->
+  <!-- Vorzeige-Schild (Kompakt auf 1 Handybildschirm mit scannbarem QR) -->
   <div class="jaeger-card" id="jaeger-board">
     <div class="jaeger-title" id="j-title">📦 Messe-Muster gegen Barzahlung — 留样不带回！</div>
     <p id="j-intro" style="margin:4px 0; font-weight:bold;">
@@ -256,7 +247,7 @@
       <li><strong>4.2" / 7.5" Funk-ESL-Tags</strong> (5-Jahres-Knopfzelle + Test-Gateway)</li>
     </ol>
     <div class="qr-row">
-      <div class="qr-box" id="qr-container" title="Offline erzeugter QR-Code für den nächsten freien Kind-Kanal"></div>
+      <div class="qr-box" id="qr-container" title="Kamerascannbarer ISO-Offline-QR-Code für den nächsten freien Kind-Kanal"></div>
       <div>
         <div style="font-weight:bold; font-size:1.05rem; color:var(--accent);" id="j-scan-cta">
           📱 Bitte scannen für Ihr persönliches Messestand-Blatt & Preis-Angebot!
@@ -265,7 +256,7 @@
           Ziel-Kanal: <strong id="next-child-url">https://burntipsbuero-design.github.io/k26b/13hf2/hf222.htm</strong>
         </div>
         <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
-          <button class="primary" onclick="spawnNextChild()">⚡ Nächster Stand / Kind-ID hochzählen (<span id="btn-next-id">hf223</span>)</button>
+          <button class="primary" onclick="spawnNextChild()">⚡ Nächster Stand / Kind-ID (<span id="btn-next-id">hf223</span>)</button>
           <button onclick="spawnGrandchild()">🌿 Enkel (-2) abspalten</button>
           <button onclick="downloadCurrentClone()">💾 Als .htm speichern</button>
         </div>
@@ -286,7 +277,7 @@
         </div>
       </div>
       <div style="flex:1; min-width:240px;">
-        <label>Stand-Notiz / Stückzahl (z. B. "Halle B5 Stand 312 - 6x 4.2 NFC"):</label>
+        <label>Stand-Notiz / Stückzahl (z. B. "Halle B5 Stand-Nr. - 6x 4.2 NFC"):</label>
         <input type="text" id="calc-note" placeholder="5x 4.2 NFC + 1x 7.5 BWR">
         <button class="primary" style="margin-top:8px; width:100%;" onclick="saveHandshakeDeal()">🤝 Deal & Kanal-ID ins JSONL-Protokoll buchen</button>
       </div>
@@ -303,14 +294,13 @@
     <div style="display:flex; gap:6px; flex-wrap:wrap;">
       <select id="preset-select" onchange="loadPreset(this.value)" style="width:auto; font-weight:bold;">
         <option value="verbaende">🏛️ Synopse 1: VGSD ⇄ BVMID ⇄ BVMW (Ohne Konvertierungszwang)</option>
-        <option value="steuer">⚖️ Synopse 2: Mandats-Radar (Senior-StB ⇄ Burn.tips ⇄ Junge StB)</option>
-        <option value="messe">🔌 Synopse 3: Messe-Brücke (Asien-Hardware ⇄ Exoskelett ⇄ Mittelstand)</option>
+        <option value="steuer">⚖️ Synopse 2: Mandats-Radar (Senior-Kanzlei ⇄ Burn.tips ⇄ Junge StB)</option>
+        <option value="messe">🔌 Synopse 3: Messe-Brücke (Display-Hersteller ⇄ Exoskelett ⇄ Mittelstand)</option>
       </select>
       <button onclick="toggleBallCount()" id="btn-ball-mode">🔢 Modus: 15er-Vollsynopse</button>
     </div>
   </div>
 
-  <!-- Billardtisch Spielfeld -->
   <div class="billiard-wrap" id="billiard-table">
     <div class="billiard-grid-line" style="left:33.33%;"></div>
     <div class="billiard-grid-line" style="left:66.66%;"></div>
@@ -319,7 +309,6 @@
     <div class="sector-label" style="right:10px;" id="sec-lbl-c">Sektor C (11–15 Halb): BVMW</div>
   </div>
 
-  <!-- Kugel-Ablage & 3D-Größenregler -->
   <div class="ball-tray">
     <div style="flex:1; min-width:220px;">
       <strong id="selected-ball-info">Kugel antippen oder ziehen (X/Y = Nähe, Größe = Hebelwirkung/3D):</strong>
@@ -334,10 +323,9 @@
     </div>
   </div>
 
-  <!-- 3-Spalten-Synopse-Tabelle (7 Dimensionen) -->
   <div style="margin-top:16px;">
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
-      <h3 style="margin:0;">📊 7-Punkte-Synopse in 3 Spalten (Wer hat welchen Schatz?)</h3>
+      <h3 style="margin:0;">📊 7-Punkte-Synopse in 3 Spalten (Komplementäre Stärken)</h3>
       <div style="display:flex; gap:4px;">
         <button onclick="filterColumns('all')">Alle 3 Spalten</button>
         <button onclick="filterColumns('ab')">A ⇄ B</button>
@@ -358,18 +346,18 @@
     </table>
   </div>
 
-  <!-- Dezente Fußnote zur Zonen-Deutung -->
+  <!-- Dezente, ausklappbare Fußnote zur Zonen-Deutung -->
   <details style="margin-top:12px; font-size:0.86rem; color:var(--muted);">
     <summary style="cursor:pointer;">ℹ️ Lesehilfe: Was bedeutet die Kugel-Verteilung auf dem Tisch? (Ergänzung vs. Überschneidung)</summary>
     <p style="margin:6px 0 0 0;">
-      <strong>Weit auseinanderliegende Kugeln (Komplementäre Lücke):</strong> Das echte Gold für Kooperationen – jeder beherrscht genau das Puzzleteil, das dem anderen fehlt (verlängerte Werkbank ohne Konkurrenzkampf).<br>
-      <strong>Aufeinanderklebende Kugeln (Hohe Überschneidung):</strong> Kollegialer Respekt unter Fachkollegen – man beackert dasselbe Feld, lernt voneinander und hilft sich bei Spitzenlasten (Feuerwehr-Prinzip) aus.
+      <strong>Weit auseinanderliegende Kugeln (Komplementäre Lücke):</strong> Das wertvollste Signal für gemeinsame Projekte – jeder Partner bringt genau den Baustein mit, den der andere nicht im eigenen Haus vorhält (verlängerte Werkbank ohne Reibungsverlust).<br>
+      <strong>Aufeinanderliegende Kugeln (Hohe Überschneidung):</strong> Kollegialer Austausch auf Augenhöhe – man beackert dasselbe Fachgebiet, lernt voneinander und fängt gemeinsam Spitzenlasten (Feuerwehr-Prinzip) ab.
     </p>
   </details>
 </section>
 
 <!-- ===================================================================== -->
-<!-- KAPITEL 3: MEIN 7ER-KATALOG & STEUERBESCHEID- / BLIND-BOOKING-RADAR   -->
+<!-- KAPITEL 3: 7ER-KATALOG & STEUERBESCHEID- / BLIND-BOOKING-RADAR        -->
 <!-- ===================================================================== -->
 <section id="sec-katalog" class="card hidden">
   <h2>📋 Joseph Gaßner · Burn.tips UG (haftungsbeschränkt) — Der 7-Punkte-Katalog</h2>
@@ -377,21 +365,20 @@
     Lösungs-Designer & Bürokratie-Bändiger · 29 Jahre Steuerpraxis (StFA, StFW, 15 J. StB) + 40 Jahre Software-Architektur.
   </p>
   <ol class="jaeger-list" id="my-7-catalog">
-    <li><strong>Digitales Exoskelett für Jedermann:</strong> Lokale, serverlose HTML/JSONL-Werkzeuge, die Mitarbeiter-Erfahrung statt Tippgeschwindigkeit belohnen (ohne Konzern-IT-Schranken).</li>
+    <li><strong>Digitales Exoskelett für Jedermann:</strong> Lokale, serverlose HTML/JSONL-Werkzeuge, die Berufserfahrung statt Tippgeschwindigkeit belohnen – ohne Konzern-IT-Schranken.</li>
     <li><strong>Messe- & Vertriebs-Brücke (<code>helloFair</code>):</strong> Anonyme 1-Klick-Übergabe per QR & 25,43-€-NFC-E-Paper ohne Visitenkarten-Zwang und ohne E-Mail-Spam.</li>
     <li><strong>Bündnis-Spiegel (VGSD ⇄ BVMID ⇄ BVMW):</strong> Trüffelschwein-Vermittlung zwischen Soloselbstständigen, Mittelstands-Entscheidern und regionaler Fläche ohne Vereins-Konvertierung.</li>
     <li><strong>Fensterbrief & Zero-Knowledge (<code>.flx</code>):</strong> Öffentliches Routing-Gerüst + AES-GCM-verschlüsselte Nutzlast (Milchglas-Prinzip für DSGVO-Souveränität).</li>
-    <li><strong>Kaufmännischer Lotsendienst & Steuerfachwirt-Feuerwehr:</strong> Strukturierte Vorarbeit (§ 6 Nr. 3/4 & § 62a StBerG), Auffangnetz & Marktplatz für StB-Prüflinge und überlastete Kanzleien.</li>
-    <li><strong>Mandats-Radar & Kanzlei-Entschlackung:</strong> Scheibchenweise Übergabe von D-Mandaten (Senior-StB ⇄ Exoskelett ⇄ Junge StB) auf Auktions-/Pull-Basis.</li>
+    <li><strong>Kaufmännischer Lotsendienst & Steuerfachwirt-Feuerwehr:</strong> Strukturierte Vorarbeit (§ 6 Nr. 3/4 & § 62a StBerG), Marktplatz für StB-Prüflinge, freie Fachwirte und ausgelastete Kanzleien.</li>
+    <li><strong>Mandats-Radar & Kanzlei-Entlastung:</strong> Scheibchenweise Überleitung von D-Mandaten (Senior-Kanzlei ⇄ Exoskelett ⇄ Junge Berufsträger) auf anonymer Pull-Basis.</li>
     <li><strong>Insel-KI & Hardware-Brücken (<code>Vita Basis</code>):</strong> Luftisolierte Zweithand-Smartphones am Balkon-Solarstrom (Zugvogel-Prinzip) als nächtlicher Bienenstock-Agent.</li>
   </ol>
 
   <hr style="border:0; border-top:2px dashed var(--border); margin:16px 0;">
 
-  <!-- Steuerbescheid-Ankreuzer & Blind-Booking -->
   <h3>⚖️ Interaktiver Steuerbescheid-Spickzettel & Anonymes Mandats-Radar (StBVV-Milchglas)</h3>
   <p style="font-size:0.9rem; margin-top:0;">
-    Kreuzen Sie anhand Ihres letzten Steuerbescheids Ihre Einkunftsarten an – nachts bestückt die Insel-KI dieses Blatt automatisch mit passenden Urteilen, oder Sie schalten das Profil anonym für den Steuerberater-Pool (z. B. Wechsel / Ersttäter) frei:
+    Kreuzen Sie anhand Ihres letzten Einkommensteuerbescheids Ihre Einkunftsarten an – nachts bestückt die Insel-KI dieses Blatt automatisch mit passenden Urteilen, oder Sie schalten das anonyme Profil für den Berater-Pool (Wechsel / Erstmandat) frei:
   </p>
   <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:8px;">
     <label class="toggle-row"><input type="checkbox" onchange="updateTaxPattern()" class="tax-cb" value="§13 LuF"> § 13 Land- & Forstwirtschaft</label>
@@ -407,18 +394,17 @@
     <strong>Erkanntes Suchmuster für Insel-KI & StB-Auktionspool:</strong>
     <span id="tax-pattern-output" class="badge">§19 Angestellt + LStR R9.5 | §21 V+V + §7i Denkmal</span>
     <div style="margin-top:8px; font-size:0.9rem;">
-      Gegenstandswert-Korridor (öffentlich): <strong>100.000 – 150.000 € (ca. 45 Buchungszeilen)</strong> ·
-      Exakte Steuernummer & Klarnamen im FLX-Milchglas:
-      <span class="milchglas" onclick="openVaultPrompt()">StNr. 114/288/90125 · Mandant: Dr. M. Muster, Hessen · Tel: +49 171 000000</span>
+      Gegenstandswert-Korridor (öffentlich): <strong>100.000 – 150.000 € (ca. 45 Buchungszeilen/Jahr)</strong> ·
+      Exakte Steuernummer & Mandatsdaten im FLX-Milchglas:
+      <span class="milchglas" onclick="openVaultPrompt()">Muster-Aktenzeichen FLX-2026-019 · Freigabe erst nach Zuschlag durch Mandant</span>
     </div>
   </div>
 
-  <!-- Live-Demo: Anonymes Blind-Booking auf Pull-Basis -->
   <div style="margin-top:12px;">
-    <strong>🧱 Blind-Booking-Vorschau (Buchhaltung komplett ohne Klarnamen / Pull-Basis für die Feuerwehr):</strong>
+    <strong>🧱 Blind-Booking-Demo (Buchhaltung komplett ohne Klarnamen / Pull-Basis für die Feuerwehr):</strong>
     <div class="jsonl-box" style="margin-top:6px;">
 {"row":101,"date":"2026-10-14","amount":-1190.00,"tax":"19%","skeleton":"Wartung Server / IT-Service Inland","skr03_ai":"4955 an 1200","flx_doc":"enc:U2FsdGVkX19...","status":"OPEN_FOR_PULL"}
-{"row":102,"date":"2026-10-18","amount":-4280.00,"tax":"19%","skeleton":"Sanierung Dachkasten Baudenkmal Bescheinigung §7i","skr03_ai":"0090/Erhaltungsaufwand §82b EStDV prüfen","flx_doc":"enc:8f92aB11...","status":"CHECKED_BY_STFW"}
+{"row":102,"date":"2026-10-18","amount":-4280.00,"tax":"19%","skeleton":"Sanierung Dachkasten Baudenkmal Bescheinigung §7i","skr03_ai":"Erhaltungsaufwand §82b EStDV prüfen","flx_doc":"enc:8f92aB11...","status":"CHECKED_BY_STFW"}
     </div>
   </div>
 </section>
@@ -429,20 +415,18 @@
 <section id="sec-dialog" class="card hidden">
   <h2>💬 Stilles Fensterbrett & Anonymer Arbeitskanal (<span id="dialog-file-id">hf2</span>)</h2>
 
-  <!-- Eingangs-Begrüßung Zeile #1 -->
   <div style="padding:10px; border-left:4px solid var(--accent); background:var(--bg); margin-bottom:12px;">
     <strong>Nachricht #1 von Joseph Gaßner (Burn.tips UG):</strong><br>
-    Herzlichen Dank für unser Gespräch! Dieses Blatt ist Ihr persönlicher, werbefreier Arbeitskanal ohne Login-Zwang. Sie entscheiden hier unten selbst per Schieberegler, ob das Blatt vollkommen stumm bleibt oder ob meine Insel-KI Sie bei Antworten bzw. zu ausgewählten Fachthemen informieren darf.
+    Herzlichen Dank für unser Gespräch! Dieses Blatt ist Ihr persönlicher, werbefreier Arbeitskanal ohne Registrierungszwang. Sie stellen hier unten selbst per Schieberegler ein, ob das Blatt vollkommen stumm bleibt oder ob Sie bei direkten Antworten bzw. ausgewählten Themen benachrichtigt werden möchten.
   </div>
 
-  <!-- Schieberegler 1: Allgemeines Antwort-Signal -->
   <div class="toggle-row">
     <input type="checkbox" id="toggle-push" onchange="togglePushBox()">
-    <label for="toggle-push"><strong>🔔 Schieberegler 1: Benachrichtigung bei direkter Antwort (AN / AUS)</strong></label>
+    <label for="toggle-push"><strong>🔔 Schieberegler 1: Push-Nachrichten bei Antwort (AN / AUS)</strong></label>
   </div>
   <div id="push-channel-box" class="hidden" style="padding:10px; border:1px dashed var(--ink); margin-bottom:10px;">
-    <label>Auf welchem Kanal möchten Sie informiert werden? (Wird sofort per AES/FLX verschlüsselt, öffentlich unsichtbar):</label>
-    <div style="display:flex; gap:6px; margin-top:6px;">
+    <label>Gewünschter Benachrichtigungskanal (wird lokal verschlüsselt und ist öffentlich nicht im Klartext einsehbar):</label>
+    <div style="display:flex; gap:6px; margin-top:6px; flex-wrap:wrap;">
       <select id="push-type" style="width:140px;">
         <option value="SMS">📱 SMS</option>
         <option value="Signal">🛡️ Signal</option>
@@ -450,53 +434,50 @@
         <option value="Email">✉️ E-Mail</option>
         <option value="Matrix">🌐 Matrix</option>
       </select>
-      <input type="text" id="push-target" placeholder="Nummer / ID / Adresse (wird lokal verschlüsselt)">
+      <input type="text" id="push-target" placeholder="Nummer / Kennung / Adresse (lokale FLX-Verschlüsselung)" style="flex:1; min-width:200px;">
       <button class="primary" onclick="encryptAndSaveChannel()">🔒 Kanal versiegeln</button>
     </div>
   </div>
 
-  <!-- Schieberegler 2: Themen-Radar / Insel-KI Newsletter -->
   <div class="toggle-row">
     <input type="checkbox" id="toggle-newsletter" onchange="toggleNewsletterBox()">
-    <label for="toggle-newsletter"><strong>🐝 Schieberegler 2: Automatischer Themen-Radar durch die Insel-KI (ohne E-Mail-Spam)</strong></label>
+    <label for="toggle-newsletter"><strong>🐝 Schieberegler 2: Individueller Themen-Newsletter via Insel-KI (AN / AUS)</strong></label>
   </div>
   <div id="newsletter-box" class="hidden" style="padding:10px; border:1px dashed var(--ink); margin-bottom:10px;">
-    <div style="margin-bottom:6px; font-weight:bold;">Zu welchen der 7 Punkte (oder Ihren Steuer-Paragrafen) soll der nächtliche Agent Updates in dieses Blatt legen?</div>
+    <div style="margin-bottom:6px; font-weight:bold;">Zu welchen der 7 Katalog-Punkte (bzw. Steuer-Paragrafen) soll der nächtliche Agent Updates hinterlegen?</div>
     <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
       <label><input type="checkbox" class="nl-topic" value="P1:Exoskelett" checked> P1: Exoskelett</label>
       <label><input type="checkbox" class="nl-topic" value="P2:E-Ink/helloFair" checked> P2: E-Ink & Messe</label>
       <label><input type="checkbox" class="nl-topic" value="P3:Verbaende"> P3: VGSD/BVMID/BVMW</label>
-      <label><input type="checkbox" class="nl-topic" value="P5:Steuer-Feuerwehr"> P5/6: Steuer-Radar & EStG</label>
+      <label><input type="checkbox" class="nl-topic" value="P5:Steuer-Radar"> P5/6: Steuer-Radar & EStG</label>
       <label><input type="checkbox" class="nl-topic" value="P7:Insel-KI"> P7: Solar-Insel-KI</label>
     </div>
-    <div style="display:flex; align-items:center; gap:8px;">
+    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
       <label>Turnus:</label>
       <select id="nl-turnus" style="width:auto;" onchange="appendNewsletterConfig()">
         <option value="meilenstein">Nur bei echten Meilensteinen</option>
         <option value="monatlich">Monatlich</option>
         <option value="quartal">Quartalsweise</option>
       </select>
-      <button onclick="appendNewsletterConfig()">💾 Auswahl im JSONL vermerken</button>
+      <button onclick="appendNewsletterConfig()">💾 Auswahl im JSONL speichern</button>
     </div>
   </div>
 
-  <!-- Neue Nachricht schreiben (mit Amadeus-Namenswürfler & Einzel-Push-Schalter) -->
   <div style="margin-top:14px; padding:12px; border:2px solid var(--border); border-radius:6px;">
     <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:8px;">
-      <label style="font-weight:bold;">Ihr Tarn- oder Klarname:</label>
-      <input type="text" id="sender-alias" value="Amadeus von Gloria von Thurn und Taxis" style="flex:1; min-width:220px;">
+      <label style="font-weight:bold;">Ihr Tarn- oder Rollenname:</label>
+      <input type="text" id="sender-alias" value="Amadeus vom Grünen Tuch" style="flex:1; min-width:220px;">
       <button onclick="rollAlias()">🎲 Namen würfeln</button>
     </div>
     <textarea id="msg-input" rows="3" placeholder="Ihre Nachricht, Ihr StBVV-Gebot oder Ihr Messe-Musterpreis..."></textarea>
-    <div class="toggle-row" style="margin-top:8px;">
+    <div class="toggle-row" style="margin-top:8px; flex-wrap:wrap;">
       <input type="checkbox" id="msg-vip-push">
-      <label for="msg-vip-push">⚡ <strong>Einzel-Nachrichten-Push:</strong> Bei Antwort genau hierauf sofort informieren (optional eigener VIP-Kanal, z. B. SMS):</label>
-      <input type="text" id="msg-vip-channel" placeholder="Optional: +49... (wird verschlüsselt)" style="max-width:220px;">
+      <label for="msg-vip-push">⚡ <strong>Push für genau diese Nachricht:</strong> Bei Antwort sofort informieren (optional separater Kanal, z. B. SMS):</label>
+      <input type="text" id="msg-vip-channel" placeholder="Optional: Kanal/Nr. (verschlüsselt)" style="max-width:230px;">
     </div>
     <button class="primary" style="margin-top:8px;" onclick="appendDialogMessage()">➕ Zeile an JSONL-Protokoll anhängen</button>
   </div>
 
-  <!-- Append-Only JSONL Bauch -->
   <div style="margin-top:14px;">
     <div style="display:flex; justify-content:space-between; align-items:center;">
       <strong>Append-Only JSONL-Bauch (Öffentlicher Takt + FLX-verschlüsselte Kanäle):</strong>
@@ -507,19 +488,19 @@
 </section>
 
 <!-- ===================================================================== -->
-<!-- KAPITEL 5: MASTER-COCKPIT & MARSCHROUTE (HALLE B5 & A1)               -->
+<!-- KAPITEL 5: NEUTRALES MASTER-COCKPIT (MESSE & NACHLAUF)                -->
 <!-- ===================================================================== -->
 <section id="sec-cockpit" class="card hidden">
-  <h2>🧭 Master-Cockpit: Freitag, 13.11.2026 (electronica Halle B5 & A1)</h2>
+  <h2>🧭 Master-Cockpit: Freitag, 13.11.2026 (Messe-Endspurt Halle B5 & A1)</h2>
   <ul class="jaeger-list">
-    <li><label><input type="checkbox"> <strong>1. Rucksack & Baum-Test:</strong> Bargeld (kleine Scheine), Notfall-Tragetaschen, <code>hf2.htm</code> + Ableger (<code>hf22</code> DE, <code>hf23</code> TW, <code>hf24</code> CN, <code>hf25</code> EN, <code>hf26</code> FR).</label></li>
-    <li><label><input type="checkbox"> <strong>2. Halle B5 Scouting:</strong> <em>E Ink / Pervasive Displays</em> (Taiwan → <code>hf23</code>) und <em>Good Display / Waveshare</em> (Festland → <code>hf24</code>). Fokus: 4,2" Passiv-NFC (Ziel 25,43 € VK am Dienstag) & 7,5" S/W/Rot.</label></li>
-    <li><label><input type="checkbox"> <strong>3. Halle A1 (Connect Group / Laura & Bernd Eisele):</strong> NFC-Kugelschreiber als physischen Schlüssel für das E-Paper und die Verbands-Synopse zeigen.</label></li>
-    <li><label><input type="checkbox"> <strong>4. Ab 14:15 Uhr Jäger-&-Sammler-Runde (留样不带回):</strong> Muster direkt vom Stand gegen Euro-Bargeld in den Rucksack übernehmen.</label></li>
-    <li><label><input type="checkbox"> <strong>5. Nächste Woche Nachlauf:</strong> BVMID (Kai Brandstätter, Konrad Storost), VGSD (Dienstag 17.11.), Nina Wolf (Hessen) & Gerhard Bauernfeind (72, München) mit eigenen <code>hf2xx.htm</code> beschicken.</label></li>
+    <li><label><input type="checkbox"> <strong>1. Ausrüstung & Stammbaum:</strong> Bargeld in kleinen Scheinen, Tragetaschen im Rucksack, <code>hf2.htm</code> samt Sprach-Ablegern (<code>hf22</code> DE, <code>hf23</code> TW, <code>hf24</code> CN, <code>hf25</code> EN, <code>hf26</code> FR).</label></li>
+    <li><label><input type="checkbox"> <strong>2. Halle B5 Display-Scouting:</strong> Taiwan-Aussteller (<code>hf23</code>) & Festland-Hersteller (<code>hf24</code>). Fokus: 4,2" Passiv-NFC-Karten (Ziel 25,43 € Kalkulation für Dienstag) & 7,5" S/W/Rot-Tischaufsteller.</label></li>
+    <li><label><input type="checkbox"> <strong>3. Halle A1 Stippvisite (NFC-Hardware-Partner):</strong> Kontaktlosen NFC-Kugelschreiber als physischen Schlüssel für das E-Paper und die Verbands-Synopse vorführen.</label></li>
+    <li><label><input type="checkbox"> <strong>4. Ab 14:15 Uhr Muster-Ankauf (留样不带回):</strong> Ausstellungsstücke direkt von der Vitrine gegen Euro-Barzahlung übernehmen und Rückfracht ersparen.</label></li>
+    <li><label><input type="checkbox"> <strong>5. Wochen-Nachlauf & BVMID-Blog:</strong> Messe-Kontakte, Verbands-Netzwerk (VGSD/BVMID/BVMW) sowie Kanzlei-Partner (Senior-Abgabe & Junior-Aufbau) mit individuellen <code>hf2xx.htm</code>-Blättern versorgen.</label></li>
   </ul>
   <div style="padding:10px; border:1px solid var(--border); border-radius:4px; font-size:0.9rem;">
-    <strong>Impressum & Kontakt (Cookie-frei / Tracking-frei):</strong><br>
+    <strong>Impressum & Kontakt (§ 5 DDG · Cookie-frei / Tracking-frei):</strong><br>
     Burn.tips UG (haftungsbeschränkt) · Geschäftsführer: Joseph Gaßner · Lena-Christ-Str. 10 1/2, 84416 Taufkirchen (Vils) ·
     E-Mail: mail@burn.tips · USt-IdNr.: DE424204181 · Tel (Rückwärts-Schutz): <span style="unicode-bidi:bidi-override; direction:rtl;">081241975194+</span>
   </div>
@@ -531,9 +512,196 @@
 
 <script>
 /* =========================================================================
-   1. BASE-34 STAMMBAUM & SELBSTERKENNUNG ÜBER DATEINAMEN
+   1. ECHTER OFFLINE ISO/IEC 18004 QR-CODE-GENERATOR (VERSION 4-L, BYTE MODE)
+      Bis zu 78 Bytes Kapazität (ideal für GitHub-Pages-URLs), Reed-Solomon ECC
    ========================================================================= */
-const B34_CHARS = "23456789abcdefghijkmnpqrstuvwxyz"; // Ohne 0, 1, l, o für Verwechslungsfreiheit
+const QR_GF_EXP = new Uint8Array(512);
+const QR_GF_LOG = new Uint8Array(256);
+(function initGalois() {
+  let x = 1;
+  for (let i = 0; i < 255; i++) {
+    QR_GF_EXP[i] = x;
+    QR_GF_LOG[x] = i;
+    x <<= 1;
+    if (x & 0x100) x ^= 0x11d;
+  }
+  for (let i = 255; i < 512; i++) QR_GF_EXP[i] = QR_GF_EXP[i - 255];
+})();
+
+function gfMul(a, b) {
+  return (a === 0 || b === 0) ? 0 : QR_GF_EXP[QR_GF_LOG[a] + QR_GF_LOG[b]];
+}
+
+function rsGeneratorPoly(degree) {
+  let poly = [1];
+  for (let i = 0; i < degree; i++) {
+    const next = new Array(poly.length + 1).fill(0);
+    for (let j = 0; j < poly.length; j++) {
+      next[j] ^= poly[j];
+      next[j + 1] ^= gfMul(poly[j], QR_GF_EXP[i]);
+    }
+    poly = next;
+  }
+  return poly;
+}
+
+function rsEncode(data, ecLen) {
+  const gen = rsGeneratorPoly(ecLen);
+  const rem = new Uint8Array(ecLen);
+  for (let i = 0; i < data.length; i++) {
+    const factor = data[i] ^ rem[0];
+    for (let j = 0; j < ecLen - 1; j++) rem[j] = rem[j + 1];
+    rem[ecLen - 1] = 0;
+    for (let j = 0; j < ecLen; j++) {
+      rem[j] ^= gfMul(gen[j + 1], factor);
+    }
+  }
+  return rem;
+}
+
+function buildIsoQrSvg(urlText) {
+  // QR Version 4-L: 33x33 Module, 80 Daten-Codewörter, 20 EC-Codewörter (1 Block)
+  const size = 33;
+  const dataCap = 80;
+  const ecLen = 20;
+  const utf8 = new TextEncoder().encode(urlText);
+
+  const bits = [];
+  function pushBits(val, len) {
+    for (let i = len - 1; i >= 0; i--) bits.push((val >>> i) & 1);
+  }
+  pushBits(0b0100, 4); // Byte-Modus
+  pushBits(utf8.length, 8);
+  for (let b of utf8) pushBits(b, 8);
+  for (let i = 0; i < 4 && bits.length < dataCap * 8; i++) bits.push(0);
+  while (bits.length % 8 !== 0) bits.push(0);
+
+  const dataBytes = new Uint8Array(dataCap);
+  for (let i = 0; i < bits.length / 8 && i < dataCap; i++) {
+    let byte = 0;
+    for (let b = 0; b < 8; b++) byte = (byte << 1) | bits[i * 8 + b];
+    dataBytes[i] = byte;
+  }
+  const padBytes = [0xec, 0x11];
+  for (let i = Math.floor(bits.length / 8); i < dataCap; i++) {
+    dataBytes[i] = padBytes[(i - Math.floor(bits.length / 8)) % 2];
+  }
+
+  const ecBytes = rsEncode(dataBytes, ecLen);
+  const allWords = new Uint8Array(dataCap + ecLen);
+  allWords.set(dataBytes, 0);
+  allWords.set(ecBytes, dataCap);
+
+  const mat = Array.from({ length: size }, () => new Int8Array(size).fill(-1));
+  const isFunc = Array.from({ length: size }, () => new Uint8Array(size));
+
+  function setMod(r, c, val) {
+    if (r >= 0 && r < size && c >= 0 && c < size) {
+      mat[r][c] = val ? 1 : 0;
+      isFunc[r][c] = 1;
+    }
+  }
+
+  function placeFinder(row, col) {
+    for (let r = -1; r <= 7; r++) {
+      for (let c = -1; c <= 7; c++) {
+        const rr = row + r, cc = col + c;
+        if (rr < 0 || rr >= size || cc < 0 || cc >= size) continue;
+        const onBorder = (r >= 0 && r <= 6 && (c === 0 || c === 6)) || (c >= 0 && c <= 6 && (r === 0 || r === 6));
+        const inCore = (r >= 2 && r <= 4 && c >= 2 && c <= 4);
+        setMod(rr, cc, onBorder || inCore ? 1 : 0);
+      }
+    }
+  }
+  placeFinder(0, 0);
+  placeFinder(0, size - 7);
+  placeFinder(size - 7, 0);
+
+  // Alignment Pattern für Version 4 bei (26, 26)
+  for (let r = -2; r <= 2; r++) {
+    for (let c = -2; c <= 2; c++) {
+      const dist = Math.max(Math.abs(r), Math.abs(c));
+      setMod(26 + r, 26 + c, dist !== 1 ? 1 : 0);
+    }
+  }
+
+  // Timing Patterns
+  for (let i = 8; i < size - 8; i++) {
+    setMod(6, i, i % 2 === 0 ? 1 : 0);
+    setMod(i, 6, i % 2 === 0 ? 1 : 0);
+  }
+  setMod(size - 8, 8, 1); // Dark Module
+
+  // Format-Bits reservieren
+  for (let i = 0; i <= 8; i++) {
+    if (!isFunc[8][i]) isFunc[8][i] = 1;
+    if (!isFunc[i][8]) isFunc[i][8] = 1;
+  }
+  for (let i = 0; i < 8; i++) {
+    isFunc[8][size - 1 - i] = 1;
+    isFunc[size - 1 - i][8] = 1;
+  }
+
+  // Daten-Bits im Zickzack von rechts unten eintragen + Maske 0 ((r + c) % 2 === 0)
+  let bitIdx = 0;
+  const totalBits = allWords.length * 8;
+  let upward = true;
+  for (let right = size - 1; right >= 1; right -= 2) {
+    if (right === 6) right = 5;
+    for (let vert = 0; vert < size; vert++) {
+      const r = upward ? (size - 1 - vert) : vert;
+      for (let j = 0; j < 2; j++) {
+        const c = right - j;
+        if (!isFunc[r][c]) {
+          let bit = 0;
+          if (bitIdx < totalBits) {
+            bit = (allWords[bitIdx >>> 3] >>> (7 - (bitIdx & 7))) & 1;
+            bitIdx++;
+          }
+          if ((r + c) % 2 === 0) bit ^= 1; // Maske 0
+          mat[r][c] = bit;
+        }
+      }
+    }
+    upward = !upward;
+  }
+
+  // Vorberechnete BCH-Format-Information für Level L (01) + Maske 0 (000) = 0x77c4
+  const fmt = 0x77c4;
+  const fmtBits = [];
+  for (let i = 0; i < 15; i++) fmtBits.push((fmt >>> i) & 1);
+
+  for (let i = 0; i <= 5; i++) mat[8][i] = fmtBits[14 - i];
+  mat[8][7] = fmtBits[8];
+  mat[8][8] = fmtBits[7];
+  mat[7][8] = fmtBits[6];
+  for (let i = 9; i < 15; i++) mat[14 - i][8] = fmtBits[14 - i];
+
+  for (let i = 0; i < 8; i++) mat[8][size - 1 - i] = fmtBits[i];
+  for (let i = 8; i < 15; i++) mat[size - 15 + i][8] = fmtBits[i];
+
+  const quiet = 3;
+  const full = size + quiet * 2;
+  let path = "";
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (mat[r][c] === 1) {
+        path += `M${c + quiet},${r + quiet}h1v1h-1z`;
+      }
+    }
+  }
+  const shortLabel = urlText.split("/").pop();
+  return `<svg viewBox="0 0 ${full} ${full + 4}" width="158" height="172" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#ffffff"/>
+    <path d="${path}" fill="#000000"/>
+    <text x="${full / 2}" y="${full + 2.8}" font-family="monospace" font-size="3.1" font-weight="bold" text-anchor="middle" fill="#000000">${shortLabel}</text>
+  </svg>`;
+}
+
+/* =========================================================================
+   2. BASE-34 STAMMBAUM & SELBSTERKENNUNG ÜBER DATEINAMEN
+   ========================================================================= */
+const B34_CHARS = "23456789abcdefghijkmnpqrstuvwxyz"; // 32 saubere Zeichen ab '2' (ohne 0,1,l,o)
 
 const LANG_PACKS = {
   de: {
@@ -595,8 +763,16 @@ const LANG_PACKS = {
 
 let currentFileId = "hf2";
 let currentLang = "de";
-let childCounterIdx = 0; // Index in B34_CHARS ('2' ist Index 0)
+let childCounterIdx = 0;
 let grandchildCounter = 2;
+
+function toBase34LeadSuffix(idx) {
+  const base = B34_CHARS.length;
+  if (idx < base) return B34_CHARS[idx];
+  const high = Math.floor(idx / base) - 1;
+  const low = idx % base;
+  return B34_CHARS[high] + B34_CHARS[low];
+}
 
 function detectFileIdentity() {
   const path = window.location.pathname;
@@ -607,7 +783,6 @@ function detectFileIdentity() {
   document.getElementById("file-id-badge").textContent = currentFileId;
   document.getElementById("dialog-file-id").textContent = currentFileId;
 
-  //Automatische Sprach-Erkennung anhand der 4. Stelle (hf22=de, hf23=tw, hf24=cn, hf25=en, hf26=fr)
   if (currentFileId.startsWith("hf23")) setLang("tw", true);
   else if (currentFileId.startsWith("hf24")) setLang("cn", true);
   else if (currentFileId.startsWith("hf25")) setLang("en", true);
@@ -627,14 +802,17 @@ function setLang(lang, keepFileId) {
   document.getElementById("j-list").innerHTML = pack.items.map(i => `<li>${i}</li>`).join("");
   document.getElementById("j-scan-cta").innerHTML = pack.cta;
 
-  updateNextChildUrl(keepFileId ? currentFileId : pack.code);
+  const baseForQr = (keepFileId && currentFileId !== "hf2") ? currentFileId : pack.code;
+  updateNextChildUrl(baseForQr);
 }
 
 function getNextChildId(baseId) {
   const root = (baseId === "hf2") ? LANG_PACKS[currentLang].code : baseId;
-  const char = B34_CHARS[childCounterIdx % B34_CHARS.length];
-  const prefix = childCounterIdx >= B34_CHARS.length ? B34_CHARS[Math.floor(childCounterIdx / B34_CHARS.length) - 1] : "";
-  return root + prefix + char;
+  if (root.length >= 5 && !root.includes("-")) {
+    // Bereits ein Lead-Blatt (z. B. hf232) -> Enkel mit Bindestrich anbieten
+    return `${root}-${grandchildCounter}`;
+  }
+  return root + toBase34LeadSuffix(childCounterIdx);
 }
 
 function updateNextChildUrl(baseId) {
@@ -642,94 +820,32 @@ function updateNextChildUrl(baseId) {
   const fullUrl = `https://burntipsbuero-design.github.io/k26b/13hf2/${nextId}.htm`;
   document.getElementById("next-child-url").textContent = fullUrl;
 
-  const nextNextChar = B34_CHARS[(childCounterIdx + 1) % B34_CHARS.length];
   const root = (baseId === "hf2") ? LANG_PACKS[currentLang].code : baseId;
-  document.getElementById("btn-next-id").textContent = root + nextNextChar;
-  renderOfflineQr(fullUrl);
+  const followingId = root + toBase34LeadSuffix(childCounterIdx + 1);
+  document.getElementById("btn-next-id").textContent = followingId;
+  document.getElementById("qr-container").innerHTML = buildIsoQrSvg(fullUrl);
 }
 
 function spawnNextChild() {
-  const spawnedId = getNextChildId(LANG_PACKS[currentLang].code);
+  const root = LANG_PACKS[currentLang].code;
+  const spawnedId = root + toBase34LeadSuffix(childCounterIdx);
   logJsonl({ event: "SPAWN_CHILD", parent: currentFileId, child: spawnedId, lang: currentLang, ts: new Date().toISOString() });
   childCounterIdx++;
-  updateNextChildUrl(LANG_PACKS[currentLang].code);
+  updateNextChildUrl(root);
 }
 
 function spawnGrandchild() {
-  const baseLead = getNextChildId(LANG_PACKS[currentLang].code);
-  const grandId = `${baseLead}-${grandchildCounter}`;
+  const leadId = (currentFileId.length >= 5) ? currentFileId.split("-")[0] : (LANG_PACKS[currentLang].code + toBase34LeadSuffix(childCounterIdx));
+  const grandId = `${leadId}-${grandchildCounter}`;
   grandchildCounter++;
   const fullUrl = `https://burntipsbuero-design.github.io/k26b/13hf2/${grandId}.htm`;
   document.getElementById("next-child-url").textContent = fullUrl;
-  renderOfflineQr(fullUrl);
+  document.getElementById("qr-container").innerHTML = buildIsoQrSvg(fullUrl);
   logJsonl({ event: "SPAWN_GRANDCHILD", grandchild: grandId, ts: new Date().toISOString() });
 }
 
 /* =========================================================================
-   2. AUTARKER OFFLINE-QR-MATRIX-GENERATOR (100% OHNE EXTERNE CDNS)
-   ========================================================================= */
-// Kompakter SVG-Matrix-Encoder (erzeugt ein scannbares QR-Muster + Klartext-Banner im SVG)
-function renderOfflineQr(text) {
-  const size = 21;
-  let matrix = Array.from({ length: size }, () => Array(size).fill(0));
-
-  function drawFinder(r, c) {
-    for (let i = 0; i < 7; i++) {
-      for (let j = 0; j < 7; j++) {
-        if (i === 0 || i === 6 || j === 0 || j === 6 || (i >= 2 && i <= 4 && j >= 2 && j <= 4)) {
-          matrix[r + i][c + j] = 1;
-        }
-      }
-    }
-  }
-  drawFinder(0, 0);
-  drawFinder(0, size - 7);
-  drawFinder(size - 7, 0);
-
-  for (let i = 8; i < size - 8; i++) {
-    matrix[6][i] = i % 2 === 0 ? 1 : 0;
-    matrix[i][6] = i % 2 === 0 ? 1 : 0;
-  }
-
-  // Deterministische Bit-Belegung aus der Ziel-URL
-  let hash = 2166136261;
-  for (let i = 0; i < text.length; i++) {
-    hash ^= text.charCodeAt(i);
-    hash = Math.imul(hash, 16777619);
-  }
-  let idx = 0;
-  for (let r = 0; r < size; r++) {
-    for (let c = 0; c < size; c++) {
-      const inFinder = (r < 8 && c < 8) || (r < 8 && c >= size - 8) || (r >= size - 8 && c < 8);
-      if (!inFinder && r !== 6 && c !== 6) {
-        const charCode = text.charCodeAt(idx % text.length);
-        matrix[r][c] = ((charCode >> (idx % 7)) ^ ((hash >> (idx % 16)) & 1)) & 1;
-        idx++;
-      }
-    }
-  }
-
-  const cell = 6;
-  const svgSize = size * cell;
-  let rects = "";
-  for (let r = 0; r < size; r++) {
-    for (let c = 0; c < size; c++) {
-      if (matrix[r][c]) {
-        rects += `<rect x="${c * cell}" y="${r * cell}" width="${cell}" height="${cell}" fill="#000"/>`;
-      }
-    }
-  }
-  const shortId = text.split("/").pop();
-  document.getElementById("qr-container").innerHTML = `
-    <svg viewBox="0 0 ${svgSize} ${svgSize + 16}" width="142" height="142" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100%" height="100%" fill="#fff"/>
-      ${rects}
-      <text x="${svgSize / 2}" y="${svgSize + 12}" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle" fill="#000">${shortId}</text>
-    </svg>`;
-}
-
-/* =========================================================================
-   3. 15ER-BILLARDTISCH & 3-SPALTEN-SYNOPSE (VGSD / BVMID / BVMW & STEUER)
+   3. 15ER-BILLARDTISCH & 3-SPALTEN-SYNOPSE (KOMPLETT NEUTRALISIERT)
    ========================================================================= */
 const PRESETS = {
   verbaende: {
@@ -742,96 +858,96 @@ const PRESETS = {
     balls: [
       { id: 1, x: 14, y: 22, r: 36, title: "1: Tiefe IT- & Fach-Spezialisierung" },
       { id: 2, x: 20, y: 45, r: 34, title: "2: Null Konzern-Speck / Schnellboot" },
-      { id: 3, x: 28, y: 68, r: 40, title: "3: Anti-Bürokratie & Scheinselbstständigkeit" },
-      { id: 4, x: 12, y: 80, r: 32, title: "4: Ehrlicher Stammtisch-Austausch" },
+      { id: 3, x: 28, y: 68, r: 40, title: "3: Anti-Bürokratie & Selbstständigen-Schutz" },
+      { id: 4, x: 12, y: 80, r: 32, title: "4: Ehrlicher Praxis-Austausch" },
       { id: 5, x: 38, y: 35, r: 44, title: "5: Fertige Nischen-Werkzeuge (Rosinen)" },
       { id: 6, x: 50, y: 25, r: 42, title: "6: Kuratierter GF- & Vorstands-Zugang" },
       { id: 7, x: 48, y: 52, r: 48, title: "7: Trüffelschwein-Filter (Burn.tips Brücke)" },
-      { id: 8, x: 55, y: 75, r: 44, title: "8: DACH-Brücke (Regensburg / AT / Südtirol)" },
+      { id: 8, x: 55, y: 75, r: 44, title: "8: DACH-Netzwerkbrücke im Mittelstand" },
       { id: 9, x: 42, y: 62, r: 36, title: "9: Vertrauliche Entscheider-Runden" },
       { id: 10, x: 60, y: 40, r: 38, title: "10: Anonyme .htm Vorab-Qualifizierung" },
       { id: 11, x: 82, y: 24, r: 40, title: "11: Breite regionale Präsenz vor Ort" },
-      { id: 12, x: 75, y: 50, r: 44, title: "12: Klassisches Produktions- & Handwerks-Rückgrat" },
-      { id: 13, x: 86, y: 72, r: 36, title: "13: Hohe Veranstaltungs-Frequenz" },
+      { id: 12, x: 75, y: 50, r: 44, title: "12: Produktions-, Handels- & Handwerks-Rückgrat" },
+      { id: 13, x: 86, y: 72, r: 36, title: "13: Hohe regionale Veranstaltungs-Dichte" },
       { id: 14, x: 68, y: 82, r: 38, title: "14: Bedarf an pragmatischer Digitalisierung" },
       { id: 15, x: 78, y: 36, r: 34, title: "15: Außendienst- & Vertriebs-Fließband" }
     ],
     rows: [
-      ["1. Kern-Schatz", "Hochspezialisierte Köpfe, sofort einsatzbereit ohne Overhead", "Direkter Draht zu Geschäftsführern & Vorständen im Mittelstand", "Enorme regionale Dichte über alle klassischen Branchen"],
+      ["1. Kern-Schatz", "Hochspezialisierte Köpfe, sofort einsatzbereit ohne Overhead", "Direkter Draht zu Geschäftsführern & Entscheidern im Mittelstand", "Enorme regionale Dichte über alle klassischen Branchen"],
       ["2. Typischer Engpass", "Schwerer Einkaufs-Zugang zu größeren Industrie-Betrieben", "Sucht verlässliche Spezial-Lösungen ohne Konzern-Beraterblase", "Großes Grundrauschen – braucht Vorfilter für passende Rosinen"],
       ["3. Rolle im Exoskelett", "Liefert die scharfe Spezial-Kugel (1–5) ins System", "Kupplungsstation & Qualitäts-Puffer in der Tischmitte (6–10)", "Nimmt fertige Lösungen in die breite Fläche auf (11–15)"],
       ["4. Datenschutz & Kontakt", "Kein Adress-Verkauf – Erstkontakt über anonymes .htm-Blatt", "Kurze, vertrauliche Freigabe per .flx-Milchglas", "Regionale Treffen + digitale Nacharbeit per QR-Code"],
       ["5. Mitgliedschafts-Zwang?", "Nein – Kooperation auf Projektbasis jederzeit offen", "Nein – Einladung über Trüffelschwein-Brücke möglich", "Nein – Gäste & Partner über Bündnis-Spiegel willkommen"],
       ["6. Hardware-Anker", "25,43 € NFC-E-Paper als persönlicher Tisch-Aufsteller", "7,5\" Mahagoni-Edition für das Geschäftsführer-Pult", "Smartphone-QR & Koffer-Karten für den Außendienst"],
-      ["7. Ertrags-Logik", "100 % Honorar für echte Facharbeit statt Akquise-Leerlauf", "Verprovisionierbare oder pauschale Brücken-Vermittlung", "Schnellere Projekt-Umsetzung im regionalen Bestand"]
+      ["7. Ertrags-Logik", "100 % Honorar für echte Facharbeit statt Akquise-Leerlauf", "Pauschale oder projektbezogene Brücken-Begleitung", "Schnellere Projekt-Umsetzung im regionalen Bestand"]
     ]
   },
   steuer: {
-    lblA: "Sektor A (1–5): Senior-StB (Abgabe)",
+    lblA: "Sektor A (1–5): Senior-Kanzlei (Abgabe)",
     lblB: "Sektor B (6–10): Burn.tips Exoskelett",
-    lblC: "Sektor C (11–15): Junge StB / Prüflinge",
-    thA: "⚪ Sektor A (1–5 Hell-Voll)<br>Senior-Kanzlei (z. B. 72 J. / Entlastung)",
+    lblC: "Sektor C (11–15): Junge StB & Feuerwehr",
+    thA: "⚪ Sektor A (1–5 Hell-Voll)<br>Erfahrene Bestands-Kanzlei (Entlastung)",
     thB: "⚫ Sektor B (6–10 Dunkel-Voll)<br>Burn.tips UG (29 J. Praxis + Insel-KI)",
-    thC: "◐ Sektor C (11–15 Dunkel-Halb)<br>Junge StB (Bestellung) & Feuerwehr",
+    thC: "◐ Sektor C (11–15 Dunkel-Halb)<br>Junge Berufsträger & StFW-Feuerwehr",
     balls: [
       { id: 1, x: 16, y: 28, r: 44, title: "1: Gewachsener Mandantenstamm (30+ Jahre)" },
-      { id: 2, x: 22, y: 65, r: 42, title: "2: Anstrengende D-Mandate / Schuhkartons" },
-      { id: 3, x: 14, y: 80, r: 38, title: "3: Wunsch nach scheibchenweiser Rente" },
-      { id: 4, x: 28, y: 42, r: 34, title: "4: Hohe Fach-Reputation, aber Personalmangel" },
-      { id: 5, x: 32, y: 20, r: 36, title: "5: Scheu vor hartem Komplett-Verkauf" },
+      { id: 2, x: 22, y: 65, r: 42, title: "2: Zeitintensive D-Mandate / Beleg-Chaos" },
+      { id: 3, x: 14, y: 80, r: 38, title: "3: Wunsch nach scheibchenweisem Kürzertreten" },
+      { id: 4, x: 28, y: 42, r: 34, title: "4: Hohe Fach-Reputation bei knappem Personal" },
+      { id: 5, x: 32, y: 20, r: 36, title: "5: Alternative zum harten Stichtags-Verkauf" },
       { id: 6, x: 48, y: 30, r: 46, title: "6: Anonymes Mandats-Radar (.htm Steckbrief)" },
       { id: 7, x: 50, y: 55, r: 50, title: "7: Blind-Booking (Buchhaltung ohne Klarnamen)" },
       { id: 8, x: 54, y: 78, r: 44, title: "8: Schlüsselfertige StFW-Vorarbeit (§ 62a StBerG)" },
       { id: 9, x: 43, y: 45, r: 38, title: "9: Amtliches Inhaltsverzeichnis (EStG/LStR-Filter)" },
-      { id: 10, x: 58, y: 22, r: 40, title: "10: Sofortige .flx-Schlüsselübergabe um Mitternacht" },
+      { id: 10, x: 58, y: 22, r: 40, title: "10: Sofortige .flx-Schlüsselübergabe rund um die Uhr" },
       { id: 11, x: 80, y: 26, r: 46, title: "11: Frische StB-Bestellung (Hoheits-Siegel)" },
       { id: 12, x: 76, y: 54, r: 42, title: "12: Kammerkonformer Mandats-Aufbau nach Maß" },
-      { id: 13, x: 84, y: 76, r: 40, title: "13: Wahl: Selbst buchen oder nur Endkontrolle" },
+      { id: 13, x: 84, y: 76, r: 40, title: "13: Wahlfreiheit: Selbst buchen oder Endkontrolle" },
       { id: 14, x: 70, y: 38, r: 38, title: "14: StB-Prüflinge als Steuerfachwirt-Feuerwehr" },
-      { id: 15, x: 88, y: 48, r: 34, title: "15: Null Fixkosten-Risiko beim Kanzlei-Start" }
+      { id: 15, x: 88, y: 48, r: 34, title: "15: Null Fixkosten-Risiko beim Kanzlei-Aufbau" }
     ],
     rows: [
-      ["1. Ausgangslage", "Will mit 72 kürzertreten, ohne die Kanzlei mit einem Knall verramschen zu müssen", "Stellt das digitale Exoskelett, die Insel-KI und 29 Jahre Praxis-Erfahrung", "Will aus der Anstellung in Teilzeit/Selbstständigkeit ohne Schuldenberg"],
-      ["2. Umgang mit D-Mandaten", "Gibt zuerst die 10 nervigsten Mandate in die Entschlackungs-Schleuse", "Bügelt Beleg-Chaos per Fensterbrett glatt; liefert 95 % Vorarbeit", "Übernimmt ein sauber aufbereitetes, elektronisches A-Mandat"],
-      ["3. Berufsrecht (StBerG)", "Bleibt Mandatsträger oder leitet geordnet mit Zustimmung über", "Rechnet als freier Steuerfachwirt/Prozessdienstleister (§ 62a) mit StB ab", "Hält das Hoheits-Siegel, prüft, unterschreibt und fakturiert nach StBVV"],
-      ["4. Datenschutz (Blind-Match)", "Veröffentlicht nur Einkunftsarten (§ 19/§ 21) & Korridor", "Hostet auf GitHub nur entpersonalisierte Buchungs-Skelette", "Sieht Klarnamen erst in der Sekunde des Zuschlags per .flx-Schlüssel"],
-      ["5. StB-Prüflinge (Feuerwehr)", "Kauft bei Personalausfall fertige Abschluss-Vorbereitung ein", "Bietet knapp gescheiterten Prüflingen sofortigen Pull-Marktplatz", "Nutzt den Feuerwehr-Pool als flexible Werkbank bei Wachstum"],
-      ["6. Zeitersparnis", "Gewinnt sofort freie Nachmittage bei laufender Beteiligung", "Nächtlicher Insel-KI-Agent erledigt Kontierung & Urteils-Abgleich", "Kein unbezahltes Erstgesprächs-Chaos mit unpassenden Mandanten"],
-      ["7. Honorar-Fluss", "Erhält faire Überleitungs-/Bestandsvergütung Scheibchen für Scheibchen", "70 % für schlüsselfertige Fachwirt- & KI-Maschinenraumarbeit", "25–30 % Hoheits-Marge fürs Prüfen & Einreichen (oder 100 % bei Eigenarbeit)"]
+      ["1. Ausgangslage", "Möchte schrittweise kürzertreten, ohne die gesamte Kanzlei auf einmal verkaufen zu müssen", "Stellt das digitale Exoskelett, die Insel-KI und 29 Jahre Praxis-Erfahrung", "Baut aus Teilzeit oder Neugründung gezielt einen passenden Mandantenstamm auf"],
+      ["2. Umgang mit D-Mandaten", "Gibt zuerst zeitraubende Rand-Mandate in die strukturierte Schleuse", "Ordnet Beleg-Strukturen per Fensterbrett vor; liefert 95 % Vorarbeit", "Übernimmt ein sauber vorstrukturiertes, digitales Mandat"],
+      ["3. Berufsrecht (StBerG)", "Bleibt Mandatsträger oder leitet geordnet mit Mandantenzustimmung über", "Arbeitet als freier Steuerfachwirt/Prozessdienstleister (§ 62a) für Berufsträger", "Hält das Hoheits-Siegel, prüft eigenverantwortlich und fakturiert nach StBVV"],
+      ["4. Datenschutz (Blind-Match)", "Veröffentlicht nur Einkunftsarten (§ 19/§ 21) & Größen-Korridor", "Hostet auf GitHub ausschließlich entpersonalisierte Buchungs-Skelette", "Sieht Klarnamen erst in der Sekunde des Zuschlags per .flx-Schlüssel"],
+      ["5. StB-Prüflinge (Feuerwehr)", "Fängt Personalausfälle durch fertige Abschluss-Vorbereitung ab", "Bietet freien Fachwirten & Prüflingen einen sofortigen Pull-Marktplatz", "Nutzt den Feuerwehr-Pool flexibel bei wachsendem Mandatsvolumen"],
+      ["6. Zeitgewinn", "Gewinnt sofort freie Nachmittage ohne abrupten Mandatsverlust", "Nächtlicher Insel-KI-Agent übernimmt Vorab-Kontierung & Urteils-Radar", "Kein unbezahlter Erstgesprächs-Leerlauf mit unpassenden Fällen"],
+      ["7. Honorar-Fluss", "Geordnete, schrittweise Übergabe- oder Bestandsmodelle", "B2B-Vergütung für schlüsselfertige Fachwirt- & KI-Maschinenraumarbeit", "Attraktive Marge für Prüfung & Einreichung (oder Vollhonorar bei Eigenbearbeitung)"]
     ]
   },
   messe: {
-    lblA: "Sektor A (1–5): Asien Display-Hersteller",
+    lblA: "Sektor A (1–5): Display-Hersteller",
     lblB: "Sektor B (6–10): helloFair / Burn.tips",
     lblC: "Sektor C (11–15): DACH-Mittelstand",
-    thA: "⚪ Sektor A (1–5 Hell-Voll)<br>Halle B5 Hardware (TW / CN)",
+    thA: "⚪ Sektor A (1–5 Hell-Voll)<br>Halle B5 Display-Technik (TW / CN)",
     thB: "⚫ Sektor B (6–10 Dunkel-Voll)<br>helloFair Architektur (hf2)",
     thC: "◐ Sektor C (11–15 Dunkel-Halb)<br>B2B-Anwender im Mittelstand",
     balls: [
       { id: 1, x: 15, y: 25, r: 44, title: "1: 4,2\" Passiv-NFC E-Paper Fertigung" },
       { id: 2, x: 20, y: 55, r: 42, title: "2: 7,5\" Tri-Color (S/W/Rot) Displays" },
-      { id: 3, x: 18, y: 78, r: 38, title: "3: Rückfracht-Schmerz am letzten Messetag" },
-      { id: 4, x: 30, y: 38, r: 34, title: "4: Starke Technik, aber Sprachbarriere im Mittelstand" },
+      { id: 3, x: 18, y: 78, r: 38, title: "3: Rückfracht-Aufwand am letzten Messetag" },
+      { id: 4, x: 30, y: 38, r: 34, title: "4: Starke Hardware, sucht europäische Anwendungsfälle" },
       { id: 5, x: 26, y: 68, r: 36, title: "5: 5-Jahres-Knopfzellen ESL-Tags" },
       { id: 6, x: 48, y: 28, r: 46, title: "6: Jäger-&-Sammler Direktankauf (留样不带回)" },
-      { id: 7, x: 50, y: 52, r: 48, title: "7: Serverlose .htm Software auf dem E-Paper" },
-      { id: 8, x: 52, y: 76, r: 42, title: "8: NFC-Kugelschreiber-Schlüssel (Halle A1)" },
-      { id: 9, x: 42, y: 42, r: 38, title: "9: Mehrsprachiger Baum-Kanal (hf232)" },
-      { id: 10, x: 58, y: 35, r: 40, title: "10: 25,43 € Koffer-Kalkulation" },
+      { id: 7, x: 50, y: 52, r: 48, title: "7: Serverlose .htm Software passend zum E-Paper" },
+      { id: 8, x: 52, y: 76, r: 42, title: "8: Physischer NFC-Stift als Schlüssel (Halle A1)" },
+      { id: 9, x: 42, y: 42, r: 38, title: "9: Mehrsprachiger Stammbaum-Kanal (hf232)" },
+      { id: 10, x: 58, y: 35, r: 40, title: "10: Transparente 25,43-€-Koffer-Kalkulation" },
       { id: 11, x: 80, y: 25, r: 42, title: "11: Wunsch nach greifbaren Arbeitsmitteln am Tisch" },
-      { id: 12, x: 76, y: 52, r: 44, title: "12: Allergie gegen Cloud-Zwang & Abo-Fallen" },
-      { id: 13, x: 84, y: 76, r: 38, title: "13: Außendienstler, die Word & Papier lieben" },
-      { id: 14, x: 70, y: 68, r: 36, title: "14: Strenge Betriebsrats- & DSGVO-Anforderungen" },
-      { id: 15, x: 86, y: 40, r: 34, title: "15: Sofortiger Einsatz beim VGSD/BVMID-Stammtisch" }
+      { id: 12, x: 76, y: 52, r: 44, title: "12: Skepsis gegenüber Cloud-Zwang & Abo-Fallen" },
+      { id: 13, x: 84, y: 76, r: 38, title: "13: Außendienst, der gewohnte Abläufe schätzt" },
+      { id: 14, x: 70, y: 68, r: 36, title: "14: Hohe Betriebsrats- & DSGVO-Anforderungen" },
+      { id: 15, x: 86, y: 40, r: 34, title: "15: Direkter Praxiseinsatz in Unternehmer-Runden" }
     ],
     rows: [
-      ["1. Kern-Kompetenz", "Baut brillante, stromlose E-Ink-Rohdiamanten in Serie", "Verwandelt nackte Displays in ein fertiges Beratungs-Werkzeug", "Hat echte Geschäftsprozesse und Entscheidungsmacht"],
-      ["2. Messe-Schmerz", "Muss Muster am Freitagabend teuer verzollen & heimfliegen", "Kauft Muster ab 14:15 Uhr bar Kralle in den Rucksack auf", "Wird auf Messen mit nutzlosen PDF-Prospekten zugeschüttet"],
-      ["3. Übergabe am Stand", "Scannt QR-Code auf dem Pixel -> hat sofort hf232.htm", "Generiert aus einem Master-Code beliebig viele Sprach-Ableger", "Bekommt individuelles Gesprächsprotokoll ohne E-Mail-Herausgabe"],
-      ["4. Preis-Anker", "Gibt Messe-Muster im Paket zum attraktiven Barpreis ab", "Kalkuliert die 4,2\"-Koffer-Karte auf ehrliche 25,43 €", "Investiert Kleingeld in einen dauerhaften physischen Kanal"],
-      ["5. IT-Integration", "Liefert offene NFC-/ESP32-Schnittstellen", "Kapselt alles in eine einzige lokale HTML-Datei mit JSONL", "Muss keine Unternehmens-Firewall für fremde Clouds öffnen"],
-      ["6. Sprache", "Traditionelles (TW) oder vereinfachtes Chinesisch (CN)", "Übersetzt live im selben Datenstamm zwischen 5 Sprachen", "Arbeitet entspannt auf Deutsch im gewohnten Ausdruck"],
-      ["7. Nachlauf", "Bleibt über das stille Fensterbrett ohne WeChat-Zwang erreichbar", "Insel-KI pflegt Kontakte automatisch nach Themen-Haken", "Entscheidet per Schieberegler selbst über jeden Kontakt-Impuls"]
+      ["1. Kern-Kompetenz", "Baut stromlose E-Ink-Hardware in industrieller Serie", "Verwandelt nackte Displays in ein schlüsselfertiges Beratungs-Werkzeug", "Bringt konkrete Geschäftsprozesse und Entscheidungskompetenz mit"],
+      ["2. Messe-Situation", "Will Muster am letzten Messetag ungern teuer zurückschicken", "Übernimmt Muster ab 14:15 Uhr direkt gegen Barzahlung", "Sucht echte Lösungen statt austauschbarer Hochglanz-Prospekte"],
+      ["3. Übergabe am Stand", "Scannt QR-Code -> erhält sofort eigenen Kanal hf232.htm", "Erzeugt aus einer Master-Datei mehrsprachige Stand-Unikate", "Nimmt das eigene Gesprächsprotokoll ohne E-Mail-Zwang mit"],
+      ["4. Preis-Anker", "Gibt Ausstellungsstücke unkompliziert im Paket ab", "Kalkuliert die 4,2\"-Koffer-Karte transparent auf 25,43 €", "Überschaubarer Einstieg ohne IT-Großprojekt"],
+      ["5. IT-Sicherheit", "Offene NFC- und Mikrocontroller-Schnittstellen", "Kapselt Logik in einer lokalen HTML-Datei mit JSONL-Protokoll", "Keine Öffnung der Firmen-Firewall für Drittanbieter-Clouds nötig"],
+      ["6. Sprachbrücke", "Traditionelles (TW) oder vereinfachtes Chinesisch (CN)", "Schaltet im selben Datenstamm verzögerungsfrei zwischen 5 Sprachen", "Arbeitet entspannt auf Deutsch im gewohnten Layout"],
+      ["7. Nachbereitung", "Direkter Draht über das stille Fensterbrett", "Insel-KI bestückt Themen-Updates nach gewählten Haken", "Behält per Schieberegler die volle Hoheit über Benachrichtigungen"]
     ]
   }
 };
@@ -919,7 +1035,6 @@ function resetBalls() {
   loadPreset(currentPresetKey);
 }
 
-// Drag & Drop auf dem Billardtisch
 document.addEventListener("pointermove", (ev) => {
   if (!draggingBallId) return;
   const table = document.getElementById("billiard-table");
@@ -935,6 +1050,7 @@ document.addEventListener("pointermove", (ev) => {
     renderBalls();
   }
 });
+
 document.addEventListener("pointerup", () => {
   if (draggingBallId) {
     const ball = currentBalls.find(b => b.id === draggingBallId);
@@ -967,10 +1083,10 @@ function filterColumns(mode) {
 }
 
 /* =========================================================================
-   4. TASCHENRECHNER-HANDSCHLAG, STEUER-MUSTER & JSONL-BAUCH (PBKDF2/AES)
+   4. WEBCRYPTO AES-GCM KANAL-VERSIEGELUNG & APPEND-ONLY JSONL
    ========================================================================= */
 let jsonlEntries = [
-  { id: 1, ts: "2026-11-13T07:45:00Z", author: "Joseph Gaßner (Burn.tips UG)", msg: "Willkommen im persönlichen Arbeitskanal. Push & Themen-Radar sind standardmäßig stummgeschaltet.", push: false }
+  { id: 1, ts: "2026-11-13T07:55:00Z", author: "Joseph Gaßner (Burn.tips UG)", msg: "Willkommen im persönlichen Arbeitskanal. Push & Themen-Radar sind ab Werk auf stumm geschaltet.", push: false }
 ];
 
 function logJsonl(obj) {
@@ -978,7 +1094,7 @@ function logJsonl(obj) {
   const box = document.getElementById("jsonl-log");
   box.textContent = jsonlEntries.map(e => JSON.stringify(e)).join("\n");
   box.scrollTop = box.scrollHeight;
-  document.getElementById("ampel-status").innerHTML = "🟡 <strong>Neue Zeile im lokalen Bauch (ungesichert)</strong>";
+  document.getElementById("ampel-status").innerHTML = "🟡 <strong>Neue Aktivität im lokalen JSONL</strong>";
   document.title = `(1) ${currentFileId} · helloFair`;
 }
 
@@ -1026,18 +1142,35 @@ function toggleNewsletterBox() {
   document.getElementById("newsletter-box").classList.toggle("hidden", !on);
 }
 
-// Leichte symmetrische Tarn-Chiffre + WebCrypto SHA-256 Fingerprint für den Kanal
-async function encryptChannelString(cleartext) {
-  const enc = new TextEncoder().encode(cleartext + "|" + currentFileId);
-  const b64 = btoa(String.fromCharCode(...enc));
-  return "flx_enc:" + b64.split("").reverse().join("");
+async function encryptChannelAesGcm(cleartext) {
+  try {
+    const enc = new TextEncoder();
+    const keyMat = await crypto.subtle.importKey("raw", enc.encode(currentFileId + "::burn.tips-flx"), "PBKDF2", false, ["deriveKey"]);
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const key = await crypto.subtle.deriveKey(
+      { name: "PBKDF2", salt: enc.encode("hf2-zero-knowledge"), iterations: 10000, hash: "SHA-256" },
+      keyMat,
+      { name: "AES-GCM", length: 256 },
+      false,
+      ["encrypt"]
+    );
+    const cipherBuf = await crypto.subtle.encrypt({ name: "AES-GCM", iv: iv }, key, enc.encode(cleartext));
+    const combined = new Uint8Array(iv.length + cipherBuf.byteLength);
+    combined.set(iv, 0);
+    combined.set(new Uint8Array(cipherBuf), iv.length);
+    return "aesgcm:" + btoa(String.fromCharCode(...combined));
+  } catch (e) {
+    // Fallback bei älteren lokalen file:// Umgebungen ohne subtleCrypto
+    const raw = new TextEncoder().encode(cleartext);
+    return "flx_b64:" + btoa(String.fromCharCode(...raw)).split("").reverse().join("");
+  }
 }
 
 async function encryptAndSaveChannel() {
   const type = document.getElementById("push-type").value;
   const target = document.getElementById("push-target").value.trim();
   if (!target) return;
-  const cipher = await encryptChannelString(type + ":" + target);
+  const cipher = await encryptChannelAesGcm(type + ":" + target);
   logJsonl({
     event: "PUSH_CONFIG",
     file: currentFileId,
@@ -1063,7 +1196,7 @@ function appendNewsletterConfig() {
 }
 
 const ALIAS_POOL = [
-  "Amadeus von Gloria von Thurn und Taxis",
+  "Amadeus vom Grünen Tuch",
   "Graf Büroklammer von Taufkirchen",
   "Freifrau Rosine vom Fließband",
   "Meister Lampe aus Halle B5",
@@ -1081,7 +1214,7 @@ async function appendDialogMessage() {
   if (!text) return;
   const vipOn = document.getElementById("msg-vip-push").checked;
   const vipRaw = document.getElementById("msg-vip-channel").value.trim();
-  const vipEnc = vipRaw ? await encryptChannelString(vipRaw) : null;
+  const vipEnc = vipRaw ? await encryptChannelAesGcm(vipRaw) : null;
 
   logJsonl({
     id: jsonlEntries.length + 1,
@@ -1102,7 +1235,7 @@ function copyJsonl() {
 }
 
 /* =========================================================================
-   5. NAVIGATION, SKIN-WECHSEL, FLX-TRESOR & KLON-DOWNLOAD
+   5. NAVIGATION, SKIN-WECHSEL, FLX-MILCHGLAS & KLON-SPEICHERUNG
    ========================================================================= */
 function showSection(secId) {
   ["sec-jaeger", "sec-billiard", "sec-katalog", "sec-dialog", "sec-cockpit"].forEach(id => {
@@ -1124,13 +1257,13 @@ function changeSkin(skinClass) {
 }
 
 function openVaultPrompt() {
-  const pin = prompt(`FLX-Milchglas & Tresor-Schlüssel (${currentFileId} + PIN eingeben, z. B. ${currentFileId}987):`);
+  const pin = prompt(`FLX-Milchglas lüften (Dateiname + PIN eingeben, z. B. ${currentFileId}987):`);
   if (!pin) return;
-  if (pin.endsWith("987") || pin.endsWith("1234")) {
+  if (pin === currentFileId + "987" || pin === currentFileId + "1234") {
     document.querySelectorAll(".milchglas").forEach(el => el.classList.add("unlocked"));
-    document.getElementById("ampel-status").innerHTML = "🔓 <strong>FLX-Klartext-Ebene aktiv</strong>";
+    document.getElementById("ampel-status").innerHTML = "🔓 <strong>FLX-Vorschau entsperrt</strong>";
   } else {
-    alert("Schlüssel nicht erkannt – Milchglas bleibt geschützt.");
+    alert("Schlüsselkombination nicht erkannt – Milchglas bleibt aktiv.");
   }
 }
 
@@ -1144,12 +1277,10 @@ function downloadCurrentClone() {
   a.click();
 }
 
-// Initialisierung beim Seitenstart
 window.addEventListener("DOMContentLoaded", () => {
   detectFileIdentity();
   loadPreset("verbaende");
   logJsonl({ event: "INIT_READY", file: currentFileId, lang: currentLang, ts: new Date().toISOString() });
-  // Ampel nach Initialisierung auf Grün stellen
   document.getElementById("ampel-status").innerHTML = "🟢 <strong>Stand synchron</strong> (Fr, 13.11.2026)";
   document.title = `${currentFileId} · helloFair & Jäger-Sammler`;
 });
