@@ -1,0 +1,34 @@
+DOKUMENT: k26b15-san-2
+PFAD: https://burn.tips/k26/b15/k26b15-san-2.txt
+KURZFORM: 三/k26b15-san-2.txt
+DATUM: 15.11.2026
+FORMAT: Plain Text (.txt) – Bewusst frei von Code, Skripten und Formatierungen
+THEMA: Das San-Zeichen (三) – Ursprung, Kosmologie und Grundbedeutung
+
+1. DAS ZEICHEN SAN (三) ALS UNTEILBARES ORIGINAL
+Das ostasiatische Zahlzeichen für die Drei (三, gesprochen: San) bildet das 
+zentrale Fundament- und Ordnungssymbol von burn.tips. Es gibt hiervon keine 
+verschiedenen Editionen oder Abwandlungen, sondern ausschließlich dieses eine 
+Original-Zeichen.
+
+2. DIE DREI HORIZONTALEN BALKEN (HIMMEL – MENSCH – ERDE)
+In der klassischen ostasiatischen Kosmologie verbinden die drei horizontalen 
+Linien von 三 den Himmel (oben) und die Erde (unten) durch den Menschen in der 
+Mitte. Übertragen auf die Architektur des geistigen Eigentums und der 
+digitalen Souveränität bei burn.tips stehen die drei Balken für exakt diese 
+drei untrennbaren Ebenen:
+
+- Balken 1 (Oben / Himmel):  Die Idee (das geistige Werk / der Gedanke)
+- Balken 2 (Mitte / Mensch): Der Mensch (der Urheber als handelnde Mitte)
+- Balken 3 (Unten / Erde):   Der Zeitstempel (die feste Verankerung in der Welt)
+
+3. PHILOSOPHISCHER KERN: WERKZEUG STATT BEVORMUNDUNG
+Erst durch das Zusammenspiel aller drei Ebenen entsteht ein geschütztes und 
+greifbares Werk: Eine Idee ohne Zeitstempel bleibt flüchtig; Technik ohne den 
+Menschen im Mittelpunkt wird zum Selbstzweck. Das Zeichen 三 erinnert daran, 
+dass jede digitale Struktur dem Menschen in der Mitte als stützendes Werkzeug 
+(Exoskelett) dient.
+
+4. VERZWEIGUNG AUF DIE WEITEREN GRUNDLAGEN-DOKUMENTE
+- Praktische Anwendung in Namen & Pfaden: siehe 三/k26b15-san-3.txt
+- Technische Ablage- & Versions-Architektur: siehe 三/k26b15-san-4.txt
