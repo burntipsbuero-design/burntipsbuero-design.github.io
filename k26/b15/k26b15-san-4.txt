@@ -1,0 +1,92 @@
+DOKUMENT: k26b15-san-4
+PFAD: https://burn.tips/k26/b15/k26b15-san-4.txt
+KURZFORM: 三/k26b15-san-4.txt
+DATUM: 15.11.2026
+FORMAT: Plain Text (.txt) – Bewusst frei von Code, Skripten und Formatierungen
+THEMA: Die Ablage-, Pfad- und Versions-Architektur (Vita-ID / 三-ID)
+
+1. GRUNDSATZ: DURCHGÄNGIGE KLEINSCHREIBUNG & EINZIGES TRENNZEICHEN (-)
+Jedes zeitgestempelte Dokument auf burn.tips erhält eine eindeutige, 
+menschenlesbare und maschinensichere Kennung: die Vita-ID (im Symbolkontext 
+auch 三-ID genannt). 
+- Durchgängige Kleinschreibung: Um maximale optische Ruhe mit hundertprozentiger 
+  Kompatibilität auf allen Betriebssystemen und Webservern (Windows, Linux, 
+  Android, GitHub) zu verbinden, wird die gesamte Kennung im Druck wie im 
+  Dateisystem kleingeschrieben (Druck = Datei = URL).
+- Nur der normale Bindestrich (-): Als Trennzeichen zwischen den Blöcken dient 
+  ausschließlich der normale Bindestrich (-). Auf Unterstriche (_) wird bewusst 
+  verzichtet, damit beim Lesen, Tippen oder Diktieren niemals verwechselt 
+  werden kann, welche Art von Strich gemeint ist.
+
+2. DER BAUPLAN: STRENGER RAHMEN, FREIER MENSCHLICHER KERN
+Eine Datei-Kennung besteht aus bis zu vier durch Bindestrich getrennten Teilen:
+[Gründungs-Datum] - [Menschlicher Freitext] - [Optionale Datums-Kette] - [Zähler]
+
+- Baustein 1 (Vorne Pflicht): 6-stelliges Gründungs- bzw. Erstellungsdatum.
+- Baustein 2 (Mitte Pflicht): Beliebig langer menschlicher Freitext (Kürzel, 
+  Begriff oder hochkomprimierte Zitat-Stanze).
+- Baustein 3 (Optional): Ein oder mehrere 6-stellige Datumsblöcke für 
+  Versionen, Verkündungs- oder Gültigkeitsdaten in chronologischer Folge.
+- Baustein 4 (Hinten Pflicht): Der kalkulierte Base-34-Hochzähler, gegliedert 
+  in 3er-Blöcke zur sauberen Lesbarkeit.
+
+3. BAUSTEIN 1: DER DATUMSBLOCK (6 STELLEN) & DIE ORDNER-STRUKTUR (/k26/b15/)
+Jeder Datumsblock ist exakt 6 Zeichen lang und folgt der fortgeführten 
+Hexadezimal- und Base-56-Logik (in Kleinschreibung). Der allererste Datumsblock 
+bestimmt zugleich die feste, zweigeteilte Ordner-Heimatadresse der Datei:
+
+- Ebene 1 (Jahresordner): /k26/
+  Der erste Buchstabe bezeichnet das Jahrhundert (i = 1800er, j = 1900er, 
+  k = 2000er Jahre), gefolgt vom zweistelligen Jahr (26 = 2026). Pro Jahr 
+  entsteht im Hauptverzeichnis nur ein einziger Ordner.
+- Ebene 2 (Tagesordner): /b15/
+  Der Monat wird einstellig dargestellt: 1 bis 9 für Januar bis September 
+  sowie a = Oktober, b = November, c = Dezember. „b15“ steht somit für den 
+  15. November. Innerhalb eines Jahresordners liegen maximal 365 (bzw. 366) 
+  Tagesordner, wodurch die 1.000-Elemente-Grenze von GitHub nie erreicht wird.
+
+4. BAUSTEIN 2: DER MENSCHLICHE FREITEXT (VON KURZ BIS ZITAT-STANZE)
+Zwischen dem Erstellungsdatum und dem hinteren Versions- bzw. Zählblock darf 
+eine beliebig lange Zeichenkette stehen. Hier gibt es kein starres 3er-Raster 
+und kein Verbot der Ziffern 0 und 1 – jede Datei steht autark für sich:
+- Kurze Alltags-Kennung: z. B. „vb“, „san“ oder „einkaufsliste“
+- Hochkomprimierte Juristen-/Steuerberater-Stanze (Micro-Content): Statt ganzer 
+  Gesetze kann ein einzelner Halbsatz ohne Leerzeichen mit maximaler 
+  Informationsdichte direkt im Dateinamen adressiert werden, z. B.:
+  * „-bgb433(1)-“ für § 433 Absatz 1 BGB
+  * „-bgb433(1)1.a)hs2-“ für § 433 Absatz 1 Nummer 1 Buchstabe a 2. Halbsatz
+
+5. BAUSTEIN 3: OPTIONALE DATUMS-KETTE (VERSIONEN & GÜLTIGKEITEN)
+Bei lebenden Texten (wie Gesetzen, Verträgen oder Standards) bleibt das 
+ursprüngliche Geburtsdatum ganz vorne als feste Ordneradresse bestehen. 
+Hinter dem menschlichen Freitext können optional ein oder mehrere 6-stellige 
+Datumsblöcke in logischer Reihenfolge angehängt werden:
+- Ein Zusatz-Datum: z. B. das Gültigkeitsdatum einer Neufassung (-k22101).
+- Mehrere Zusatz-Daten: z. B. erst das Verkündungsdatum im Bundesgesetzblatt 
+  und dahinter das abweichende Datum des Inkrafttretens (-k21715-k22101).
+
+6. BAUSTEIN 4: DER ABSCHLIESSENDE BASE-34-ZÄHLER (IN 3ER-BLÖCKEN)
+Ganz am Ende jeder Datei steht immer der technische Hochzähler in Base 34 
+(8 sichere Ziffern von 2 bis 9 sowie die 26 Kleinbuchstaben a bis z):
+
+- Start bei „2“: Die Ziffern 0 und 1 sind im Zählwerk ausgeschlossen, um 
+  Verwechslungen mit Buchstaben (o, i, l) zu verhindern.
+- Potenzierendes Hochzählen von links nach rechts: Die erste Stelle zählt von 
+  „2“ bis „z“ (34 Werte). Ist das „z“ erreicht, bleibt es als fester 
+  Potenz-Sockel stehen und rechts daneben wird ab „2“ weitergezählt 
+  (z = 34^1, zz = 34^2, zzz = 34^3 = 39.304, zzz-z = 34^4 = 1.336.336).
+- Lesbarkeit durch 3er-Blöcke: Ausschließlich dieser hintere Zähler wird ab 
+  der vierten Zählstelle nach jeweils drei „z“ durch einen Bindestrich 
+  gegliedert (z. B. -2, -z2, -zzz-z2).
+
+7. PRAXIS-BEISPIELE IM ÜBERBLICK (LANGPFAD & KURZFORM)
+- Einfaches Grundlagendokument vom 15.11.2026:
+  Pfad:     https://burn.tips/k26/b15/k26b15-san-4.txt
+  Kurzform: 三/k26b15-san-4.txt
+- Massendaten-Eintrag mit hohem Zähler im 3er-Raster:
+  Pfad:     https://burn.tips/k26/b15/k26b15-san-zzz-z2.txt
+  Kurzform: 三/k26b15-san-zzz-z2.txt
+- Kompaktes Gesetz-Schnipsel (Geburt BGB am 18.08.1896 = i96818, kompakte 
+  Stanze = bgb433(1)1.a)hs2, gültig ab 01.01.2022 = k22101, 1. Datei = -2):
+  Pfad:     https://burn.tips/i96/818/i96818-bgb433(1)1.a)hs2-k22101-2.txt
+  Kurzform: 三/i96818-bgb433(1)1.a)hs2-k22101-2.txt
