@@ -164,6 +164,19 @@ sofort dreidimensional als das zusammengefaltete Banner; wer zuerst der
 Fußzeile begegnet, erkennt im Globus sofort das aufgefaltete Raumgebilde
 wieder.
 
-========================================================================
-burn.tips – Dezentrale Dokumentation & Prioritätsschutz (Prior Art)
-========================================================================
+
+[8] DEMONSTRATIONSOBJEKTE & REFERENZDATEIEN (NICHT KLICKBAR)
+------------------------------------------------------------------------
+Zur visuellen und auditiven Veranschaulichung des Globus-Emblems im
+physischen Raum sind im selben Register-Pfad folgende Referenzdateien
+hinterlegt (Abruf durch manuelles Kopieren in die Adresszeile):
+
+  * Bewegtbild & Audio-Impuls (Flaggen-Demonstration im Wind):
+    Datei:     k26b15-san-5.mp4
+    Pfad:      burn.tips/k26/b15/k26b15-san-5.mp4
+    Kurzform:  三/k26b15-san-5.mp4
+
+  * Statisches Referenzbild (Quadratischer E-Ink-Rahmen mit QR-Siegel):
+    Datei:     k26b15-san-5.jpg
+    Pfad:      burn.tips/k26/b15/k26b15-san-5.jpg
+    Kurzform:  三/k26b15-san-5.jpg
