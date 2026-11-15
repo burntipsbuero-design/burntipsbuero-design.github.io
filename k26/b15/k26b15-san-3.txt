@@ -1,0 +1,49 @@
+DOKUMENT: k26b15-san-3
+PFAD: https://burn.tips/k26/b15/k26b15-san-3.txt
+KURZFORM: 三/k26b15-san-3.txt
+DATUM: 15.11.2026
+FORMAT: Plain Text (.txt) – Bewusst frei von Code, Skripten und Formatierungen
+THEMA: Die San-Nomenklatur (三) – Geräte, Apps, Schutzmarke und Kurz-Pfad
+
+1. GRUNDSATZ: DREI BALKEN, DREI POSITIONEN
+Aufbauend auf der Grunddefinition des Zeichens 三 (siehe 三/k26b15-san-2.txt) 
+wird das Symbol im Ökosystem von burn.tips in exakt drei Positionen eingesetzt: 
+vorangestellt für Hardware, nachgestellt für Software und Ideenschutz sowie 
+mit Schrägstrich als Pfad-Abkürzung.
+
+2. POSITION 1 – VORANGESTELLTES SAN (三Begriff): PHYSISCHE GERÄTE
+Steht das Zeichen 三 unmittelbar vor einem Begriff, kennzeichnet es ein 
+physisches Stück Hardware oder ein konkretes lokales Gerät.
+Beispiel: 三Butler (die lokale KI-Hardware-Einheit als physischer Assistent).
+
+3. POSITION 2 – NACHGESTELLTES SAN (Begriff三): APPS & IDEEN-SCHUTZMARKE
+Steht das Zeichen 三 unmittelbar hinter einem Namen, erfüllt es zwei Funktionen:
+
+a) Kennzeichnung von Software und Konzepten:
+Beispiel: halloStille三
+
+b) Offenes Bürger-Schutzsiegel (Prioritätsnachweis statt Patent):
+Das nachgestellte 三 fungiert wie ein privates, für jedermann frei nutzbares 
+Schutzzeichen (David statt Goliath). Es richtet sich an Urheber und Erfinder, 
+die ihre Idee nicht nutzen wollen, um über teure Patente Lizenzgelder 
+einzutreiben, sondern die lediglich verhindern wollen, dass Dritte die Idee 
+kopieren, selbst patentieren und anschließend den ursprünglichen Erfinder 
+aussperren oder zur Kasse bitten.
+
+Wer seine Idee über burn.tips als reines Klartext-Dokument (.txt) mit einem 
+eindeutigen Zeitstempel versieht und veröffentlicht, schafft unwiderlegbaren 
+„Stand der Technik“ (Prior Art). Das nachgestellte 三 signalisiert nach außen: 
+„Diese Idee ist zeitgestempelt, einem konkreten Menschen zugeordnet und als 
+geistiges Ursprungswerk vor fremder Patent-Kaperung geschützt.“
+
+4. POSITION 3 – MIT SCHRÄGSTRICH (三/dateiname): DER KURZ-PFAD
+Steht das Zeichen 三 mit einem Schrägstrich vor einem Dateinamen (三/...), 
+dient es als menschenlesbare Abkürzung für den gesamten technischen Web-Pfad.
+Da die ersten sechs Zeichen des Dateinamens (z. B. i96818) den Jahres- und 
+Tagesordner (/i96/818/) bereits mathematisch zwingend enthalten, ersetzt „三/“ 
+die drei technischen Pfad-Bausteine (https://burn.tips + /jahr/ + /tag/):
+
+- Voller technischer Pfad: 
+  https://burn.tips/i96/818/i96818-bgb433(1)1.a)hs2-k22101-2.txt
+- Lesefreundliche Kurzform: 
+  三/i96818-bgb433(1)1.a)hs2-k22101-2.txt
